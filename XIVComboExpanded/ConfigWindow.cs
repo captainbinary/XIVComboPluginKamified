@@ -8,9 +8,9 @@ using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using ImGuiNET;
-using XIVComboExpandedestPlugin.Attributes;
+using XIVComboKamifiedPlugin.Attributes;
 
-namespace XIVComboExpandedestPlugin
+namespace XIVComboKamifiedPlugin
 {
     /// <summary>
     /// Plugin configuration window.

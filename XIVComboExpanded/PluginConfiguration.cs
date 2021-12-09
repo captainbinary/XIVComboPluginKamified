@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using Dalamud.Configuration;
 using Dalamud.Utility;
 using Newtonsoft.Json;
-using XIVComboExpandedestPlugin.Attributes;
-using XIVComboExpandedestPlugin.Combos;
+using XIVComboKamifiedPlugin.Attributes;
+using XIVComboKamifiedPlugin.Combos;
 
-namespace XIVComboExpandedestPlugin
+namespace XIVComboKamifiedPlugin
 {
     /// <summary>
     /// Plugin configuration.

@@ -1,7 +1,7 @@
-using XIVComboExpandedestPlugin.Attributes;
-using XIVComboExpandedestPlugin.Combos;
+using XIVComboKamifiedPlugin.Attributes;
+using XIVComboKamifiedPlugin.Combos;
 
-namespace XIVComboExpandedestPlugin
+namespace XIVComboKamifiedPlugin
 {
     /// <summary>
     /// Combo presets.

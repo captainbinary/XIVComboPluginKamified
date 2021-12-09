@@ -3,7 +3,7 @@ using System;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
 
-namespace XIVComboExpandedestPlugin.Combos
+namespace XIVComboKamifiedPlugin.Combos
 {
     internal static class NIN
     {

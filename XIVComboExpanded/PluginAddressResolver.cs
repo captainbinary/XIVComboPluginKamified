@@ -3,7 +3,7 @@ using System;
 using Dalamud.Game;
 using Dalamud.Logging;
 
-namespace XIVComboExpandedestPlugin
+namespace XIVComboKamifiedPlugin
 {
     /// <summary>
     /// Plugin address resolver.

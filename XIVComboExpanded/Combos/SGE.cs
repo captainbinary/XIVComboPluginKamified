@@ -1,4 +1,4 @@
-﻿namespace XIVComboExpandedestPlugin.Combos
+﻿namespace XIVComboKamifiedPlugin.Combos
 {
     internal static class SGE
     {

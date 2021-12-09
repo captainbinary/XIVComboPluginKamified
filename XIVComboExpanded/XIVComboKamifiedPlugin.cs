@@ -11,12 +11,12 @@ using Dalamud.Game.Gui;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 
-namespace XIVComboExpandedestPlugin
+namespace XIVComboKamifiedPlugin
 {
     /// <summary>
     /// Main plugin implementation.
     /// </summary>
-    public sealed partial class XIVComboExpandedestPlugin : IDalamudPlugin
+    public sealed partial class XIVComboKamifiedPlugin : IDalamudPlugin
     {
         private const string Command = "/pcombo";
 
@@ -24,10 +24,10 @@ namespace XIVComboExpandedestPlugin
         private readonly ConfigWindow configWindow;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XIVComboExpandedestPlugin"/> class.
+        /// Initializes a new instance of the <see cref="XIVComboKamifiedPlugin"/> class.
         /// </summary>
         /// <param name="pluginInterface">Dalamud plugin interface.</param>
-        public XIVComboExpandedestPlugin(DalamudPluginInterface pluginInterface)
+        public XIVComboKamifiedPlugin(DalamudPluginInterface pluginInterface)
         {
             pluginInterface.Create<Service>();
 

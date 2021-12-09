@@ -8,9 +8,9 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
 using Dalamud.Utility;
-using XIVComboExpandedestPlugin.Attributes;
+using XIVComboKamifiedPlugin.Attributes;
 
-namespace XIVComboExpandedestPlugin.Combos
+namespace XIVComboKamifiedPlugin.Combos
 {
     /// <summary>
     /// Base class for each combo.

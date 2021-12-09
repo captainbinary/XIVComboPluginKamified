@@ -2,7 +2,7 @@ using System;
 
 using Dalamud.Game.ClientState.JobGauge.Types;
 
-namespace XIVComboExpandedestPlugin.Combos
+namespace XIVComboKamifiedPlugin.Combos
 {
     internal static class MCH
     {

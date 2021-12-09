@@ -1,7 +1,7 @@
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 
-namespace XIVComboExpandedestPlugin.Combos
+namespace XIVComboKamifiedPlugin.Combos
 {
     internal static class DRG
     {

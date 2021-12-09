@@ -1,6 +1,6 @@
 using Dalamud.Game.ClientState.Statuses;
 
-namespace XIVComboExpandedestPlugin.Combos
+namespace XIVComboKamifiedPlugin.Combos
 {
     internal static class PLD
     {
