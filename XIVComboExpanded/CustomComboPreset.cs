@@ -15,6 +15,10 @@ namespace XIVComboKamifiedPlugin
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro)]
         AllSwiftcastFeature = 9001,
 
+        [OrderedEnum]
+        [CustomComboInfo("Lucid Dreaming Feature", "Replaces all magic user's main attack with lucid dreaming when up. BLM/RDM/SMN/SCH/WHM/AST/SGE", All.JobID, All.Blizzard, All.Jolt, All.Ruin, All.Stone, All.Malefic, All.Dosis)]
+        AllLucidDreaming = 9002,
+
         #endregion
 
         #region ASTROLOGIAN
@@ -86,6 +90,10 @@ namespace XIVComboKamifiedPlugin
         [OrderedEnum]
         [CustomComboInfo("Quick Nock/Ladonsbite into Shadowbite", "Replaces Quick Nock/Ladonsbite with Shadowbite when it is ready.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
         BardShadowbiteFeature = 2305,
+
+        [OrderedEnum]
+        [CustomComboInfo("Single Target Rotation", "Uses a unique single target rotation in one button", BRD.JobID, BRD.HeavyShot)]
+        BardSingleTargetCombo = 2306,
 
         #endregion
         // ====================================================================================
@@ -429,6 +437,11 @@ namespace XIVComboKamifiedPlugin
         [OrderedEnum]
         [CustomComboInfo("Kardia Into Soteria", "Kardia turns Soteria when active and Soteria is off-cooldown.", SGE.JobID, SGE.Kardia)]
         SageKardiaFeature = 4001,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Smart Eukrasia", "This is a work in progress, use at own risk.", SGE.JobID, SGE.Dosis, SGE.Diagnosis, SGE.Prognosis)]
+        SageSmartEukrasia = 3802,
 
         #endregion
         // ====================================================================================

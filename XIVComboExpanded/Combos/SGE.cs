@@ -6,22 +6,29 @@
 
         public const uint
             Diagnosis = 24284,
+            Prognosis = 24286,
             Holos = 24310,
             Ixochole = 24299,
             Egeiro = 24287,
             Kardia = 24285,
-            Soteria = 24294;
+            Soteria = 24294,
+            Dosis = 24283,
+            Eukrasia = 24290;
 
         public static class Buffs
         {
             public const ushort
-                Kardia = 2604;
+                Kardia = 2604,
+                EukrasianPrognosis = 2609,
+                EukrasianDiagnosis = 2607;
         }
 
         public static class Debuffs
         {
             public const ushort
-                Placeholder = 0;
+                EukrasianDosis1 = 2614,
+                EukrasianDosis2 = 2615,
+                EukrasianDosis3 = 2616;
         }
 
         public static class Levels
@@ -37,7 +44,8 @@
                 Dosis2 = 72,
                 Holos = 76,
                 Rizomata = 74,
-                Dosis3 = 82;
+                Dosis3 = 82,
+                Eukrasia = 30;
         }
     }
 
@@ -51,6 +59,52 @@
             {
                 if (HasEffect(SGE.Buffs.Kardia) && GetCooldown(SGE.Soteria).CooldownRemaining == 0)
                     return SGE.Soteria;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SageSmartEukrasia : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SageSmartEukrasia;
+
+        protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+        {
+            // Dosis
+            if (actionID == SGE.Dosis && level >= SGE.Levels.Eukrasia)
+            {
+                var cooldown = true;
+
+                if (level >= SGE.Levels.Dosis3)
+                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis3).IsCooldown;
+
+                if (level >= SGE.Levels.Dosis2 && level < SGE.Levels.Dosis3)
+                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis2).IsCooldown;
+
+                if (level >= SGE.Levels.Dosis && level < SGE.Levels.Dosis2)
+                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis1).IsCooldown;
+
+                if (!cooldown)
+                    return SGE.Eukrasia;
+            }
+
+            // Diagnosis
+            if (actionID == SGE.Diagnosis && level >= SGE.Levels.Eukrasia)
+            {
+                var cooldown = GetCooldown(SGE.Buffs.EukrasianDiagnosis).IsCooldown;
+
+                if (!cooldown)
+                    return SGE.Eukrasia;
+            }
+
+            // Prognosis
+            if (actionID == SGE.Prognosis && level >= SGE.Levels.Eukrasia)
+            {
+                var cooldown = GetCooldown(SGE.Buffs.EukrasianPrognosis).IsCooldown;
+
+                if (!cooldown)
+                    return SGE.Eukrasia;
             }
 
             return actionID;

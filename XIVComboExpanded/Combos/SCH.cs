@@ -8,6 +8,7 @@ namespace XIVComboKamifiedPlugin.Combos
         public const byte JobID = 28;
 
         public const uint
+            Bio = 17869,
             FeyBless = 16543,
             Consolation = 16546,
             EnergyDrain = 167,

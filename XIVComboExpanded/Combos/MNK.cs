@@ -108,7 +108,7 @@ namespace XIVComboKamifiedPlugin.Combos
             if (actionID == MNK.HowlingFist)
             {
                 var gauge = GetJobGauge<MNKGauge>();
-                if (gauge.Chakra < 5)
+                if (gauge.Chakra.Length < 5)
                     return MNK.Meditation;
 
                 // Enlightenment
