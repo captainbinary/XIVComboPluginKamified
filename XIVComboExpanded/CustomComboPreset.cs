@@ -441,7 +441,7 @@ namespace XIVComboKamifiedPlugin
         [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Smart Eukrasia", "This is a work in progress, use at own risk.", SGE.JobID, SGE.Dosis, SGE.Diagnosis, SGE.Prognosis)]
-        SageSmartEukrasia = 3802,
+        SageSmartEukrasia = 4002,
 
         #endregion
         // ====================================================================================

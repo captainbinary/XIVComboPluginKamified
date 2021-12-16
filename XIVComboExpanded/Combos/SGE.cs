@@ -71,41 +71,35 @@
 
         protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
         {
+            float cooldown = 1;
+
             // Dosis
             if (actionID == SGE.Dosis && level >= SGE.Levels.Eukrasia)
             {
-                var cooldown = true;
-
                 if (level >= SGE.Levels.Dosis3)
-                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis3).IsCooldown;
+                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis3).CooldownRemaining;
 
                 if (level >= SGE.Levels.Dosis2 && level < SGE.Levels.Dosis3)
-                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis2).IsCooldown;
+                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis2).CooldownRemaining;
 
                 if (level >= SGE.Levels.Dosis && level < SGE.Levels.Dosis2)
-                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis1).IsCooldown;
-
-                if (!cooldown)
-                    return SGE.Eukrasia;
+                    cooldown = GetCooldown(SGE.Debuffs.EukrasianDosis1).CooldownRemaining;
             }
 
             // Diagnosis
             if (actionID == SGE.Diagnosis && level >= SGE.Levels.Eukrasia)
             {
-                var cooldown = GetCooldown(SGE.Buffs.EukrasianDiagnosis).IsCooldown;
-
-                if (!cooldown)
-                    return SGE.Eukrasia;
+                cooldown = GetCooldown(SGE.Buffs.EukrasianDiagnosis).CooldownRemaining;
             }
 
             // Prognosis
             if (actionID == SGE.Prognosis && level >= SGE.Levels.Eukrasia)
             {
-                var cooldown = GetCooldown(SGE.Buffs.EukrasianPrognosis).IsCooldown;
-
-                if (!cooldown)
-                    return SGE.Eukrasia;
+                cooldown = GetCooldown(SGE.Buffs.EukrasianPrognosis).CooldownRemaining;
             }
+
+            if (cooldown == 0 && level >= SGE.Levels.Eukrasia)
+                return SGE.Eukrasia;
 
             return actionID;
         }
