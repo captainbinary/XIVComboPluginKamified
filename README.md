@@ -1,9 +1,14 @@
 # Endwalker Is Here
 
-# XIVComboPlugin Expandedest
-This is an expanded version of Daemitus's XIVCombo Expanded for personal use, that I am modifying for personal use by adding features that me and friends would like to use. These can be used in any fork you like, no credit needed. None of these features will be added to the original XIVCombo, so please do not bug the creator of that about it. Thank you Daemitus, attickdoor, goaaats, and everyone else who contributed to making this plugin possible. Additional thanks to ALymphocyte for coding help!
+# XIVComboPlugin Kamified
 
-Also, this plugin is explicitly made for more advanced users; if you want something more curated, check out the original, at https://github.com/attickdoor/XIVComboPlugin, which you can easily install in-game from the official plugin list. If you want something in the middle between that plugin and this fork, check out https://github.com/daemitus/XIVComboPlugin.
+[![Build](https://github.com/grammernatzi/XIVComboPlugin/actions/workflows/build.yml/badge.svg)](https://github.com/grammernatzi/XIVComboPlugin/actions/workflows/build.yml)
+
+This is a version of Daemitus's XIVComboExpanded with added features. The majority of these new additions are for button consolidation, and while they have logic behind them, they aren't really designed to play the game for you, and more replace options you have either already used, can't be used at that moment, have a lower priority, or would be completely detrimental to use at that moment, so that, while you still have to think about which buttons you are pressing and not just spamming a single one, you also get to have a much smaller hotbar. Quite a few of these features can be replicated by something like ReAction with ease (or even macros in some cases), but look prettier with actual icon replacement.
+
+Also, for the first time that I know of in an XIVCombo plugin, alt leveling is fully supported. So for jobs (that aren't Black Mage) that get actions via Job Quest, the combos won't update until you actually unlock them. Black Mage unfortunately relies too much on casting, which grays actions out, for the solution I used to work well, but everything else works fine.
+
+Also, this plugin is explicitly made for more advanced users; if you want something more curated, check out the original, at https://github.com/attickdoor/XIVComboPlugin, which you can easily install in-game from the official plugin list. If you want something in the middle between that plugin and this fork, check out https://github.com/daemitus/XIVComboPlugin. The grand majority of technical work here comes from Daemitus himself, and he is the one that made most of the actual combos that aren't in the original XIVCombo fork, so please give him some love.
 
 ## Old Readme
 
@@ -31,3 +36,6 @@ For some jobs, this frees a massive amount of hotbar space (looking at you, DRG)
 ![](https://github.com/attickdoor/xivcomboplugin/raw/master/res/hypercharge_heat_blast.gif)
 ![](https://github.com/attickdoor/xivcomboplugin/raw/master/res/eno_swap.gif)
 
+---
+
+Place `https://github.com/captainbinary/MyDalamudPlugins/raw/master/pluginmaster.json` in your /xlsettings 3rd party repo list to access this plugin.

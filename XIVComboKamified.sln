@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XIVComboKamified", "XIVComboExpanded\XIVComboKamified.csproj", "{619DF476-7225-4783-95A5-D29A8816EE66}"
 EndProject
@@ -17,19 +17,51 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Actions", "Github Ac
 		.github\workflows\build.yml = .github\workflows\build.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{2A49A555-337B-4A70-A8D0-5F6756200A4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFXIVClientStructs", "lib\FFXIVClientStructs\FFXIVClientStructs\FFXIVClientStructs.csproj", "{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFXIVClientStructs.Generators", "lib\FFXIVClientStructs\FFXIVClientStructs.Generators\FFXIVClientStructs.Generators.csproj", "{CE02218E-D78C-460A-A914-902FCAC725E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{619DF476-7225-4783-95A5-D29A8816EE66}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{619DF476-7225-4783-95A5-D29A8816EE66}.Debug|Any CPU.Build.0 = Debug|x64
 		{619DF476-7225-4783-95A5-D29A8816EE66}.Debug|x64.ActiveCfg = Debug|x64
 		{619DF476-7225-4783-95A5-D29A8816EE66}.Debug|x64.Build.0 = Debug|x64
+		{619DF476-7225-4783-95A5-D29A8816EE66}.Release|Any CPU.ActiveCfg = Release|x64
+		{619DF476-7225-4783-95A5-D29A8816EE66}.Release|Any CPU.Build.0 = Release|x64
 		{619DF476-7225-4783-95A5-D29A8816EE66}.Release|x64.ActiveCfg = Release|x64
 		{619DF476-7225-4783-95A5-D29A8816EE66}.Release|x64.Build.0 = Release|x64
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Debug|x64.Build.0 = Debug|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Release|x64.ActiveCfg = Release|Any CPU
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034}.Release|x64.Build.0 = Release|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE02218E-D78C-460A-A914-902FCAC725E4}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45B9EEF4-33DE-47BA-BBBA-B3D1EB2E2034} = {2A49A555-337B-4A70-A8D0-5F6756200A4E}
+		{CE02218E-D78C-460A-A914-902FCAC725E4} = {2A49A555-337B-4A70-A8D0-5F6756200A4E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37674B88-2038-4C63-A979-84404391773A}
