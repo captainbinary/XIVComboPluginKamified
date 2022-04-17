@@ -9,12 +9,12 @@ on:
     - master
 
 env:
-  PUBLIC_NAME: XIVComboExpandedest
-  SOLUTION_NAME: XIVComboExpanded
-  INTERNAL_NAME: XIVComboExpandedest
-  RELEASE_DIR: XIVComboExpanded\bin\Release\XIVComboExpandedest
-  PERSONAL_PLUGIN_REPO: grammernatzi/MyDalamudPlugins
-  PR_PLUGIN_REPO: grammernatzi/DalamudPlugins
+  PUBLIC_NAME: XIVComboKamified
+  SOLUTION_NAME: XIVComboKam
+  INTERNAL_NAME: XIVComboKamified
+  RELEASE_DIR: XIVComboKam\bin\Release\XIVComboKamified
+  PERSONAL_PLUGIN_REPO: captainbinary/MyDalamudPlugins
+  PR_PLUGIN_REPO: captainbinary/DalamudPlugins
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Download Dalamud
       run: |
-        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -OutFile latest.zip
+        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
         Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev\"   
     - name: Build
       run: |
