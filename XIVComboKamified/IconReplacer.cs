@@ -46,8 +46,8 @@ namespace XIVComboKamifiedPlugin
 
             this.getActionCooldownSlot = Marshal.GetDelegateForFunctionPointer<GetActionCooldownSlotDelegate>(Service.Address.GetActionCooldown);
 
-            this.getIconHook = new Hook<GetIconDelegate>(Service.Address.GetAdjustedActionId, this.GetIconDetour);
-            this.isIconReplaceableHook = new Hook<IsIconReplaceableDelegate>(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
+            this.getIconHook = Hook<OnGetIconDelegate>.FromAddress(Service.Address.GetAdjustedActionId, this.GetIconDetour);
+            this.isIconReplaceableHook = Hook<IsIconReplaceableDelegate>.FromAddress(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
 
             this.getIconHook.Enable();
             this.isIconReplaceableHook.Enable();
