@@ -12,6 +12,7 @@ using Dalamud.Game.Gui;
 using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
 
 namespace XIVComboExpandedestPlugin
 {
@@ -38,7 +39,7 @@ namespace XIVComboExpandedestPlugin
 
             Service.Configuration = pluginInterface.GetPluginConfig() as PluginConfiguration ?? new PluginConfiguration();
             Service.Address = new PluginAddressResolver();
-            Service.Address.Setup();
+            Service.Address.Setup(Service.SigScanner);
 
             Service.IconReplacer = new IconReplacer();
 
@@ -60,7 +61,7 @@ namespace XIVComboExpandedestPlugin
         }
 
         [PluginService]
-        public static Framework Framework { get; private set; } = null!;
+        public static IFramework Framework { get; private set; } = null!;
 
         /// <inheritdoc/>
         public string Name => "XIV Combo Expandedest";

@@ -90,7 +90,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<SMNGauge>();
-            if (!Service.BuddyList.PetBuddyPresent && gauge.SummonTimerRemaining == 0 && gauge.Attunement == 0)
+            if (Service.BuddyList.PetBuddy == null && gauge.SummonTimerRemaining == 0 && gauge.Attunement == 0)
                 return SMN.SummonCarbuncle;
 
             return actionID;

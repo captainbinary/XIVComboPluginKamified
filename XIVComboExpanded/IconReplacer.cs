@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using Dalamud.Game;
 using Dalamud.Hooking;
 using Dalamud.Logging;
+using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using XIVComboExpandedestPlugin.Attributes;
@@ -59,8 +60,8 @@ namespace XIVComboExpandedestPlugin
 
             this.UpdateEnabledActionIDs();
 
-            this.getIconHook = new Hook<GetIconDelegate>(Service.Address.GetAdjustedActionId, this.GetIconDetour);
-            this.isIconReplaceableHook = new Hook<IsIconReplaceableDelegate>(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
+            this.getIconHook = Service.GameInteropProvider.HookFromAddress<GetIconDelegate>(Service.Address.GetAdjustedActionId, this.GetIconDetour);
+            this.isIconReplaceableHook = Service.GameInteropProvider.HookFromAddress<IsIconReplaceableDelegate>(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
 
             this.getIconHook.Enable();
             this.isIconReplaceableHook.Enable();
@@ -87,7 +88,7 @@ namespace XIVComboExpandedestPlugin
         /// <returns>A bool value of whether the action can be used or not.</returns>
         internal unsafe bool CanUseAction(uint actionID, uint targetID = 0xE000_0000)
         {
-            return clientStructActionManager->GetActionStatus(ActionType.Spell, actionID, targetID, false, true) == 0;
+            return clientStructActionManager->GetActionStatus(ActionType.Action, actionID, targetID, false, true) == 0;
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace XIVComboExpandedestPlugin
         /// <returns>The result from the hook.</returns>
         internal uint OriginalHook(uint actionID) => this.getIconHook.Original(this.actionManager, actionID);
 
-        private unsafe void OnFrameworkUpdate(Framework dFramework)
+        private unsafe void OnFrameworkUpdate(IFramework dFramework)
         {
             try
             {

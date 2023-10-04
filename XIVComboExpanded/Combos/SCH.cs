@@ -77,7 +77,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<SCHGauge>();
-            if (!Service.BuddyList.PetBuddyPresent && gauge.SeraphTimer == 0 && !HasEffect(SCH.Buffs.Dissipation))
+            if (Service.BuddyList.PetBuddy == null && gauge.SeraphTimer == 0 && !HasEffect(SCH.Buffs.Dissipation))
                 return SCH.SummonEos;
 
             return actionID;

@@ -34,9 +34,12 @@ namespace XIVComboExpandedestPlugin
         /// Gets the address of fpGetActionCooldown.
         /// </summary>
         public IntPtr GetActionCooldown { get; private set; }
-
-        /// <inheritdoc/>
-        protected override void Setup64Bit(SigScanner scanner)
+        
+        /// <summary>
+        /// Set up memory signatures.
+        /// </summary>
+        /// <param name="scanner">Signature scanner.</param>
+        public unsafe void Setup(ISigScanner scanner)
         {
             this.ComboTimer = scanner.GetStaticAddressFromSig("F3 0F 11 05 ?? ?? ?? ?? 48 83 C7 08");
 
