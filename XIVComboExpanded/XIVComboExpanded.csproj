@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>attick, daemitus, alymphocyte, grammernatzi</Authors>
     <Company>-</Company>
-    <Version>1.4.2.4</Version>
+    <Version>1.4.2.5</Version>
     <Description>This plugin condenses combos and mutually exclusive abilities onto a single button.</Description>
     <Copyright>Copyaaaaaaaaaaaa</Copyright>
     <PackageProjectUrl>https://github.com/grammernatzi/XIVComboPluginExpandedest</PackageProjectUrl>
@@ -48,7 +48,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <ProjectReference Include="..\lib\FFXIVClientStructs\FFXIVClientStructs\FFXIVClientStructs.csproj" />
+    <!--<ProjectReference Include="..\lib\FFXIVClientStructs\FFXIVClientStructs\FFXIVClientStructs.csproj" />-->
+	<Reference Include="FFXIVClientStructs">
+      <HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(DalamudLibPath)Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
