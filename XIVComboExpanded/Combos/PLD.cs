@@ -18,7 +18,7 @@ namespace XIVComboExpandedestPlugin.Combos
             LowBlow = 7540,
             TotalEclipse = 7381,
             Requiescat = 7383,
-            Imperator = 99999,
+            Imperator = 36921,
             NotBurstStrike = 7384,
             Prominence = 16457,
             NotFatedCircle = 16458,

@@ -447,7 +447,7 @@ namespace XIVComboExpandedestPlugin
         #region DARK KNIGHT
 
         // unused enums: 3204
-        // last used enum: 3212
+        // last used enum: 3213
 
         [OrderedEnum]
         [CustomComboInfo("Souleater Combo", "Replace Souleater with its combo chain.", DRK.JobID, DRK.Souleater)]
@@ -463,6 +463,11 @@ namespace XIVComboExpandedestPlugin
         DarkStalwartSoulCombo = 3202,
 
         [OrderedEnum]
+        [ParentCombo(DarkStalwartSoulCombo)]
+        [CustomComboInfo("Stalwart Soul to Disesteem", "Replace Stalwart Soul's combo with Disesteem while it is available.", DRK.JobID, DRK.StalwartSoul, DRK.Unleash)]
+        DarkStalsteemFeature = 3213,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(DarkStalwartSoulCombo)]
         [CustomComboInfo("Evil Stalwart Soul Combo", "Replace Unleash with its combo chain, instead.", DRK.JobID, DRK.StalwartSoul, DRK.Unleash)]
@@ -473,8 +478,8 @@ namespace XIVComboExpandedestPlugin
         DRKOvercapFeature = 3203,
 
         [OrderedEnum]
-        [CustomComboInfo("Blood Weapon Feature", "Replaces Carve and Spit with Blood Weapon if its cooldown is up .", DRK.JobID, DRK.CarveAndSpit)]
-        DarkBloodWeaponFeature = 3206,
+        [CustomComboInfo("Delirium Feature", "Replaces Carve and Spit with Delirium if its cooldown is up .", DRK.JobID, DRK.CarveAndSpit)]
+        DarkDeliriumFeature = 3206,
 
         [OrderedEnum]
         [CustomComboInfo("Living Shadow Feature", "Replaces Bloodspiller and Quietus with Living Shadow if its cooldown is up and you have 50 or more Blood Gauge.", DRK.JobID, DRK.Bloodspiller, DRK.Quietus)]
