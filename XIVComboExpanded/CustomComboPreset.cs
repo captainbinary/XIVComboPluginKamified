@@ -940,20 +940,20 @@ namespace XIVComboExpandedestPlugin
         PaladinEvilProminenceCombo = 1907,
 
         [OrderedEnum]
-        [CustomComboInfo("Requiescat Confiteor", "Replace Requiescat with Confiter while under the effect of Requiescat. Includes Confiteor combo.", PLD.JobID, PLD.Requiescat)]
+        [CustomComboInfo("Imperator Confiteor", "Replace Imperator/Requiescat with Confiteor while active. Includes Confiteor combo.", PLD.JobID, PLD.Requiescat, PLD.Imperator)]
         PaladinRequiescatCombo = 1905,
 
         [OrderedEnum]
         [ParentCombo(PaladinRequiescatCombo)]
-        [CustomComboInfo("Requiescat Confiteor Level-sync Feature", "Replace Requiescat with Holy Spirit if Confiteor is not available, or already used and its combo is not unlocked.", PLD.JobID, PLD.Requiescat)]
+        [CustomComboInfo("Requiescat Confiteor Level-sync Feature", "Replace Requiescat with Holy Spirit if Confiteor is not available, or already used and its combo is not unlocked.", PLD.JobID, PLD.Requiescat, PLD.Imperator)]
         PaladinRequiescatComboSpirit = 1917,
 
         [OrderedEnum]
-        [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor and its combo when it is available.", PLD.JobID, PLD.NotBurstStrike, PLD.NotFatedCircle)]
+        [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor and its combo when it is available, as well as Blade of Honor.", PLD.JobID, PLD.NotBurstStrike, PLD.NotFatedCircle)]
         PaladinConfiteorFeature = 1906,
 
         [OrderedEnum]
-        [CustomComboInfo("AoE Combo to Requiescat Spells", "Replace your AoE combo actions with applicable spells while you have Requiescat", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
+        [CustomComboInfo("AoE Combo to Imperator Spells", "Replace your AoE combo actions with applicable spells while you have Imperator is active.", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
         PaladinNotFatedCircleFeature = 1910,
 
         [OrderedEnum]
@@ -961,12 +961,12 @@ namespace XIVComboExpandedestPlugin
         PaladinHolySpiritToHolyCircleFeature = 1914,
 
         [OrderedEnum]
-        [CustomComboInfo("Fight or Flight to Requiescat", "Replace Fight or Flight with Requiescat while the effect is active.\nIf Fight or Flight to Goring Blade is active, this only will take effect during the global cooldown.", PLD.JobID, PLD.NotNoMercy)]
+        [CustomComboInfo("Fight or Flight to Imperator", "Replace Fight or Flight with Imperator/Requiescat while the effect is active, as well as Blade of Honor.\nIf Fight or Flight is currently Goring Blade, this only will take effect during the global cooldown.", PLD.JobID, PLD.NotNoMercy)]
         PaladinNotNoMercyToRequiescat = 1920,
 
-        [OrderedEnum]
+/*        [OrderedEnum]
         [CustomComboInfo("Fight or Flight to Goring Blade", "Replace Fight or Flight with Goring Blade while the effect is active.", PLD.JobID, PLD.NotNoMercy)]
-        PaladinNotNoMercyToNotSonicBreak = 1915,
+        PaladinNotNoMercyToNotSonicBreak = 1915,*/
 
         [OrderedEnum]
         [CustomComboInfo("Shield Blash to Low Blow", "Replace Shield Bash to Low Blow when it is on cooldown.\nAlso works with Tank Interrupt feature.", PLD.JobID, PLD.ShieldBash)]

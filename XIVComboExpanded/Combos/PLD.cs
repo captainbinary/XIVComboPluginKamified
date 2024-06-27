@@ -18,6 +18,7 @@ namespace XIVComboExpandedestPlugin.Combos
             LowBlow = 7540,
             TotalEclipse = 7381,
             Requiescat = 7383,
+            Imperator = 99999,
             NotBurstStrike = 7384,
             Prominence = 16457,
             NotFatedCircle = 16458,
@@ -96,11 +97,20 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (HasEffect(PLD.Buffs.NotNoMercy))
                 {
+                    bool currentlyNotSonicBreak = OriginalHook(PLD.NotNoMercy) == PLD.NotNoMercy;
                     if (IsActionOffCooldown(PLD.Requiescat) && CanUseAction(PLD.Requiescat))
-                        return !IsEnabled(CustomComboPreset.PaladinNotNoMercyToNotSonicBreak) || GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? PLD.Requiescat : actionID;
-                    if (!IsActionOffCooldown(PLD.NotSonicBreak) && CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)) && IsEnabled(CustomComboPreset.PaladinRequiescatCombo))
+                    {
+                        if (!currentlyNotSonicBreak)
+                            return GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? PLD.Requiescat : actionID;
+                        return PLD.Requiescat;
+                    }
+
+                    if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
+                        return OriginalHook(PLD.Requiescat);
+
+                    if (!currentlyNotSonicBreak && CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)) && IsEnabled(CustomComboPreset.PaladinRequiescatCombo))
                         return OriginalHook(PLD.NotGnashingFangCombo);
-                    if (!IsActionOffCooldown(PLD.NotSonicBreak) && HasEffect(PLD.Buffs.Requiescat) && IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit))
+                    if (!currentlyNotSonicBreak && HasEffect(PLD.Buffs.Requiescat) && IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit))
                         return IsEnabled(CustomComboPreset.PaladinHolySpiritToHolyCircleFeature) && (this.FilteredLastComboMove == PLD.Prominence || this.FilteredLastComboMove == PLD.TotalEclipse) && level >= PLD.Levels.NotFatedCircle ? PLD.NotFatedCircle : PLD.NotBurstStrike;
                 }
             }
@@ -109,7 +119,7 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class PaladinNotNoMercyToNotSonicBreakFeature : CustomCombo
+/*    internal class PaladinNotNoMercyToNotSonicBreakFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinNotNoMercyToNotSonicBreak;
 
@@ -126,7 +136,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             return actionID;
         }
-    }
+    }*/
 
     internal class PaladinRoyalAuthorityAtonementFeature : CustomCombo
     {
@@ -134,7 +144,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(PLD.Buffs.SwordOath) && (!IsEnabled(CustomComboPreset.PaladinRoyalLobFeature) || InMeleeRange()) ? PLD.Atonement : actionID;
+            return CanUseAction(OriginalHook(PLD.Atonement)) && (!IsEnabled(CustomComboPreset.PaladinRoyalLobFeature) || InMeleeRange()) ? PLD.Atonement : actionID;
         }
     }
 
@@ -158,6 +168,9 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
                     return OriginalHook(PLD.NotGnashingFangCombo);
+
+                if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
+                    return OriginalHook(PLD.Requiescat);
             }
 
             return actionID;
@@ -174,6 +187,9 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (level >= PLD.Levels.NotGnashingFangCombo || OriginalHook(PLD.NotGnashingFangCombo) != PLD.NotGnashingFangCombo)
                     return OriginalHook(PLD.NotGnashingFangCombo);
+
+                if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
+                    return OriginalHook(PLD.Requiescat);
 
                 if (IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit))
                 {
