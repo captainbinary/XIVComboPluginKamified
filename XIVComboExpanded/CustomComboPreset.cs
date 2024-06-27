@@ -358,49 +358,30 @@ namespace XIVComboExpandedestPlugin
         // latest enum: 2219
 
         [OrderedEnum]
-        [CustomComboInfo("Full Thrust Combo", "Replace Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        [CustomComboInfo("Heavens' Thrust Combo", "Replace Heavens'/Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullThrustCombo = 2204,
 
         [OrderedEnum]
         [ParentCombo(DragoonFullThrustCombo)]
-        [CustomComboInfo("Full Thrust Combo Vorpal Thrust Option", "Full Thrust's combo chain is instead replaced by Vorpal Thrust, not True Thrust, while you have no combo ongoing.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        [CustomComboInfo("Heavens' Thrust Combo Lance Barrage Option", "Heavens'/Full Thrust's combo chain is instead replaced by Lance Barrage/Vorpal Thrust, not True Thrust, while you have no combo ongoing.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullThrustComboOption = 2210,
 
         [OrderedEnum]
         [ParentCombo(DragoonFullThrustCombo)]
-        [CustomComboInfo("Full Thrust to Piercing Talon", "Full Thrust's combo is replaced with Piercing Talon when you are out of melee range.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        [CustomComboInfo("Heavens' Thrust to Piercing Talon", "Heavens'/Full Thrust's combo is replaced with Piercing Talon when you are out of melee range.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullThrustTalonFeature = 2211,
 
         [OrderedEnum]
-        [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
+        [CustomComboInfo("Chaotic Spring Combo", "Replace Chaotic Spring/Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
         DragoonChaosThrustCombo = 2203,
 
         [OrderedEnum]
         [ParentCombo(DragoonChaosThrustCombo)]
-        [CustomComboInfo("Chaos Thrust Combo Disembowel Option", "Chaos Thrust's combo chain is instead replaced by Disembowel, not True Thrust, while you have no combo ongoing.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
+        [CustomComboInfo("Chaotic Spring Combo Spiral Blow Option", "Chaotic Spring/Chaos Thrust's combo chain is instead replaced by Spiral Blow/Disembowel, not True Thrust, while you have no combo ongoing.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
         DragoonChaosThrustComboOption = 2209,
 
         [OrderedEnum]
-        [ConflictingCombos(DragoonFangThrustFeature, DragoonFullChaosFeature)]
-        [CustomComboInfo("Combos Wheeling Thrust/Fang and Claw Cosmetic Option", "This option makes it so that, when using your combos, only your current combo displays Wheeling Thrust/Fang and Claw.", DRG.JobID)]
-        DragoonComboCosmeticOption = 2216,
-
-        [OrderedEnum]
-        [ConflictingCombos(DragoonComboCosmeticOption)]
-        [CustomComboInfo("Wheeling Thrust/Fang and Claw Option", "When you have either Enhanced Fang and Claw or Wheeling Thrust,\nChaos Thrust Combo becomes Wheeling Thrust and Full Thrust Combo becomes Fang and Claw.\nRequires Chaos Thrust Combo and Full Thrust Combo.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
-        DragoonFangThrustFeature = 2205,
-
-        [OrderedEnum]
-        [CustomComboInfo("Opposite Combo/Disembowel to Wyrmwind", "Replaces the opposite combo of the one you are using (or Disembowel when not available) with Wyrmwind Thrust.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust, DRG.Disembowel)]
-        DragoonOppositeWyrmwindFeature = 2212,
-
-        [OrderedEnum]
-        [CustomComboInfo("Fang and Claw to Wheeling Thrust", "Fang and Claw becomes Wheeling Thrust if the latter is available.", DRG.JobID, DRG.FangAndClaw)]
-        DragoonFangToThrustFeature = 2214,
-
-        [OrderedEnum]
-        [ConflictingCombos(DragoonComboCosmeticOption)]
-        [CustomComboInfo("Full Thrust to Chaos Thrust", "Full Thrust becomes Chaos Thrust after using Disembowel. Works even with combos on.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        [CustomComboInfo("Heavens' Thrust to Chaotic Spring", "Heavens'/Full Thrust becomes Chaotic Spring/Chaos Thrust after using Spiral Blow/Disembowel. Works even with combos on.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullChaosFeature = 2215,
 
         [OrderedEnum]
