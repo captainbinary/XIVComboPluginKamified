@@ -505,6 +505,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region GUNBREAKER
 
+        // last used enum: 3716
+
         [OrderedEnum]
         [CustomComboInfo("Solid Barrel Combo", "Replace Solid Barrel with its combo chain.", GNB.JobID, GNB.SolidBarrel)]
         GunbreakerSolidBarrelCombo = 3701,
@@ -528,19 +530,22 @@ namespace XIVComboExpandedestPlugin
         GunbreakerBurstStrikeCont = 3703,
 
         [OrderedEnum]
+        [CustomComboInfo("Fated Circle Continuation", "Replace Fated Circle with Continuation when appropriate.", GNB.JobID, GNB.FatedCircle)]
+        GunbreakerFatedCircleContinuation = 3716,
+
+/*      [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Bow Shock / Sonic Break Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.", GNB.JobID, GNB.BowShock, GNB.SonicBreak)]
-        GunbreakerBowShockSonicBreakFeature = 3704,
+        GunbreakerBowShockSonicBreakFeature = 3704,*/
 
         [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("No Mercy Bow Shock / Sonic Break Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.", GNB.JobID, GNB.NoMercy)]
+        [CustomComboInfo("No Mercy Bow Shock Feature", "Replace No Mercy with Bow Shock while No Mercy is active.\nIf No Mercy is currently Sonic Break, it will only take effect while the GCD is rolling.", GNB.JobID, GNB.NoMercy)]
         GunbreakerNoMercyFeature = 3708,
 
-        [OrderedEnum]
+/*      [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Bow Shock / Sonic Break Option", "Makes it so Bow Shock only appears while the GCD is rolling in the above features. This is to prevent a rare clipping issue that naturally occurs in the current GNB rotation, but is a very minor DPS loss.\nRequires either Bow Shock / Sonic Break Feature", GNB.JobID, GNB.NoMercy)]
-        GunbreakerBowShockSonicBreakOption = 3713,
+        GunbreakerBowShockSonicBreakOption = 3713,*/
 
         [OrderedEnum]
         [CustomComboInfo("Demon Slaughter Combo", "Replace Demon Slaughter with its combo chain.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
@@ -557,7 +562,7 @@ namespace XIVComboExpandedestPlugin
         GunbreakerFatedCircleFeature = 3706,
 
         [OrderedEnum]
-        [CustomComboInfo("Burst Strike/Fated Circle to Bloodfest Feature", "Replace Burst Strike and Fated Circle with Bloodfest if you have no powder gauge.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
+        [CustomComboInfo("Burst Strike/Fated Circle to Bloodfest Feature", "Replace Burst Strike and Fated Circle with Bloodfest if you have no powder gauge.\nAdditionally, replaces them with the Lionheart combo if available.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
         GunbreakerBloodfestOvercapFeature = 3707,
 
         [OrderedEnum]
