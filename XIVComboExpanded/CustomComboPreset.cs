@@ -91,7 +91,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2523
+        // latest enum: 2524
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -188,12 +188,12 @@ namespace XIVComboExpandedestPlugin
         BlackXenoFoulFeature = 2522,
 
         [OrderedEnum]
-        [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, you have just used an action, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
-        BlackSharpThunderFeature = 2513,
-
-        [OrderedEnum]
         [CustomComboInfo("Triplecast to Swiftcast", "Triplecast becomes Swiftcast if you aren't capped out on charges and Swiftcast is ready, or if Triplecast is not unlocked.", BLM.JobID, BLM.Triplecast)]
         BlackTripleswiftFeature = 2523,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flare Star to Manafont", "Flare Star becomes Manafont when it is not available.", BLM.JobID, BLM.FlareStar)]
+        BlackFlareStarFeature = 2524,
 
         #endregion
         // ====================================================================================
