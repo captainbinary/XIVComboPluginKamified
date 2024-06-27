@@ -12,16 +12,18 @@ namespace XIVComboExpandedestPlugin.Combos
             Benefic = 3594,
             Malefic = 3596,
             Benefic2 = 3610,
-            Draw = 3590,
+            AstralDraw = 37017,
             Balance = 4401,
             Bole = 4404,
             Arrow = 4402,
             Spear = 4403,
             Ewer = 4405,
             Spire = 4406,
-            MinorArcana = 7443,
+            MinorArcana = 37022,
             SleeveDraw = 7448,
-            Play = 17055,
+            Play1 = 37019,
+            Play2 = 37020,
+            Play3 = 37021,
             CrownPlay = 25869,
             Astrodyne = 25870,
             Lightspeed = 3606,
@@ -68,23 +70,21 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == AST.Play)
+            if (actionID == AST.Play1)
             {
                 var gauge = GetJobGauge<ASTGauge>();
-                if (!gauge.ContainsSeal(SealType.NONE) && IsEnabled(CustomComboPreset.AstrologianAstrodynePlayFeature) && (gauge.DrawnCard != CardType.NONE || GetCooldown(AST.Draw).CooldownRemaining > 30))
-                    return AST.Astrodyne;
 
-                if (HasEffect(AST.Buffs.Balance) || HasEffect(AST.Buffs.Bole) || HasEffect(AST.Buffs.Arrow) || HasEffect(AST.Buffs.Spear) || HasEffect(AST.Buffs.Ewer) || HasEffect(AST.Buffs.Spire))
-                    return OriginalHook(AST.Play);
+                if (OriginalHook(AST.Play1) != AST.Play1)
+                    return OriginalHook(AST.Play1);
 
-                return AST.Draw;
+                return OriginalHook(AST.AstralDraw);
             }
 
             return actionID;
         }
     }
 
-    internal class AstrologianAstrodynePlayFeature : CustomCombo
+/*    internal class AstrologianAstrodynePlayFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.AstrologianAstrodynePlayFeature;
 
@@ -99,7 +99,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             return actionID;
         }
-    }
+    }*/
 
     internal class AstrologianDrawLockoutFeature : CustomCombo
     {
@@ -107,9 +107,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var gauge = GetJobGauge<ASTGauge>();
+            bool cardDrawn = OriginalHook(AST.Play1) != AST.Play1 && OriginalHook(AST.Play2) != AST.Play2 && OriginalHook(AST.Play3) != AST.Play3 && OriginalHook(AST.MinorArcana) != AST.MinorArcana;
 
-            return gauge.DrawnCard != CardType.NONE ? OriginalHook(AST.Malefic) : actionID;
+            return cardDrawn ? OriginalHook(AST.Malefic) : actionID;
         }
     }
 
@@ -119,6 +119,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(AST.Divination) != AST.Divination)
+                return OriginalHook(AST.Divination);
             return actionID == AST.Divination && IsActionOffCooldown(AST.Divination) && HasEffectAny(AST.Buffs.Divination) && FindEffectAny(AST.Buffs.Divination)?.RemainingTime > 3 ? SMN.Physick : actionID;
         }
     }
@@ -145,6 +147,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(actionID) != actionID)
+                return OriginalHook(actionID);
             return OriginalHook(actionID) == actionID && HasCondition(ConditionFlag.InCombat) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }

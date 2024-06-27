@@ -64,15 +64,15 @@ namespace XIVComboExpandedestPlugin
         // latest enum: 3308
 
         [OrderedEnum]
-        [CustomComboInfo("Draw on Play", "Play turns into Draw when no card is drawn, as well as the usual Play behavior.", AST.JobID, AST.Play)]
+        [CustomComboInfo("Astral/Umbral Draw on Play I", "Play I turns into Astral/Umbral Draw when no card is drawn, as well as the usual Play I behavior.", AST.JobID, AST.Play1)]
         AstrologianCardsOnDrawFeature = 3301,
 
-        [OrderedEnum]
+        /*[OrderedEnum]
         [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.\nIf Draw on Play is enabled, Astrodyne replaces Draw on Play while Draw is on Cooldown.", AST.JobID, AST.Play)]
-        AstrologianAstrodynePlayFeature = 3304,
+        AstrologianAstrodynePlayFeature = 3304,*/
 
         [OrderedEnum]
-        [CustomComboInfo("Draw Lockout", "Prevents you from using Draw (not Draw on Play) while a card is drawn by replacing it with Malefic.", AST.JobID, AST.Draw)]
+        [CustomComboInfo("Astral/Umbral Draw Lockout", "Prevents you from using Astral/Umbral Draw while any cards are drawn by replacing it with Malefic.", AST.JobID, AST.AstralDraw)]
         AstrologianDrawLockoutFeature = 3306,
 
         [OrderedEnum]
