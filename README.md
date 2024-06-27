@@ -1,4 +1,4 @@
-# Endwalker Is Here
+# Dawntrail Is Here, Too
 
 # XIVComboPlugin Expandedest
 
