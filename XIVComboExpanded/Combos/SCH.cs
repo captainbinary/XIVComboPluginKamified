@@ -90,8 +90,13 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return actionID == SCH.ChainStratagem && IsActionOffCooldown(SCH.ChainStratagem) && GetCooldown(SCH.Ruin2).CooldownRemaining >= 0.5 && level >= SCH.Levels.ChainStratagem
-                && !(IsEnabled(CustomComboPreset.ScholarChainLockoutFeature) && TargetHasEffectAny(SCH.Debuffs.ChainStratagem) && FindTargetEffectAny(SCH.Debuffs.ChainStratagem)?.RemainingTime > 3) ? SCH.ChainStratagem : actionID;
+            if (OriginalHook(SCH.ChainStratagem) != SCH.ChainStratagem)
+                return OriginalHook(SCH.ChainStratagem);
+            if (IsEnabled(CustomComboPreset.ScholarChainLockoutFeature) && TargetHasEffectAny(SCH.Debuffs.ChainStratagem) && FindTargetEffectAny(SCH.Debuffs.ChainStratagem)?.RemainingTime > 3)
+                return actionID;
+            if (GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 && IsActionOffCooldown(SCH.ChainStratagem))
+                return SCH.ChainStratagem;
+            return actionID;
         }
     }
 
@@ -182,6 +187,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(actionID) != actionID)
+                return OriginalHook(actionID);
             return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }
