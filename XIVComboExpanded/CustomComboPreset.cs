@@ -1323,25 +1323,25 @@ namespace XIVComboExpandedestPlugin
         // latest enum: 2721
 
         [OrderedEnum]
-        [CustomComboInfo("Enkindle/Summon Switch", "When Bahamut/Phoenix are summoned, Enkindle Bahamut/Phoenix will replace Summon Bahamut/Phoenix.", SMN.JobID, SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge)]
+        [CustomComboInfo("Enkindle/Summon Switch", "When (Solar) Bahamut/Phoenix are summoned, Enkindle (Solar) Bahamut/Phoenix will replace Summon (Solar) Bahamut/Phoenix.", SMN.JobID, SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge)]
         SummonerDemiCombo = 2701,
 
         [OrderedEnum]
-        [CustomComboInfo("Demi Flow Feature", "When you can use Astral Flow, it will replace Summon Bahamut/Summon Phoenix/Dreadwyrm Trance.", SMN.JobID, SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge)]
+        [CustomComboInfo("Demi Flow Feature", "When you can use Astral Flow, it will replace Summon (Solar) Bahamut/Summon Phoenix/Dreadwyrm Trance.", SMN.JobID, SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge)]
         SummonerDemiFlowFeature = 2716,
 
         [OrderedEnum]
         [ConflictingCombos(SummonerOutburstOfBrillianceFeature, SummonerRuiningShineFeature)]
-        [CustomComboInfo("Shiny Enkindle Feature", "When Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Enkindle.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
+        [CustomComboInfo("Shiny Enkindle Feature", "When (Solar) Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Enkindle.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
         SummonerShinyDemiCombo = 2708,
 
         [OrderedEnum]
         [ConflictingCombos(SummonerOutburstOfBrillianceFeature, SummonerRuiningShineFeature)]
-        [CustomComboInfo("Shiny Flow Feature", "When Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Astral Flow.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
+        [CustomComboInfo("Shiny Flow Feature", "When Bahamut/Phoenix/Solar Bahamut are summoned, changes Gemshine and Precious Brilliance with Astral Flow.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
         SummonerShinyFlowCombo = 2711,
 
         [OrderedEnum]
-        [CustomComboInfo("ED Fester", "Change Fester into Energy Drain when out of Aetherflow stacks", SMN.JobID, SMN.Fester)]
+        [CustomComboInfo("ED Necrotize", "Change Necrotize/Fester into Energy Drain when out of Aetherflow stacks", SMN.JobID, SMN.Fester, SMN.Necrotize)]
         SummonerEDFesterCombo = 2702,
 
         [OrderedEnum]
@@ -1357,11 +1357,11 @@ namespace XIVComboExpandedestPlugin
         SummonerMountainBusterFeature = 2710,
 
         [OrderedEnum]
-        [CustomComboInfo("Summoning Flow Feature", "When you have Favor, or Bahamut/Phoenix are summoned, your summoning actions become Astral Flow.", SMN.JobID, SMN.SummonRuby, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTopaz, SMN.SummonTitan, SMN.SummonTitan2, SMN.SummonEmerald, SMN.SummonGaruda, SMN.SummonGaruda2)]
+        [CustomComboInfo("Summoning Flow Feature", "When you have Favor, or (Solar) Bahamut/Phoenix are summoned, your summoning actions become Astral Flow.", SMN.JobID, SMN.SummonRuby, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTopaz, SMN.SummonTitan, SMN.SummonTitan2, SMN.SummonEmerald, SMN.SummonGaruda, SMN.SummonGaruda2)]
         SummonerSummoningFlowFeature = 2712,
 
         [OrderedEnum]
-        [CustomComboInfo("Flowing Ruin Feature", "Change Ruin into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine)]
+        [CustomComboInfo("Flowing Ruin Feature", "Change Ruin into Astral Flow when you have Favor, or have Deathflare/Rekindle/Sunflare available and unused.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine)]
         SummonerFlowingRuinFeature = 2715,
 
         [OrderedEnum]
@@ -1378,7 +1378,7 @@ namespace XIVComboExpandedestPlugin
         SummonerRuiningShineFeature = 2717,
 
         [OrderedEnum]
-        [CustomComboInfo("Flowing Outburst Feature", "Change Outburst/Tri-disaster into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
+        [CustomComboInfo("Flowing Outburst Feature", "Change Outburst/Tri-disaster into Astral Flow when you have Favor, or have Deathflare/Rekindle/Sunflare available and unused.", SMN.JobID, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
         SummonerFlowingOutburstFeature = 2714,
 
         [OrderedEnum]
