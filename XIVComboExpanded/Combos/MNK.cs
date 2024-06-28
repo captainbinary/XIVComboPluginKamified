@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 
 using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
-using Dalamud.Game.ClientState.JobGauge.Enums;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -27,7 +27,9 @@ namespace XIVComboExpandedestPlugin.Combos
             ArmOfTheDestroyer = 62,
             PerfectBalance = 69,
             Rockbreaker = 70,
-            Meditation = 3546,
+            Meditation = 36942,
+            EnlightenedMeditation = 36943,
+            ForbiddenChakra = 3547,
             FormShift = 4262,
             FourPointFury = 16473,
             HowlingFist = 25763,
@@ -107,6 +109,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(MNK.RiddleOfWind) != MNK.RiddleOfWind)
+                return OriginalHook(MNK.RiddleOfWind);
             return (actionID == MNK.RiddleOfFire && IsActionOffCooldown(MNK.RiddleOfWind) && !IsActionOffCooldown(MNK.RiddleOfFire) && level >= MNK.Levels.RiddleOfWind) ? MNK.RiddleOfWind : actionID;
         }
     }
@@ -117,7 +121,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return OriginalHook(MNK.Meditation) == MNK.Meditation && !HasCondition(ConditionFlag.InCombat) && CanUseAction(OriginalHook(MNK.Meditation)) ? MNK.Meditation : actionID;
+            var gauge = GetJobGauge<MNKGauge>();
+            return !HasCondition(ConditionFlag.InCombat) && gauge.Chakra < 5 ? OriginalHook(MNK.Meditation) : actionID;
         }
     }
 
@@ -127,7 +132,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return OriginalHook(MNK.Meditation) != MNK.Meditation && (this.FilteredLastComboMove == MNK.ShadowOfTheDestroyer || this.FilteredLastComboMove == MNK.ArmOfTheDestroyer || this.FilteredLastComboMove == MNK.FourPointFury || this.FilteredLastComboMove == MNK.Rockbreaker) ? OriginalHook(MNK.Enlightenment) : actionID;
+            var gauge = GetJobGauge<MNKGauge>();
+            return gauge.Chakra >= 5 && CanUseAction(OriginalHook(MNK.Enlightenment)) && (this.FilteredLastComboMove == MNK.ShadowOfTheDestroyer || this.FilteredLastComboMove == MNK.ArmOfTheDestroyer || this.FilteredLastComboMove == MNK.FourPointFury || this.FilteredLastComboMove == MNK.Rockbreaker) ? OriginalHook(MNK.Enlightenment) : actionID;
         }
     }
 
@@ -288,7 +294,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (actionID == (IsEnabled(CustomComboPreset.MonkAoEComboBlitzOption) ? PLD.TotalEclipse : MNK.MasterfulBlitz))
             {
-                if (IsEnabled(CustomComboPreset.MonkAoEMeditationFeature) && OriginalHook(MNK.Meditation) != MNK.Meditation && CanUseAction(OriginalHook(MNK.HowlingFist)) && CurrentTarget is not null && HasCondition(ConditionFlag.InCombat) && GetCooldown(MNK.Bootshine).CooldownRemaining >= 0.5)
+                var gauge = GetJobGauge<MNKGauge>();
+
+                if (IsEnabled(CustomComboPreset.MonkAoEMeditationFeature) && gauge.Chakra < 5 && CanUseAction(OriginalHook(MNK.HowlingFist)) && CurrentTarget is not null && HasCondition(ConditionFlag.InCombat) && GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5)
                     return OriginalHook(MNK.HowlingFist);
 
                 if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && CanUseAction(OriginalHook(MNK.MasterfulBlitz)) && !IsEnabled(CustomComboPreset.MonkAoEComboBlitzOption))
@@ -349,25 +357,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (level < MNK.Levels.DragonKick)
                     return MNK.Bootshine;
-            }
-
-            return actionID;
-        }
-    }
-
-    internal class MonkHowlingFistMeditationFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.MonkHowlingFistMeditationFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == MNK.HowlingFist || actionID == MNK.Enlightenment)
-            {
-                if (OriginalHook(MNK.Meditation) == MNK.Meditation)
-                    return MNK.Meditation;
-
-                // Enlightenment
-                return OriginalHook(MNK.HowlingFist);
             }
 
             return actionID;

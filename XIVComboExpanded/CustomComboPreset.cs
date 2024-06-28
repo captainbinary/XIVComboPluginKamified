@@ -708,10 +708,6 @@ namespace XIVComboExpandedestPlugin
         MonkChakraToEnlightmentFeature = 2025,
 
         [OrderedEnum]
-        [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
-        MonkHowlingFistMeditationFeature = 2003,
-
-        [OrderedEnum]
         [CustomComboInfo("Perfect Balance Feature", "Perfect Balance becomes Masterful Blitz while you have 3 Beast Chakra.", MNK.JobID, MNK.PerfectBalance)]
         MonkPerfectBalanceFeature = 2004,
 
