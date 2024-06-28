@@ -622,11 +622,6 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Drill / Air Anchor (Hot Shot) Feature", "Replace Drill and Air Anchor (Hot Shot) with one or the other (or Chainsaw) depending on which is on cooldown.", MCH.JobID, MCH.Drill, MCH.HotShot, MCH.AirAnchor)]
-        MachinistHotShotDrillChainsawFeature = 3106,
-
-        [OrderedEnum]
-        [SecretCustomCombo]
         [CustomComboInfo("Chainsaw Cycling Feature", "Replace Chainsaw with Air Anchor and then Drill, in a priority system. Does not replace any other actions, so you can easily watch their cooldowns.", MCH.JobID, MCH.Chainsaw)]
         MachinistChainsawFeature = 3113,
 
@@ -646,7 +641,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkDragonKickCombo)]
-        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.\nThis means you only additionally need Demolish on your hotbar, if you are using the Monk Dragon Kick Bootshine Feature", MNK.JobID)]
+        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.\nThis means you only additionally need Demolish on your hotbar, if you are using the Monk Dragon Kick Leaping Opo Feature", MNK.JobID)]
         MonkDragonKickComboSnakeOption = 2023,
 
         [OrderedEnum]
@@ -713,7 +708,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkPerfectBalanceFeature)]
-        [CustomComboInfo("Perfect Balance Feature: Lockout", "Perfect Balance becomes a useless action while Perfect Balance is active.\nDoes not work with Monk Complex Combos.", MNK.JobID, MNK.PerfectBalance)]
+        [CustomComboInfo("Perfect Balance Feature: Lockout", "Perfect Balance becomes a useless action while Perfect Balance is active.", MNK.JobID, MNK.PerfectBalance)]
         MonkPerfectBalanceFeatureLockout = 2021,
 
         [OrderedEnum]
@@ -723,10 +718,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Riddle of Fire to Riddle of Wind", "Riddle of Fire becomes Riddle of Wind if the former is on cooldown and the latter is not.\nIf Riddle of Fire to Brotherhood is enabled, Brotherhood takes priority.", MNK.JobID, MNK.RiddleOfFire)]
         MonkRiddleToRiddleFeature = 2012,
-
-        [OrderedEnum]
-        [CustomComboInfo("Dragon Kick to Anatman", "Dragon Kick becomes Anatman while you have no target.", MNK.JobID, MNK.DragonKick)]
-        MonkDragonKickAnatmanFeature = 2024,
 
         [OrderedEnum]
         [CustomComboInfo("Brotherhood Lockout Feature", "Brotherhood is locked out while it is available and more than 3s are left on its buff, to prevent overwriting raid buffs.", MNK.JobID, MNK.Brotherhood)]

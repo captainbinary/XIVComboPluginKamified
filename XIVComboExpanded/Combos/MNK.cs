@@ -40,8 +40,7 @@ namespace XIVComboExpandedestPlugin.Combos
             RiddleOfFire = 7395,
             Brotherhood = 7396,
             RiddleOfWind = 25766,
-            Thunderclap = 25762,
-            Anatman = 16475;
+            Thunderclap = 25762;
 
         public static class Buffs
         {
@@ -137,16 +136,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class MonkDragonKickAnatmanFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.MonkDragonKickAnatmanFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            return CurrentTarget is null && CanUseAction(MNK.Anatman) && actionID == MNK.DragonKick ? MNK.Anatman : actionID;
-        }
-    }
-
     internal class MonkBootshineCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MonkBootshineCombo;
@@ -155,8 +144,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.Bootshine)
             {
-                if (CurrentTarget is null && CanUseAction(MNK.Anatman) && IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
-
                 if (IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonClapFeature) && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
                     return MNK.Thunderclap;
 
@@ -210,8 +197,6 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == (IsEnabled(CustomComboPreset.MonkDragonKickComboSnakeOption) ? MNK.TwinSnakes : MNK.DragonKick))
             {
                 var gauge = GetJobGauge<MNKGauge>();
-
-                if (CurrentTarget is null && CanUseAction(MNK.Anatman) && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
 
                 if (IsEnabled(CustomComboPreset.MonkDragonClapFeature) && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
                     return MNK.Thunderclap;
