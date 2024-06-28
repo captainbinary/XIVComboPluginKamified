@@ -1187,7 +1187,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(SamuraiGekkoCombo)]
-        [CustomComboInfo("Gekko Combo Option", "Start the Gekko combo chain with Jinpu instead of Hakaze.", SAM.JobID, SAM.Gekko)]
+        [CustomComboInfo("Gekko Combo Option", "Start the Gekko combo chain with Jinpu instead of Gyofu/Hakaze.", SAM.JobID, SAM.Gekko)]
         SamuraiGekkoOption = 3415,
 
         [OrderedEnum]
@@ -1201,7 +1201,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(SamuraiKashaCombo)]
-        [CustomComboInfo("Kasha Combo Option", "Start the Kasha combo chain with Shifu instead of Hakaze.", SAM.JobID, SAM.Kasha)]
+        [CustomComboInfo("Kasha Combo Option", "Start the Kasha combo chain with Shifu instead of Gyofu/Hakaze.", SAM.JobID, SAM.Kasha)]
         SamuraiKashaOption = 3416,
 
         [OrderedEnum]
@@ -1277,10 +1277,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Kyuten to Guren", "Replace Hissatsu: Kyuten with Guren when its cooldown is up.", SAM.JobID, SAM.Kyuten)]
         SamuraiGurenFeature = 3414,
-
-        [OrderedEnum]
-        [CustomComboInfo("Kyuten to Shoha II", "Replace Hissatsu: Kyuten with Shoha II when Meditation is full.", SAM.JobID, SAM.Kyuten)]
-        SamuraiShoha2Feature = 3410,
 
         [OrderedEnum]
         [CustomComboInfo("Yukikaze to Meditate", "Replace Yukikaze with Meditate while you have no target.", SAM.JobID, SAM.Yukikaze)]
