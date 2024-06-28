@@ -740,7 +740,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region NINJA
 
-        // last used: 3023
+        // last used: 3024
 
         [OrderedEnum]
         [CustomComboInfo("Aeolian Edge Combo", "Replace Aeolian Edge with its combo chain.", NIN.JobID, NIN.AeolianEdge)]
@@ -750,6 +750,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(NinjaAeolianEdgeCombo)]
         [CustomComboInfo("Aeolian Edge to Throwing Dagger", "Replace Aeolian Edge combo with Throwing Dagger if you are out of range.", NIN.JobID, NIN.ThrowingDagger)]
         NinjaThrowingEdgeFeature = 3021,
+
+/*        [OrderedEnum]
+        [ParentCombo(NinjaAeolianEdgeCombo)]
+        [CustomComboInfo("Aeolian Edge to Armor Crush", "Replace Aeolian Edge with Armor Crush in its combo if you do not have its buff applied.", NIN.JobID, NIN.AeolianEdge)]
+        NinjaAeolianCrushFeature = 3024,*/
 
         [OrderedEnum]
         [CustomComboInfo("Armor Crush Combo", "Replace Armor Crush with its combo chain.", NIN.JobID, NIN.ArmorCrush)]
@@ -766,11 +771,7 @@ namespace XIVComboExpandedestPlugin
         NinjaEvilHakkeMujinsatsuCombo = 3014,
 
         [OrderedEnum]
-        [CustomComboInfo("Huraijin Armor Crush Feature", "Replaces Huraijin with Armor Crush after using Gust Slash.", NIN.JobID, NIN.Huraijin)]
-        NinjaHuraijinCrushFeature = 3018,
-
-        [OrderedEnum]
-        [CustomComboInfo("Kassatsu to Trick", "Replaces Kassatsu with Trick Attack while Suiton is up and Kassatsu is on cooldown, or Hidden is up.", NIN.JobID, NIN.Kassatsu)]
+        [CustomComboInfo("Kassatsu to Kunai's Bane", "Replaces Kassatsu with Kunai's Bane/Trick Attack while Suiton is up and Kassatsu is on cooldown, or Hidden is up.", NIN.JobID, NIN.Kassatsu)]
         NinjaKassatsuTrickFeature = 3004,
 
         [OrderedEnum]
@@ -778,7 +779,7 @@ namespace XIVComboExpandedestPlugin
         NinjaKassatsuDWaDFeature = 3015,
 
         [OrderedEnum]
-        [CustomComboInfo("Dream Within a Dream to Trick", "Replaces Dream Within a Dream with Trick Attack while Suiton or Hidden is active.", NIN.JobID, NIN.DreamWithinADream)]
+        [CustomComboInfo("Dream Within a Dream to Kunai's Bane", "Replaces Dream Within a Dream with Kunai's Bane/Trick Attack while Suiton or Hidden is active.", NIN.JobID, NIN.DreamWithinADream)]
         NinjaDWaDTrickFeature = 3019,
 
         [OrderedEnum]
@@ -790,11 +791,11 @@ namespace XIVComboExpandedestPlugin
         NinjaKassatsuChiJinFeature = 3006,
 
         [OrderedEnum]
-        [CustomComboInfo("Hide to Mug", "Replaces Hide with Mug while in combat.", NIN.JobID, NIN.Hide)]
+        [CustomComboInfo("Hide to Dokumori", "Replaces Hide with Dokumori/Mug while in combat.", NIN.JobID, NIN.Hide)]
         NinjaHideMugFeature = 3007,
 
         [OrderedEnum]
-        [CustomComboInfo("Mug Lockout Feature", "Locks out Mug while it is available and more than 3s remain on its debuff, to prevent overwriting raid buffs.", NIN.JobID, NIN.Mug)]
+        [CustomComboInfo("Dokumori Lockout Feature", "Locks out Dokumori/Mug while it is available and more than 3s remain on its debuff, to prevent overwriting raid buffs.", NIN.JobID, NIN.Mug, NIN.Dokumori)]
         NinjaMugLockoutFeature = 3023,
 
         [OrderedEnum]
@@ -808,7 +809,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(NinjaNinjutsuFeature)]
-        [CustomComboInfo("GCDs to Ninjutsu Feature", "Every non-Mudra GCD becomes your current Ninjutsu action while Mudras are being used.", NIN.JobID, NIN.AeolianEdge, NIN.ArmorCrush, NIN.HakkeMujinsatsu, NIN.Huraijin, NIN.DeathBlossom, NIN.ThrowingDagger, NIN.GustSlash, NIN.SpinningEdge, NIN.ForkedRaiju, NIN.FleetingRaiju)]
+        [CustomComboInfo("GCDs to Ninjutsu Feature", "Every non-Mudra GCD becomes your current Ninjutsu action while Mudras are being used.", NIN.JobID, NIN.AeolianEdge, NIN.ArmorCrush, NIN.HakkeMujinsatsu, NIN.DeathBlossom, NIN.ThrowingDagger, NIN.GustSlash, NIN.SpinningEdge, NIN.ForkedRaiju, NIN.FleetingRaiju)]
         NinjaGCDNinjutsuFeature = 3009,
 
         [OrderedEnum]
@@ -822,15 +823,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Aeolian Edge / Fleeting Raiju Feature", "Replaces the Aeolian Edge combo with Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
         NinjaAeolianEdgeRaijuFeature = 3013,
-
-        [OrderedEnum]
-        [CustomComboInfo("Huraijin / Forked Raiju Feature", "Replaces Huraijin with Forked Raiju when available.", NIN.JobID, NIN.Huraijin)]
-        NinjaHuraijinRaijuFeature = 3011,
-
-        [OrderedEnum]
-        [ParentCombo(NinjaHuraijinRaijuFeature)]
-        [CustomComboInfo("Huraijin / Fleeting Raiju Option", "Replaces Huraijin with Fleeting Raiju instead.", NIN.JobID, NIN.Huraijin)]
-        NinjaHuraijinFleetingRaijuFeature = 3017,
 
         [OrderedEnum]
         [CustomComboInfo("Forked/Fleeting Raiju Switch Feature", "Forked/Fleeting Raiju change depending on distance from target (works with the Raiju features).", NIN.JobID, NIN.ForkedRaiju, NIN.FleetingRaiju)]
