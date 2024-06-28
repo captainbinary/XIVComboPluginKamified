@@ -454,6 +454,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            // This should be replaced with gauge once gauge is ready to prevent action flickering.
             return actionID == BLM.FlareStar && CanUseAction(BLM.FlareStar) ? BLM.FlareStar : BLM.Manafont;
         }
     }
