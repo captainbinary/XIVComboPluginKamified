@@ -202,7 +202,7 @@ namespace XIVComboExpandedestPlugin
         // latest enum: 2314
 
         [OrderedEnum]
-        [CustomComboInfo("Heavy Shot into Straight Shot", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
+        [CustomComboInfo("Burst Shot into Refulgent Arrow", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
         BardStraightShotUpgradeFeature = 2302,
 
         [OrderedEnum]
@@ -215,11 +215,11 @@ namespace XIVComboExpandedestPlugin
         BardIronJawsFeaturePlus = 2303,
 
         [OrderedEnum]
-        [CustomComboInfo("Quick Nock/Ladonsbite into Apex Arrow", "Replaces Quick Nock/Ladonsbite with Apex Arrow when gauge is 80 or above.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
+        [CustomComboInfo("Ladonsbite into Apex Arrow", "Replaces Quick Nock/Ladonsbite with Apex Arrow when gauge is 80 or above.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
         BardApexFeature = 2304,
 
         [OrderedEnum]
-        [CustomComboInfo("Quick Nock/Ladonsbite into Shadowbite", "Replaces Quick Nock/Ladonsbite with Shadowbite when it is ready.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
+        [CustomComboInfo("Ladonsbite into Shadowbite", "Replaces Quick Nock/Ladonsbite with Wide Volley/Shadowbite when it is ready.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
         BardShadowbiteFeature = 2305,
 
         [OrderedEnum]
@@ -248,11 +248,11 @@ namespace XIVComboExpandedestPlugin
         BardRadiantLockoutFeature = 2313,
 
         [OrderedEnum]
-        [CustomComboInfo("Barrage Feature", "Replaces Barrage with Straight Shot (and its upgrades) if you have Straight Shot Ready (unless Shadowbite is ready).", BRD.JobID, BRD.Barrage)]
+        [CustomComboInfo("Barrage Feature", "Replaces Barrage with Refulgent Arrow/Straight Shot if you have Hawkeye.", BRD.JobID, BRD.Barrage)]
         BardBarrageFeature = 2308,
 
         [OrderedEnum]
-        [CustomComboInfo("Bloodletter to Rain of Death", "Replaces Bloodletter with Rain of Death if your last GCD was either Quick Nock/Ladonsbite or Shadowbite.", BRD.JobID, BRD.Bloodletter)]
+        [CustomComboInfo("Heartbreak Shot to Rain of Death", "Replaces Heartbreak Shot/Bloodletter with Rain of Death if your last GCD was either Quick Nock/Ladonsbite or Shadowbite.", BRD.JobID, BRD.HeartbreakShot, BRD.Bloodletter)]
         BardRainFeature = 2310,
 
         #endregion

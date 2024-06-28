@@ -20,6 +20,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Barrage = 107,
             RainOfDeath = 117,
             Bloodletter = 110,
+            HeartbreakShot = 36975,
             Windbite = 113,
             BattleVoice = 118,
             WanderersMinuet = 3559,
@@ -41,8 +42,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
-                StraightShotReady = 122,
-                ShadowbiteReady = 3002,
+                HawksEye = 3861,
                 WanderersMinuet = 2216,
                 RadiantFinale = 2964,
                 BattleVoice = 141;
@@ -84,7 +84,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 // if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
                 //    return OriginalHook(BRD.ApexArrow);
 
-                if (HasEffect(BRD.Buffs.StraightShotReady))
+                if (HasEffect(BRD.Buffs.HawksEye))
                     return OriginalHook(BRD.StraightShot);
             }
 
@@ -183,7 +183,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BRD.QuickNock || actionID == BRD.Ladonsbite)
             {
-                if (HasEffect(BRD.Buffs.ShadowbiteReady))
+                if (HasEffect(BRD.Buffs.HawksEye))
                     return OriginalHook(BRD.Shadowbite);
             }
 
@@ -249,6 +249,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(BRD.RadiantFinale) != BRD.RadiantFinale)
+                return OriginalHook(BRD.RadiantFinale);
             return actionID == BRD.RadiantFinale && IsActionOffCooldown(BRD.RadiantFinale) && HasEffectAny(BRD.Buffs.RadiantFinale) && FindEffectAny(BRD.Buffs.RadiantFinale)?.RemainingTime > 3 ? SMN.Physick : actionID;
         }
     }
@@ -269,7 +271,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(BRD.Buffs.StraightShotReady) && !HasEffect(BRD.Buffs.ShadowbiteReady) ? OriginalHook(BRD.StraightShot) : BRD.Barrage;
+            if (OriginalHook(BRD.Barrage) != BRD.Barrage)
+                return OriginalHook(BRD.Barrage);
+            return HasEffect(BRD.Buffs.HawksEye) && !HasEffect(BRD.Buffs.HawksEye) ? OriginalHook(BRD.StraightShot) : BRD.Barrage;
         }
     }
 
@@ -280,7 +284,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             // return !TargetHasEffect(BRD.Debuffs.CausticBite) && !TargetHasEffect(BRD.Debuffs.Stormbite) && !TargetHasEffect(BRD.Debuffs.Windbite) && !TargetHasEffect(BRD.Debuffs.VenomousBite) && CanUseAction(BRD.RainOfDeath) ? BRD.RainOfDeath : BRD.Bloodletter;
-            return (this.FilteredLastComboMove == OriginalHook(BRD.QuickNock) || this.FilteredLastComboMove == OriginalHook(BRD.Shadowbite)) && CanUseAction(BRD.RainOfDeath) ? BRD.RainOfDeath : BRD.Bloodletter;
+            return (this.FilteredLastComboMove == OriginalHook(BRD.QuickNock) || this.FilteredLastComboMove == OriginalHook(BRD.Shadowbite)) && CanUseAction(BRD.RainOfDeath) ? BRD.RainOfDeath : OriginalHook(BRD.Bloodletter);
         }
     }
 }
