@@ -1100,11 +1100,11 @@ namespace XIVComboExpandedestPlugin
         RedMageAoECombo = 3501,
 
         [OrderedEnum]
-        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
+        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 50/50 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
         RedMageMoulinetReminderFeature = 3514,
 
         [OrderedEnum]
-        [CustomComboInfo("Embolden to Manaification", "Replaces Embolden with Manafication if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Embolden)]
+        [CustomComboInfo("Embolden to Manafication", "Replaces Embolden with Manafication if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Embolden)]
         RedMageEmboldenFeature = 3511,
 
         [OrderedEnum]
