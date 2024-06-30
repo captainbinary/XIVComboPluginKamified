@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DalamudPackager" Version="2.1.12" />
+    <PackageReference Include="DalamudPackager" Version="2.1.13" />
 	<PackageReference Include="ILRepack" Version="2.1.0-beta1" GeneratePathProperty="true" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.333">
       <PrivateAssets>all</PrivateAssets>
@@ -73,6 +73,10 @@
       <HintPath>$(DalamudLibPath)Lumina.Excel.dll</HintPath>
       <Private>False</Private>
     </Reference>
+	<Reference Include="InteropGenerator.Runtime">
+		<HintPath>$(DalamudLibPath)InteropGenerator.Runtime.dll</HintPath>
+		<Private>false</Private>
+	</Reference>
   </ItemGroup>
 
   <Target Name="CleanOutDir" AfterTargets="ILRepack">

@@ -144,7 +144,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return CanUseAction(OriginalHook(PLD.Atonement)) && (!IsEnabled(CustomComboPreset.PaladinRoyalLobFeature) || InMeleeRange()) ? PLD.Atonement : actionID;
+            return CanUseAction(OriginalHook(PLD.Atonement)) && (!IsEnabled(CustomComboPreset.PaladinRoyalLobFeature) || InMeleeRange()) ? OriginalHook(PLD.Atonement) : actionID;
         }
     }
 

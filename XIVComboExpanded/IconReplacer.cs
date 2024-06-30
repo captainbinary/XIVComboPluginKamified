@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -13,7 +14,6 @@ using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using XIVComboExpandedestPlugin.Attributes;
 using XIVComboExpandedestPlugin.Combos;
-using System.Numerics;
 
 namespace XIVComboExpandedestPlugin
 {
@@ -60,7 +60,7 @@ namespace XIVComboExpandedestPlugin
 
             this.UpdateEnabledActionIDs();
 
-            this.getIconHook = Service.GameInteropProvider.HookFromAddress<GetIconDelegate>(Service.Address.GetAdjustedActionId, this.GetIconDetour);
+            this.getIconHook = Service.GameInteropProvider.HookFromAddress<GetIconDelegate>((nint)ActionManager.Addresses.GetAdjustedActionId.Value, this.GetIconDetour);
             this.isIconReplaceableHook = Service.GameInteropProvider.HookFromAddress<IsIconReplaceableDelegate>(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
 
             this.getIconHook.Enable();
@@ -136,7 +136,7 @@ namespace XIVComboExpandedestPlugin
             }
             catch (Exception ex)
             {
-                PluginLog.LogError(ex.Message);
+                Service.PluginLog.Error(ex.Message);
             }
         }
 
@@ -164,7 +164,7 @@ namespace XIVComboExpandedestPlugin
             }
             catch (Exception ex)
             {
-                PluginLog.Error(ex, "Don't crash the game");
+                Service.PluginLog.Error(ex, "Don't crash the game");
                 return this.OriginalHook(actionID);
             }
         }
@@ -194,7 +194,7 @@ namespace XIVComboExpandedestPlugin
                 return new CooldownData() { ActionID = actionID };
 
             var cooldownPtr = this.clientStructActionManager->GetRecastGroupDetail(cooldownGroup - 1);
-            cooldownPtr->ActionID = actionID;
+            cooldownPtr->ActionId = actionID;
             return Marshal.PtrToStructure<CooldownData>((IntPtr)cooldownPtr);
         }
 

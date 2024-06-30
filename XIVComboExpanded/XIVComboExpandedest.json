@@ -6,18 +6,6 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.4.1.92:
-* Shield Lob to Holy Spirit Movement Option added.
-* Reprisal Lockout Feature now also includes Addle/Feint.
-* Physical Ranged DPS Defense Cooldown Lockout Feature added.
-
-1.4.2.0:
-* Updated for 6.4.
-* Removed Fairy Feature Selene Option. All hail healing Carbuncle.
-
-1.4.2.2:
-* Storm's Eye Onslaught Replacement Feature added.
-* The Blackest Night to Oblation Feature added.
-
-If a recent change isn't documented on this changelog, it is because it doesn't affect plugin functionality, or is a minor bugfix."
+  "Changelog": "1.5:
+    * Wayyy too much. Please check the commits on the github, I left changelogs for each job there."
 }

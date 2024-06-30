@@ -28,6 +28,7 @@ namespace XIVComboExpandedestPlugin.Combos
             PerfectBalance = 69,
             Rockbreaker = 70,
             Meditation = 36942,
+            SteeledMeditation = 36940,
             EnlightenedMeditation = 36943,
             ForbiddenChakra = 3547,
             FormShift = 4262,
@@ -264,13 +265,13 @@ namespace XIVComboExpandedestPlugin.Combos
                         case 3:
                             return MNK.FourPointFury;
                         case 2:
-                            if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                            if (!gauge.BeastChakra.Contains(BeastChakra.OPOOPO))
                                 return MNK.FourPointFury;
                             return MNK.Rockbreaker;
                         case 1:
-                            if (gauge.BeastChakra.Contains(BeastChakra.OPOOPO) && !gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                            if (gauge.BeastChakra.Contains(BeastChakra.COEURL) && !gauge.BeastChakra.Contains(BeastChakra.OPOOPO))
                                 return MNK.FourPointFury;
-                            if (!gauge.BeastChakra.Contains(BeastChakra.COEURL))
+                            if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
                                 return MNK.Rockbreaker;
                             return OriginalHook(MNK.ArmOfTheDestroyer);
                     }
@@ -281,7 +282,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<MNKGauge>();
 
-                if (IsEnabled(CustomComboPreset.MonkAoEMeditationFeature) && gauge.Chakra < 5 && CanUseAction(OriginalHook(MNK.HowlingFist)) && CurrentTarget is not null && HasCondition(ConditionFlag.InCombat) && GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5)
+                if (IsEnabled(CustomComboPreset.MonkAoEMeditationFeature) && gauge.Chakra >= 5 && CanUseAction(OriginalHook(MNK.HowlingFist)) && CurrentTarget is not null && HasCondition(ConditionFlag.InCombat) && GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5)
                     return OriginalHook(MNK.HowlingFist);
 
                 if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && CanUseAction(OriginalHook(MNK.MasterfulBlitz)) && !IsEnabled(CustomComboPreset.MonkAoEComboBlitzOption))
