@@ -1433,6 +1433,39 @@ namespace XIVComboExpandedestPlugin
 
         #endregion
         // ====================================================================================
+        #region VIPER
+
+        [OrderedEnum]
+        [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nThis applies to all of your combo actions in Reawakening, but this will be fixed later.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
+        ViperTailFeature = 4101,
+
+        [OrderedEnum]
+        [CustomComboInfo("Coiling Dens", "Replace your combos with the Coil/Den actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw)]
+        ViperCoilFeature = 4102,
+
+        [OrderedEnum]
+        [ParentCombo(ViperCoilFeature)]
+        [CustomComboInfo("Coiling Dens Reawakening Option", "Additionally replace your aoe combos with Third/Fourth Generation instead of First/Second.", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        ViperCoilAwakenedOption = 4103,
+
+        [OrderedEnum]
+        [CustomComboInfo("Bloody Fangs", "Replace your combos and Coil/Den moves with the Twinfang/blood actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
+        ViperBloodFangFeature = 4104,
+
+        /*        [OrderedEnum]
+                [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and your last action was Fourth Generation.", VPR.JobID, VPR.DreadFangs, VPR.DreadMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
+                ViperOuroborosFeature = 4105,*/
+
+        [OrderedEnum]
+        [CustomComboInfo("Writhing Steel Fang", "Replace your Steel Fang combo with Writhing Snap while out of melee range.", VPR.JobID, VPR.SteelFangs)]
+        ViperSteelFangRangedFeature = 4106,
+
+        [OrderedEnum]
+        [CustomComboInfo("Slithering Dread Fang", "Replace your Dread Fang combo with Slither while out of melee range or targeting a player.", VPR.JobID, VPR.DreadFangs)]
+        ViperDreadFangDashFeature = 4107,
+
+        #endregion
+        // ====================================================================================
         #region WARRIOR
 
         // last used enum: 2117
