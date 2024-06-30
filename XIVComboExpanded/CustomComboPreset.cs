@@ -632,16 +632,16 @@ namespace XIVComboExpandedestPlugin
         // latest enum: 2030
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Leaping Opo Combo", "Replace Leaping Opo/Bootshine with Monk's Leaping combo.", MNK.JobID, MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick)]
+        [CustomComboInfo("Monk Leaping Opo Combo", "Replace Leaping Opo/Bootshine with Monk's Leaping combo.\nIt is recommended that you still have them separately available just for Perfect Balance.", MNK.JobID, MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick)]
         MonkBootshineCombo = 2019,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick/Twin Snakes/Demolish combo.\nYou will still need Twin Snakes and Demolish on your bar for Perfect Balance and Form Shift.", MNK.JobID, MNK.DragonKick, MNK.TwinSnakes)]
+        [CustomComboInfo("Monk Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick/Twin Snakes/Demolish combo.\nIt is recommended that you still have them separately available just for Perfect Balance.", MNK.JobID, MNK.DragonKick, MNK.TwinSnakes)]
         MonkDragonKickCombo = 2020,
 
         [OrderedEnum]
         [ParentCombo(MonkDragonKickCombo)]
-        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.\nThis means you only additionally need Demolish on your hotbar, if you are using the Monk Dragon Kick Leaping Opo Feature", MNK.JobID)]
+        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.", MNK.JobID)]
         MonkDragonKickComboSnakeOption = 2023,
 
         [OrderedEnum]
@@ -679,7 +679,7 @@ namespace XIVComboExpandedestPlugin
         // MonkAoEBalanceFeature = 2006,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Kick Leaping Opo Feature (NOT WORKING)", "Replaces Dragon Kick with Leaping Opo/Bootshine if Leaden Fist is up, and vice-versa when Leaden Fist is not up for Leaping Opo/Bootshine in combos.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Monk Dragon Kick Leaping Opo Feature (NOT WORKING)", "Replaces Dragon Kick with Leaping Opo/Bootshine if Leaden Fist is up, and vice-versa when Leaden Fist is not up for Leaping Opo/Bootshine in combos.\nThis feature is currently not working, as Dalamud's Monk Gauge variables need to be updated.", MNK.JobID, MNK.DragonKick)]
         MonkDragonKickBootshineFeature = 2002,
 
         /*[OrderedEnum]
@@ -699,7 +699,7 @@ namespace XIVComboExpandedestPlugin
         MonkDragonClapFeature = 2022,
 
         [OrderedEnum]
-        [CustomComboInfo("Forbidden Chakra to Enlightment Feature", "Replaces Forbidden Chakra with Enlightenment if your last-used GCD action was Arm/Shadow of the Destroyer, Four-Point Fury, or Rockbreaker.", MNK.JobID, MNK.Meditation)]
+        [CustomComboInfo("Forbidden Chakra to Enlightment Feature", "Replaces Forbidden Chakra with Enlightenment if your last-used GCD action was Arm/Shadow of the Destroyer, Four-Point Fury, or Rockbreaker.", MNK.JobID, MNK.Meditation, MNK.SteeledMeditation)]
         MonkChakraToEnlightmentFeature = 2025,
 
         [OrderedEnum]

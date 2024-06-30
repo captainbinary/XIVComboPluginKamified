@@ -2,6 +2,8 @@ using System;
 
 using Dalamud.Game;
 using Dalamud.Logging;
+using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Client.Game;
 
 namespace XIVComboExpandedestPlugin
 {
@@ -41,17 +43,17 @@ namespace XIVComboExpandedestPlugin
         /// <param name="scanner">Signature scanner.</param>
         public unsafe void Setup(ISigScanner scanner)
         {
-            this.ComboTimer = scanner.GetStaticAddressFromSig("F3 0F 11 05 ?? ?? ?? ?? 48 83 C7 08");
+            this.ComboTimer = new IntPtr(&ActionManager.Instance()->Combo.Timer);
 
             this.GetAdjustedActionId = scanner.ScanText("E8 ?? ?? ?? ?? 89 03 8B 03");  // Client::Game::ActionManager.GetAdjustedActionId
 
-            this.IsActionIdReplaceable = scanner.ScanText("E8 ?? ?? ?? ?? 84 C0 74 4C 8B D3");
+            this.IsActionIdReplaceable = scanner.ScanText("40 53 48 83 EC 20 8B D9 48 8B 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 85 C0 74 1F");
 
-            PluginLog.Verbose("===== X I V C O M B O =====");
-            PluginLog.Verbose($"GetAdjustedActionId   0x{this.GetAdjustedActionId:X}");
-            PluginLog.Verbose($"IsActionIdReplaceable 0x{this.IsActionIdReplaceable:X}");
-            PluginLog.Verbose($"ComboTimer            0x{this.ComboTimer:X}");
-            PluginLog.Verbose($"LastComboMove         0x{this.LastComboMove:X}");
+            Service.PluginLog.Verbose("===== X I V C O M B O =====");
+            Service.PluginLog.Verbose($"GetAdjustedActionId   0x{this.GetAdjustedActionId:X}");
+            Service.PluginLog.Verbose($"IsActionIdReplaceable 0x{this.IsActionIdReplaceable:X}");
+            Service.PluginLog.Verbose($"ComboTimer            0x{this.ComboTimer:X}");
+            Service.PluginLog.Verbose($"LastComboMove         0x{this.LastComboMove:X}");
         }
     }
 }

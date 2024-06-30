@@ -45,7 +45,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 HawksEye = 3861,
                 WanderersMinuet = 2216,
                 RadiantFinale = 2964,
-                BattleVoice = 141;
+                BattleVoice = 141,
+                Barrage = 128;
         }
 
         public static class Debuffs
@@ -84,7 +85,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 // if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
                 //    return OriginalHook(BRD.ApexArrow);
 
-                if (HasEffect(BRD.Buffs.HawksEye))
+                if (HasEffect(BRD.Buffs.HawksEye) || HasEffect(BRD.Buffs.Barrage))
                     return OriginalHook(BRD.StraightShot);
             }
 
@@ -183,7 +184,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BRD.QuickNock || actionID == BRD.Ladonsbite)
             {
-                if (HasEffect(BRD.Buffs.HawksEye))
+                if (HasEffect(BRD.Buffs.HawksEye) || HasEffect(BRD.Buffs.Barrage))
                     return OriginalHook(BRD.Shadowbite);
             }
 
@@ -273,7 +274,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (OriginalHook(BRD.Barrage) != BRD.Barrage)
                 return OriginalHook(BRD.Barrage);
-            return HasEffect(BRD.Buffs.HawksEye) && !HasEffect(BRD.Buffs.HawksEye) ? OriginalHook(BRD.StraightShot) : BRD.Barrage;
+            return HasEffect(BRD.Buffs.HawksEye) || HasEffect(BRD.Buffs.Barrage) ? OriginalHook(BRD.StraightShot) : BRD.Barrage;
         }
     }
 

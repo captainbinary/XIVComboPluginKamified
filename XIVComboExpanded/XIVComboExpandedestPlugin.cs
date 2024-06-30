@@ -30,7 +30,7 @@ namespace XIVComboExpandedestPlugin
         /// Initializes a new instance of the <see cref="XIVComboExpandedestPlugin"/> class.
         /// </summary>
         /// <param name="pluginInterface">Dalamud plugin interface.</param>
-        public XIVComboExpandedestPlugin(DalamudPluginInterface pluginInterface)
+        public XIVComboExpandedestPlugin(IDalamudPluginInterface pluginInterface)
         {
             pluginInterface.Create<Service>();
 

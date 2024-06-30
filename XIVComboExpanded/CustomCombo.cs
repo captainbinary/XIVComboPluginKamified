@@ -81,6 +81,9 @@ namespace XIVComboExpandedestPlugin.Combos
             DRG.FangAndClaw,
             DRG.WheelingThrust,
             RDM.Moulinet,
+            RDM.EnchantedMoulinet,
+            RDM.EnchantedMoulinetDeux,
+            RDM.EnchantedMoulinetTrois,
             RDM.Manafication,
             RDM.Verholy,
             RDM.Verflare,
@@ -197,12 +200,12 @@ namespace XIVComboExpandedestPlugin.Combos
         /// <summary>
         /// Gets the player or null.
         /// </summary>
-        protected static PlayerCharacter? LocalPlayer => Service.ClientState.LocalPlayer;
+        protected static IPlayerCharacter? LocalPlayer => Service.ClientState.LocalPlayer;
 
         /// <summary>
         /// Gets the current target or null.
         /// </summary>
-        protected static GameObject? CurrentTarget => Service.TargetManager.Target;
+        protected static IGameObject? CurrentTarget => Service.TargetManager.Target;
 
         /// <summary>
         /// Calls the original hook.
@@ -252,7 +255,7 @@ namespace XIVComboExpandedestPlugin.Combos
         /// </summary>
         /// <param name="effectID">Status effect ID.</param>
         /// <returns>Status object or null.</returns>
-        protected static Status? FindEffect(ushort effectID) => FindEffect(effectID, LocalPlayer, LocalPlayer?.ObjectId);
+        protected static Status? FindEffect(ushort effectID) => FindEffect(effectID, LocalPlayer, (uint)LocalPlayer?.GameObjectId);
 
         /// <summary>
         /// Find if an effect on the target exists.
@@ -268,7 +271,7 @@ namespace XIVComboExpandedestPlugin.Combos
         /// </summary>
         /// <param name="effectID">Status effect ID.</param>
         /// <returns>Status object or null.</returns>
-        protected static Status? FindTargetEffect(ushort effectID) => FindEffect(effectID, CurrentTarget, LocalPlayer?.ObjectId);
+        protected static Status? FindTargetEffect(ushort effectID) => FindEffect(effectID, CurrentTarget, (uint)LocalPlayer?.GameObjectId);
 
         /// <summary>
         /// Find if an effect on the player exists.
@@ -309,12 +312,12 @@ namespace XIVComboExpandedestPlugin.Combos
         /// <param name="obj">Object to look for effects on.</param>
         /// <param name="sourceID">Source object ID.</param>
         /// <returns>Status object or null.</returns>
-        protected static Status? FindEffect(ushort effectID, GameObject? obj, uint? sourceID)
+        protected static Status? FindEffect(ushort effectID, IGameObject? obj, uint? sourceID)
         {
             if (obj is null)
                 return null;
 
-            if (obj is not BattleChara chara)
+            if (obj is not IBattleChara chara)
                 return null;
 
             foreach (var status in chara.StatusList)
@@ -335,7 +338,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (CurrentTarget is null)
                 return false;
 
-            if (CurrentTarget is not BattleChara chara)
+            if (CurrentTarget is not IBattleChara chara)
                 return false;
 
             if (chara.IsCasting)
@@ -353,7 +356,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (CurrentTarget is null || LocalPlayer is null)
                 return 0;
 
-            if (CurrentTarget is not BattleChara chara || CurrentTarget.ObjectKind != Dalamud.Game.ClientState.Objects.Enums.ObjectKind.BattleNpc)
+            if (CurrentTarget is not IBattleChara chara || CurrentTarget.ObjectKind != Dalamud.Game.ClientState.Objects.Enums.ObjectKind.BattleNpc)
                 return 0;
 
             var position = new Vector2(chara.Position.X, chara.Position.Z);

@@ -37,7 +37,7 @@ namespace XIVComboExpandedestPlugin
         /// Gets the Dalamud plugin interface.
         /// </summary>
         [PluginService]
-        internal static DalamudPluginInterface Interface { get; private set; } = null!;
+        internal static IDalamudPluginInterface Interface { get; private set; } = null!;
 
         /// <summary>
         /// Gets the Dalamud chat gui.
@@ -98,5 +98,11 @@ namespace XIVComboExpandedestPlugin
         /// </summary>
         [PluginService]
         internal static IGameInteropProvider GameInteropProvider { get; private set; } = null!;
+
+        /// <summary>
+        /// Gets the Dalamud Plugin Log.
+        /// </summary>
+        [PluginService]
+        internal static IPluginLog PluginLog { get; private set; } = null!;
     }
 }

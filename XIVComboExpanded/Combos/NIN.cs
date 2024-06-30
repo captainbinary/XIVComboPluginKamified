@@ -53,7 +53,7 @@ namespace XIVComboExpandedestPlugin.Combos
             public const ushort
                 Mudra = 496,
                 Kassatsu = 497,
-                Suiton = 507,
+                ShadowWalker = 3848,
                 Hidden = 614,
                 Bunshin = 1954,
                 RaijuReady = 2690,
@@ -218,9 +218,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.Kassatsu)
             {
-                if ((HasEffect(NIN.Buffs.Suiton) && (!IsActionOffCooldown(NIN.Kassatsu))) || HasEffect(NIN.Buffs.Hidden) || !CanUseAction(NIN.Kassatsu))
+                if ((HasEffect(NIN.Buffs.ShadowWalker) && (!IsActionOffCooldown(NIN.Kassatsu))) || HasEffect(NIN.Buffs.Hidden) || !CanUseAction(NIN.Kassatsu))
                 {
-                    if (IsEnabled(CustomComboPreset.NinjaKassatsuDWaDFeature) && !CanUseAction(NIN.Kassatsu) && !HasEffect(NIN.Buffs.Suiton) && !HasEffect(NIN.Buffs.Hidden))
+                    if (IsEnabled(CustomComboPreset.NinjaKassatsuDWaDFeature) && !CanUseAction(NIN.Kassatsu) && !HasEffect(NIN.Buffs.ShadowWalker) && !HasEffect(NIN.Buffs.Hidden))
                         return OriginalHook(NIN.DreamWithinADream);
                     return OriginalHook(NIN.TrickAttack);
                 }
@@ -246,7 +246,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(NIN.Buffs.Suiton) || HasEffect(NIN.Buffs.Hidden) || !CanUseAction(OriginalHook(NIN.DreamWithinADream)) ? OriginalHook(NIN.TrickAttack) : actionID;
+            return HasEffect(NIN.Buffs.ShadowWalker) || HasEffect(NIN.Buffs.Hidden) || !CanUseAction(OriginalHook(NIN.DreamWithinADream)) ? OriginalHook(NIN.TrickAttack) : actionID;
         }
     }
 
@@ -333,7 +333,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (OriginalHook(NIN.TenChiJin) != NIN.TenChiJin)
                     return OriginalHook(NIN.TenChiJin);
 
-                if (HasEffect(NIN.Buffs.Suiton))
+                if (HasEffect(NIN.Buffs.ShadowWalker))
                     return NIN.Meisui;
 
                 return OriginalHook(NIN.TenChiJin);
