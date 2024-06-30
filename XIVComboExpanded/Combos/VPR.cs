@@ -39,6 +39,8 @@ namespace XIVComboExpandedestPlugin.Combos
             SerpentsTail = 35920,
             Twinfang = 35921,
             Twinblood = 35922,
+            TwinfangBite = 34636,
+            TwinfangThresh = 34638,
             Reawaken = 34626,
             FirstGeneration = 34627,
             SecondGeneration = 34628,
@@ -173,6 +175,10 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (CanUseAction(OriginalHook(VPR.Twinfang)))
             {
+                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && new[] { VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersDen, VPR.SwiftskinsDen }.Contains(actionID))
+                    return actionID;
+                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && new[] { VPR.SteelFangs, VPR.DreadFangs, VPR.HuntersCoil, VPR.SwiftskinsCoil }.Contains(actionID))
+                    return actionID;
                 if (new[] { VPR.SteelFangs, VPR.SteelMaw, VPR.HuntersCoil, VPR.HuntersDen }.Contains(actionID))
                     return OriginalHook(VPR.Twinfang);
                 else
