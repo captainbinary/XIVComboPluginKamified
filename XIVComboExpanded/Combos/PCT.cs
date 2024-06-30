@@ -90,19 +90,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class PictDripFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.PictDripFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (HasEffect(PCT.Buffs.RainbowBright) || !HasCondition(ConditionFlag.InCombat))
-                return PCT.RainbowDrip;
-
-            return actionID;
-        }
-    }
-
     internal class PictMotifFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PictMotifFeature;
@@ -110,7 +97,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if (actionID == PCT.CreatureMotif)
-                if (OriginalHook(PCT.LivingMuse) != PCT.LivingMuse) 
+                if (OriginalHook(PCT.LivingMuse) != PCT.LivingMuse)
                     return OriginalHook(PCT.LivingMuse);
 
             if (actionID == PCT.WeaponMotif)

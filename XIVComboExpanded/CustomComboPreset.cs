@@ -918,10 +918,6 @@ namespace XIVComboExpandedestPlugin
         PictCometFeature = 4202,
 
         [OrderedEnum]
-        [CustomComboInfo("This Palette Is Dripping!", "Replace Subtractive Palette with Rainbow Drip when it is buffed, as well as outside of combat.", PCT.JobID, PCT.SubtractivePalette)]
-        PictDripFeature = 4203,
-
-        [OrderedEnum]
         [CustomComboInfo("A Motif for a Muse", "Replace your motifs with muses when you already have those motifs active.", PCT.JobID, PCT.CreatureMotif, PCT.WeaponMotif, PCT.LandscapeMotif)]
         PictMotifFeature = 4204,
 
