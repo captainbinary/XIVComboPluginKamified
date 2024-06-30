@@ -226,6 +226,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(actionID) != actionID)
+                return OriginalHook(actionID);
+
             if ((actionID == SGE.Physis || actionID == SGE.Physis2) &&
                 IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(level >= SGE.Levels.Physis2 ? SGE.Physis2 : SGE.Physis) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming))
                 return All.LucidDreaming;

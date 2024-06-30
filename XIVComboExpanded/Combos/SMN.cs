@@ -14,11 +14,14 @@ namespace XIVComboExpandedestPlugin.Combos
         public const uint
             Physick = 16230,
             Deathflare = 3582,
+            Sunflare = 36996,
             EnkindlePhoenix = 16516,
             EnkindleBahamut = 7429,
+            EnkindleSolarBahamut = 36998,
             DreadwyrmTrance = 3581,
             SummonBahamut = 7427,
             SummonPhoenix = 25831,
+            SummonSolarBahamut = 36992,
             Aethercharge = 25800,
             Ruin1 = 163,
             Ruin2 = 172,
@@ -27,7 +30,9 @@ namespace XIVComboExpandedestPlugin.Combos
             BrandOfPurgatory = 16515,
             FountainOfFire = 16514,
             AstralImpulse = 25820,
+            UmbralImpulse = 36994,
             Fester = 181,
+            Necrotize = 36990,
             EnergyDrain = 16508,
             Painflare = 3578,
             EnergySyphon = 16510,
@@ -103,6 +108,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(SMN.SearingLight) != SMN.SearingLight)
+                return actionID;
             return actionID == SMN.SearingLight && IsActionOffCooldown(SMN.SearingLight) && HasEffectAny(SMN.Buffs.SearingLight) && FindEffectAny(SMN.Buffs.SearingLight)?.RemainingTime > 3 ? SCH.Physick : actionID;
         }
     }
@@ -120,6 +127,8 @@ namespace XIVComboExpandedestPlugin.Combos
                     return SMN.EnkindleBahamut;
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire && IsActionOffCooldown(SMN.EnkindlePhoenix))
                     return SMN.EnkindlePhoenix;
+                if (OriginalHook(SMN.Ruin1) == SMN.UmbralImpulse && IsActionOffCooldown(SMN.EnkindleSolarBahamut))
+                    return SMN.EnkindleSolarBahamut;
             }
 
             return actionID;
@@ -138,7 +147,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
                 {
-                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
+                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle || OriginalHook(SMN.AstralFlow) == SMN.Sunflare)
                         return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
                     return OriginalHook(SMN.AstralFlow);
                 }
@@ -170,6 +179,13 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(SMN.AstralFlow);
                     return SMN.EnkindlePhoenix;
                 }
+
+                if (OriginalHook(SMN.Ruin1) == SMN.UmbralImpulse)
+                {
+                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && (!IsActionOffCooldown(SMN.EnkindleSolarBahamut) || !CanUseAction(SMN.EnkindleSolarBahamut)) && CanUseAction(OriginalHook(SMN.AstralFlow)))
+                        return OriginalHook(SMN.AstralFlow);
+                    if (CanUseAction(SMN.EnkindleSolarBahamut)) return SMN.EnkindleSolarBahamut;
+                }
             }
 
             return actionID;
@@ -188,6 +204,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && CanUseAction(OriginalHook(SMN.AstralFlow)))
                     return OriginalHook(SMN.AstralFlow);
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
+                    return OriginalHook(SMN.AstralFlow);
+                if (OriginalHook(SMN.Ruin1) == SMN.UmbralImpulse && CanUseAction(OriginalHook(SMN.AstralFlow)))
                     return OriginalHook(SMN.AstralFlow);
             }
 
@@ -295,7 +313,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (actionID != SMN.Gemshine && IsEnabled(CustomComboPreset.SummonerRuiningShineFeature)) return actionID;
                 if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow && CanUseAction(OriginalHook(SMN.AstralFlow)))
                 {
-                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
+                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle || OriginalHook(SMN.AstralFlow) == SMN.Sunflare)
                         return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
                     return OriginalHook(SMN.AstralFlow);
                 }
@@ -333,7 +351,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SMN.Ruin1 || actionID == SMN.Ruin2 || actionID == SMN.Ruin3 || (actionID == SMN.Gemshine && IsEnabled(CustomComboPreset.SummonerRuiningShineFeature)))
             {
                 if (actionID != SMN.Gemshine && IsEnabled(CustomComboPreset.SummonerRuiningShineFeature)) return actionID;
-                if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire))
+                if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire) && (OriginalHook(SMN.Ruin1) != SMN.UmbralImpulse))
                     return SMN.Ruin4;
             }
 
@@ -371,7 +389,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (actionID != SMN.PreciousBrilliance && IsEnabled(CustomComboPreset.SummonerOutburstOfBrillianceFeature)) return actionID;
                 if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow && CanUseAction(OriginalHook(SMN.AstralFlow)))
                 {
-                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
+                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle || OriginalHook(SMN.AstralFlow) == SMN.Sunflare)
                         return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
                     return OriginalHook(SMN.AstralFlow);
                 }
@@ -390,7 +408,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SMN.Outburst || actionID == SMN.TriDisaster || (actionID == SMN.PreciousBrilliance && IsEnabled(CustomComboPreset.SummonerOutburstOfBrillianceFeature)))
             {
                 if (actionID != SMN.PreciousBrilliance && IsEnabled(CustomComboPreset.SummonerOutburstOfBrillianceFeature)) return actionID;
-                if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire))
+                if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire && (OriginalHook(SMN.Ruin1) != SMN.UmbralImpulse)))
                     return SMN.Ruin4;
             }
 
@@ -440,6 +458,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(actionID) != actionID) return actionID;
             return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }

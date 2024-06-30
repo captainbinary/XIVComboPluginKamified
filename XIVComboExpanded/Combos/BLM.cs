@@ -26,6 +26,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Scathe = 156,
             Freeze = 159,
             Flare = 162,
+            FlareStar = 36989,
             LeyLines = 3573,
             Enochian = 3575,
             Blizzard4 = 3576,
@@ -39,7 +40,8 @@ namespace XIVComboExpandedestPlugin.Combos
             HighFire2 = 25794,
             HighBlizzard2 = 25795,
             Amplifier = 25796,
-            Triplecast = 7421;
+            Triplecast = 7421,
+            Manafont = 158;
 
         public static class Buffs
         {
@@ -47,7 +49,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 Thundercloud = 164,
                 LeyLines = 737,
                 Firestarter = 165,
-                Sharpcast = 867,
                 Triplecast = 1211,
                 EnhancedFlare = 2960;
         }
@@ -79,7 +80,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 Xenoglossy = 80,
                 HighFire2 = 82,
                 Amplifier = 86,
-                EnhancedSharpcast = 88;
+                EnhancedSharpcast = 88,
+                EnhancedPolyglot2 = 98;
         }
     }
 
@@ -220,8 +222,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (gauge.InUmbralIce)
                 {
-                    if ((gauge.IsParadoxActive && (gauge.InUmbralIce || (LocalPlayer?.CurrentMp >= 1600 && gauge.InAstralFire))) || gauge.UmbralIceStacks == 3)
-                        return OriginalHook(BLM.Blizzard);
                     if (level >= BLM.Levels.Blizzard3 && IsEnabled(CustomComboPreset.BlackBlizzardFeature))
                         return BLM.Blizzard3;
                     return OriginalHook(BLM.Blizzard);
@@ -230,7 +230,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
                         return BLM.Fire3;
-                    if (gauge.IsParadoxActive && gauge.InUmbralIce)
+                    if (gauge.IsParadoxActive)
                         return OriginalHook(BLM.Fire);
                     if (level >= BLM.Levels.Fire3 && IsEnabled(CustomComboPreset.BlackFireFeature) && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
                         return BLM.Fire3;
@@ -362,8 +362,6 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Blizzard)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if ((gauge.IsParadoxActive && (gauge.InUmbralIce || (LocalPlayer?.CurrentMp >= 1600 && gauge.InAstralFire))) || gauge.UmbralIceStacks == 3)
-                    return OriginalHook(BLM.Blizzard);
                 if (level >= BLM.Levels.Blizzard3)
                     return BLM.Blizzard3;
                 return OriginalHook(BLM.Blizzard);
@@ -384,7 +382,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<BLMGauge>();
                 if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
                     return BLM.Fire3;
-                if (gauge.IsParadoxActive && gauge.InUmbralIce)
+                if (gauge.IsParadoxActive)
                     return OriginalHook(BLM.Fire);
                 if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
                     return BLM.Fire3;
@@ -402,7 +400,8 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<BLMGauge>();
-            return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks == 1) || CurrentTarget is null || gauge.PolyglotStacks == 0) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
+            var polyglotCap = level < BLM.Levels.EnhancedPolyglot2 ? 2 : 3;
+            return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < polyglotCap) || CurrentTarget is null || gauge.PolyglotStacks == 0) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
         }
     }
 
@@ -417,16 +416,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class BlackSharpThunderFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.BlackSharpThunderFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            return ((GetCooldown(BLM.Sharpcast).CooldownRemaining <= 30 && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && !HasEffect(BLM.Buffs.Sharpcast)) || CurrentTarget is null) && level >= BLM.Levels.Sharpcast ? BLM.Sharpcast : actionID;
-        }
-    }
-
     internal class BlackScatheFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackScatheFeature;
@@ -435,9 +424,10 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Scathe && level >= BLM.Levels.Xenoglossy)
             {
+                var polyglotCap = level < BLM.Levels.EnhancedPolyglot2 ? 2 : 3;
                 var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
                 var gauge = GetJobGauge<BLMGauge>();
-                if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < 2) || CurrentTarget is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
+                if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < polyglotCap) || CurrentTarget is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
                     return BLM.Amplifier;
                 if (gauge.PolyglotStacks == 0) return actionID;
                 if (IsEnabled(CustomComboPreset.BlackXenoFoulFeature) && aoeSpells.Contains(this.FilteredLastComboMove)) return BLM.Foul;
@@ -455,6 +445,17 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             return actionID == BLM.Triplecast && ((!IsActionOffCooldown(BLM.Triplecast) && IsActionOffCooldown(All.Swiftcast)) || level < BLM.Levels.Triplecast) ? All.Swiftcast : actionID;
+        }
+    }
+
+    internal class BlackFlareStarFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareStarFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            // This should be replaced with gauge once gauge is ready to prevent action flickering.
+            return actionID == BLM.FlareStar && CanUseAction(BLM.FlareStar) ? BLM.FlareStar : BLM.Manafont;
         }
     }
 }

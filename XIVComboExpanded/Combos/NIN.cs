@@ -2,6 +2,7 @@ using System;
 
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
+using Dalamud.Game.ClientState.JobGauge.Types;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -16,6 +17,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Hide = 2245,
             Assassinate = 8814,
             Mug = 2248,
+            Dokumori = 36957,
             DeathBlossom = 2254,
             AeolianEdge = 2255,
             TrickAttack = 2258,
@@ -31,7 +33,6 @@ namespace XIVComboExpandedestPlugin.Combos
             Meisui = 16489,
             JinMudra = 18807,
             Bunshin = 16493,
-            Huraijin = 25876,
             PhantomKamaitachi = 25774,
             ForkedRaiju = 25777,
             FleetingRaiju = 25778,
@@ -75,7 +76,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 HakkeMujinsatsu = 52,
                 ArmorCrush = 54,
                 DreamWithinADream = 56,
-                Huraijin = 60,
                 Bhavacakra = 68,
                 Meisui = 72,
                 EnhancedKassatsu = 76,
@@ -178,7 +178,11 @@ namespace XIVComboExpandedestPlugin.Combos
                         return NIN.GustSlash;
 
                     if (lastComboMove == NIN.GustSlash && level >= NIN.Levels.AeolianEdge)
+                    {
+                        // var gauge = GetJobGauge<NINGauge>();
+                        // if (IsEnabled(CustomComboPreset.NinjaAeolianCrushFeature) && !gauge.placeholderGaugeValue && CanUseAction(NIN.ArmorCrush)) return NIN.ArmorCrush;
                         return NIN.AeolianEdge;
+                    }
                 }
 
                 return NIN.SpinningEdge;
@@ -218,7 +222,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     if (IsEnabled(CustomComboPreset.NinjaKassatsuDWaDFeature) && !CanUseAction(NIN.Kassatsu) && !HasEffect(NIN.Buffs.Suiton) && !HasEffect(NIN.Buffs.Hidden))
                         return OriginalHook(NIN.DreamWithinADream);
-                    return NIN.TrickAttack;
+                    return OriginalHook(NIN.TrickAttack);
                 }
             }
 
@@ -242,7 +246,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(NIN.Buffs.Suiton) || HasEffect(NIN.Buffs.Hidden) || !CanUseAction(OriginalHook(NIN.DreamWithinADream)) ? NIN.TrickAttack : actionID;
+            return HasEffect(NIN.Buffs.Suiton) || HasEffect(NIN.Buffs.Hidden) || !CanUseAction(OriginalHook(NIN.DreamWithinADream)) ? OriginalHook(NIN.TrickAttack) : actionID;
         }
     }
 
@@ -254,11 +258,11 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.Hide)
             {
-                if (IsEnabled(CustomComboPreset.NinjaMugLockoutFeature) && IsActionOffCooldown(NIN.Mug) && TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3)
+                if (IsEnabled(CustomComboPreset.NinjaMugLockoutFeature) && IsActionOffCooldown(OriginalHook(NIN.Mug)) && TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3)
                     return actionID;
 
                 if (HasCondition(ConditionFlag.InCombat))
-                    return NIN.Mug;
+                    return OriginalHook(NIN.Mug);
             }
 
             return actionID;
@@ -272,7 +276,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return actionID == NIN.Mug && IsActionOffCooldown(NIN.Mug) && TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3 ? SMN.Physick : actionID;
+            return actionID == OriginalHook(NIN.Mug) && IsActionOffCooldown(OriginalHook(NIN.Mug)) && TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3 ? SMN.Physick : actionID;
         }
     }
 
@@ -326,30 +330,13 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.TenChiJin)
             {
+                if (OriginalHook(NIN.TenChiJin) != NIN.TenChiJin)
+                    return OriginalHook(NIN.TenChiJin);
+
                 if (HasEffect(NIN.Buffs.Suiton))
                     return NIN.Meisui;
 
-                return NIN.TenChiJin;
-            }
-
-            return actionID;
-        }
-    }
-
-    internal class NinjaHuraijinRaijuFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.NinjaHuraijinRaijuFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == NIN.Huraijin)
-            {
-                if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
-                {
-                    if (IsEnabled(CustomComboPreset.NinjaSmartRaijuFeature))
-                        return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
-                    return IsEnabled(CustomComboPreset.NinjaHuraijinFleetingRaijuFeature) ? NIN.FleetingRaiju : NIN.ForkedRaiju;
-                }
+                return OriginalHook(NIN.TenChiJin);
             }
 
             return actionID;
@@ -366,23 +353,13 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class NinjaHuraijinCrushFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.NinjaHuraijinCrushFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            return lastComboMove == NIN.GustSlash && comboTime > 0 ? NIN.ArmorCrush : actionID;
-        }
-    }
-
     internal class NinjaBhavacakraToFroggieFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaBhavacakraToFroggieFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return lastComboMove == NIN.DeathBlossom || lastComboMove == NIN.HakkeMujinsatsu || level < NIN.Levels.Bhavacakra ? NIN.HellfrogMedium : actionID;
+            return lastComboMove == NIN.DeathBlossom || lastComboMove == NIN.HakkeMujinsatsu || level < NIN.Levels.Bhavacakra ? OriginalHook(NIN.HellfrogMedium) : actionID;
         }
     }
 }

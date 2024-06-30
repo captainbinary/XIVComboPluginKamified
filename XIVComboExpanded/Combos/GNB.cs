@@ -25,6 +25,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Bloodfest = 16164,
             DoubleDown = 25760,
             Hypervelocity = 25759,
+            FatedBrand = 36936,
             LightningShot = 16143;
 
         public static class Buffs
@@ -145,25 +146,41 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class GunbreakerBowShockSonicBreakFeature : CustomCombo
+    internal class GunbreakerFatedCircleContinuation : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBowShockSonicBreakFeature;
+        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerFatedCircleContinuation;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == GNB.BowShock || actionID == GNB.SonicBreak)
+            if (actionID == GNB.FatedCircle)
             {
-                if (level >= GNB.Levels.BowShock && level >= GNB.Levels.SonicBreak)
-                {
-                    if (GetCooldown(GNB.SolidBarrel).CooldownRemaining < 0.5 && IsActionOffCooldown(GNB.SonicBreak) && IsEnabled(CustomComboPreset.GunbreakerBowShockSonicBreakOption))
-                        return GNB.SonicBreak;
-                    return CalcBestAction(actionID, GNB.BowShock, GNB.SonicBreak);
-                }
+                if (OriginalHook(GNB.Continuation) == GNB.FatedBrand)
+                    return GNB.FatedBrand;
             }
 
             return actionID;
         }
     }
+
+    /*    internal class GunbreakerBowShockSonicBreakFeature : CustomCombo
+        {
+            protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBowShockSonicBreakFeature;
+
+            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            {
+                if (actionID == GNB.BowShock || actionID == GNB.SonicBreak)
+                {
+                    if (level >= GNB.Levels.BowShock && level >= GNB.Levels.SonicBreak)
+                    {
+                        if (GetCooldown(GNB.SolidBarrel).CooldownRemaining < 0.5 && IsActionOffCooldown(GNB.SonicBreak) && IsEnabled(CustomComboPreset.GunbreakerBowShockSonicBreakOption))
+                            return GNB.SonicBreak;
+                        return CalcBestAction(actionID, GNB.BowShock, GNB.SonicBreak);
+                    }
+                }
+
+                return actionID;
+            }
+        }*/
 
     internal class GunbreakerDoubleDownFeature : CustomCombo
     {
@@ -195,9 +212,13 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (actionID == GNB.BurstStrike && IsEnabled(CustomComboPreset.GunbreakerBurstStrikeCont) && level >= GNB.Levels.EnhancedContinuation && HasEffect(GNB.Buffs.ReadyToBlast))
                     return GNB.Hypervelocity;
+                if (actionID == GNB.FatedCircle && IsEnabled(CustomComboPreset.GunbreakerFatedCircleContinuation) && OriginalHook(GNB.Continuation) == GNB.FatedBrand)
+                    return GNB.FatedBrand;
                 var gauge = GetJobGauge<GNBGauge>();
                 if (gauge.Ammo == 0 && level >= GNB.Levels.Bloodfest)
                     return GNB.Bloodfest;
+                if (OriginalHook(GNB.Bloodfest) != GNB.Bloodfest)
+                    return OriginalHook(GNB.Bloodfest);
             }
 
             return actionID;
@@ -213,7 +234,11 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == GNB.BurstStrike)
             {
                 if (level >= GNB.Levels.FatedCircle && (lastComboMove == GNB.DemonSlice || lastComboMove == GNB.DemonSlaughter))
+                {
+                    if (OriginalHook(GNB.Continuation) == GNB.FatedBrand)
+                        return GNB.FatedBrand;
                     return GNB.FatedCircle;
+                }
             }
 
             return actionID;
@@ -239,6 +264,9 @@ namespace XIVComboExpandedestPlugin.Combos
                         {
                             return GNB.FatedCircle;
                         }
+
+                        if (OriginalHook(GNB.Continuation) == GNB.FatedBrand)
+                            return GNB.FatedBrand;
                     }
 
                     return GNB.DemonSlaughter;
@@ -260,7 +288,7 @@ namespace XIVComboExpandedestPlugin.Combos
             var gauge = GetJobGauge<GNBGauge>();
             if (gauge.Ammo >= 2 && HasEffect(GNB.Buffs.NoMercy))
             {
-                if (GetCooldown(GNB.SolidBarrel).CooldownRemaining >= 0.5 && !IsEnabled(CustomComboPreset.GunbreakerBowShockSonicBreakOption) && IsActionOffCooldown(GNB.BowShock) && IsEnabled(CustomComboPreset.GunbreakerNoMercyFeature))
+                if (GetCooldown(GNB.SolidBarrel).CooldownRemaining >= 0.5 && IsActionOffCooldown(GNB.BowShock) && IsEnabled(CustomComboPreset.GunbreakerNoMercyFeature))
                     return GNB.BowShock;
                 if (IsActionOffCooldown(GNB.DoubleDown) && level >= GNB.Levels.DoubleDown)
                     return GNB.DoubleDown;
@@ -280,18 +308,8 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (HasEffect(GNB.Buffs.NoMercy))
                 {
-                    if (GetCooldown(GNB.SolidBarrel).CooldownRemaining < 0.5 && IsActionOffCooldown(GNB.SonicBreak) && IsEnabled(CustomComboPreset.GunbreakerBowShockSonicBreakOption))
-                        return GNB.SonicBreak;
-                    var bowCd = GetCooldown(GNB.BowShock);
-                    var sonicCd = GetCooldown(GNB.SonicBreak);
-
-                    // Prioritize Bow Shock if both are off cooldown
-                    if (!bowCd.IsCooldown && !sonicCd.IsCooldown)
-                        return level >= GNB.Levels.BowShock ? GNB.BowShock : GNB.SonicBreak;
-
-                    return bowCd.CooldownRemaining < sonicCd.CooldownRemaining
-                        ? GNB.BowShock
-                        : GNB.SonicBreak;
+                    if ((GetCooldown(GNB.SolidBarrel).CooldownRemaining >= 0.5 || OriginalHook(GNB.NoMercy) == GNB.NoMercy) && IsActionOffCooldown(GNB.BowShock))
+                        return GNB.BowShock;
                 }
             }
 

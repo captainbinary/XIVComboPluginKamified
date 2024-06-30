@@ -98,16 +98,14 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == (IsEnabled(CustomComboPreset.DarkEvilStalwartSoulCombo) ? DRK.Unleash : DRK.StalwartSoul))
             {
                 var gauge = GetJobGauge<DRKGauge>();
-                if (IsEnabled(CustomComboPreset.DRKOvercapFeature))
-                {
-                    if (gauge.Blood >= 90 && HasEffect(DRK.Buffs.BloodWeapon))
-                        return DRK.Quietus;
-                }
+
+                if (IsEnabled(CustomComboPreset.DarkStalsteemFeature) && OriginalHook(DRK.LivingShadow) != DRK.LivingShadow && CanUseAction(OriginalHook(DRK.LivingShadow)))
+                    return OriginalHook(DRK.LivingShadow);
 
                 if (comboTime > 0 && lastComboMove == DRK.Unleash && level >= DRK.Levels.StalwartSoul)
                 {
-                    if (IsEnabled(CustomComboPreset.DRKOvercapFeature) && (gauge.Blood >= 90 || (gauge.Blood >= 80 && HasEffect(DRK.Buffs.BloodWeapon))))
-                        return DRK.Quietus;
+                    if (IsEnabled(CustomComboPreset.DRKOvercapFeature) && gauge.Blood >= 90)
+                        return OriginalHook(DRK.Quietus);
                     return DRK.StalwartSoul;
                 }
 
@@ -118,14 +116,14 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class DarkBloodWeaponFeature : CustomCombo
+    internal class DarkDeliriumFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.DarkBloodWeaponFeature;
+        protected override CustomComboPreset Preset => CustomComboPreset.DarkDeliriumFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (IsActionOffCooldown(DRK.BloodWeapon) || !CanUseAction(DRK.CarveAndSpit))
-                return DRK.BloodWeapon;
+            if (IsActionOffCooldown(OriginalHook(DRK.BloodWeapon)) || !CanUseAction(DRK.CarveAndSpit))
+                return OriginalHook(DRK.BloodWeapon);
 
             return actionID;
         }
@@ -171,7 +169,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == DRK.Bloodspiller)
             {
                 if ((lastComboMove == DRK.Unleash || lastComboMove == DRK.StalwartSoul) && level >= DRK.Levels.Quietus)
-                    return DRK.Quietus;
+                    return OriginalHook(DRK.Quietus);
             }
 
             return actionID;

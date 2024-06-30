@@ -132,8 +132,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WAR.MythrilTempest)
             {
-                if (CanUseAction(WAR.PrimalRend) && IsEnabled(CustomComboPreset.WarriorMythrilRendFeature))
-                    return WAR.PrimalRend;
+                if (CanUseAction(OriginalHook(WAR.PrimalRend)) && IsEnabled(CustomComboPreset.WarriorMythrilRendFeature))
+                    return OriginalHook(WAR.PrimalRend);
 
                 if (IsEnabled(CustomComboPreset.WarriorInnerReleaseFeature) && HasEffect(WAR.Buffs.InnerRelease))
                 {
@@ -167,8 +167,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WAR.Overpower)
             {
-                if (CanUseAction(WAR.PrimalRend) && IsEnabled(CustomComboPreset.WarriorMythrilRendFeature))
-                    return WAR.PrimalRend;
+                if (CanUseAction(OriginalHook(WAR.PrimalRend)) && IsEnabled(CustomComboPreset.WarriorMythrilRendFeature))
+                    return OriginalHook(WAR.PrimalRend);
 
                 if (IsEnabled(CustomComboPreset.WarriorInnerReleaseFeature) && HasEffect(WAR.Buffs.InnerRelease))
                 {
@@ -219,8 +219,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (CanUseAction(WAR.PrimalRend))
-                return WAR.PrimalRend;
+            if (CanUseAction(OriginalHook(WAR.PrimalRend)))
+            {
+                if (OriginalHook(WAR.InnerRelease) != WAR.InnerRelease && GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5)
+                    return OriginalHook(WAR.InnerRelease);
+                return OriginalHook(WAR.PrimalRend);
+            }
 
             return actionID;
         }

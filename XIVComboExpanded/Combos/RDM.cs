@@ -29,6 +29,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Verfire = 7510,
             Jolt = 7503,
             Jolt2 = 7524,
+            Jolt3 = 37004,
             Verholy = 7526,
             Verflare = 7525,
             Scorch = 16530,
@@ -106,7 +107,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var gauge = GetJobGauge<RDMGauge>();
 
-            return (gauge.BlackMana < 60 || gauge.WhiteMana < 60) && gauge.ManaStacks == 0 && level >= RDM.Levels.Verflare && OriginalHook(RDM.Verthunder2) != RDM.Verflare && OriginalHook(RDM.Jolt2) == RDM.Jolt2 ? SMN.Physick : actionID;
+            return (gauge.BlackMana < 50 || gauge.WhiteMana < 50) && gauge.ManaStacks == 0 && level >= RDM.Levels.Verflare && OriginalHook(RDM.Verthunder2) != RDM.Verflare && (OriginalHook(RDM.Jolt2) == RDM.Jolt2 || OriginalHook(RDM.Jolt3) == RDM.Jolt3) ? SMN.Physick : actionID;
         }
     }
 
@@ -127,7 +128,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<RDMGauge>();
 
                 bool inAoE = this.filteredActions.Contains(this.FilteredLastComboMove) && CanUseAction(OriginalHook(RDM.Moulinet)) && IsEnabled(CustomComboPreset.RedMageComboToMoulinetFeature);
-                int manaCheck = inAoE ? 60 : 50;
+                int manaCheck = 50;
 
                 if (IsEnabled(CustomComboPreset.RedMageMeleeComboPlus) && !IsEnabled(CustomComboPreset.RedMageMeleeComboPlusPlus))
                 {
@@ -182,7 +183,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(RDM.Reprise);
                 }
 
-                if (level >= RDM.Levels.Verflare && IsEnabled(CustomComboPreset.RedMageComboReminderFeature) && actionID == RDM.Redoublement && gauge.ManaStacks == 0 && OriginalHook(RDM.Verthunder2) != RDM.Verflare && OriginalHook(RDM.Jolt2) == RDM.Jolt2 && (gauge.BlackMana < manaCheck || gauge.WhiteMana < manaCheck))
+                if (level >= RDM.Levels.Verflare && IsEnabled(CustomComboPreset.RedMageComboReminderFeature) && actionID == RDM.Redoublement && gauge.ManaStacks == 0 && OriginalHook(RDM.Verthunder2) != RDM.Verflare && (OriginalHook(RDM.Jolt2) == RDM.Jolt2 || OriginalHook(RDM.Jolt3) == RDM.Jolt3) && (gauge.BlackMana < manaCheck || gauge.WhiteMana < manaCheck))
                 {
                     if (IsEnabled(CustomComboPreset.RedMageComboReminderOption))
                         return IsEnabled(CustomComboPreset.RedMageMeleeComboPlusVerholy) ? WHM.Holy : BLM.Flare;
@@ -278,6 +279,10 @@ namespace XIVComboExpandedestPlugin.Combos
 
             protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
             {
+                if (OriginalHook(RDM.Embolden) != RDM.Embolden)
+                    return OriginalHook(RDM.Embolden);
+                if (OriginalHook(RDM.Manafication) != RDM.Manafication)
+                    return OriginalHook(RDM.Manafication);
                 return actionID == RDM.Embolden && ((IsActionOffCooldown(RDM.Manafication) && !IsActionOffCooldown(RDM.Embolden) && CanUseAction(RDM.Manafication))
                     || (IsEnabled(CustomComboPreset.RedMageEmboldenLockoutFeature) && IsActionOffCooldown(RDM.Embolden) && HasEffectAny(RDM.Buffs.EmboldenRaidBuff) && FindEffectAny(RDM.Buffs.EmboldenRaidBuff)?.RemainingTime > 3)) ? RDM.Manafication : RDM.Embolden;
             }
@@ -289,6 +294,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
             protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
             {
+                if (OriginalHook(RDM.Embolden) != RDM.Embolden)
+                    return OriginalHook(RDM.Embolden);
                 return actionID == RDM.Embolden && IsActionOffCooldown(RDM.Embolden) && HasEffectAny(RDM.Buffs.EmboldenRaidBuff) && FindEffectAny(RDM.Buffs.EmboldenRaidBuff)?.RemainingTime > 3 ? SMN.Physick : actionID;
             }
         }
