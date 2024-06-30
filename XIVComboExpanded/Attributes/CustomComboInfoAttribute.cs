@@ -93,6 +93,8 @@ namespace XIVComboExpandedestPlugin.Attributes
                 38 => "Dancer",
                 39 => "Reaper",
                 40 => "Sage",
+                41 => "Viper",
+                42 => "Pictomancer",
                 _ => "Unknown",
             };
         }

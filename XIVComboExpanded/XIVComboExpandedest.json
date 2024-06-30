@@ -6,6 +6,9 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5:
+  "Changelog": "1.5.0.1:
+    * Initial pictomancer features added.
+    
+    1.5.0.0:
     * Wayyy too much. Please check the commits on the github, I left changelogs for each job there."
 }
