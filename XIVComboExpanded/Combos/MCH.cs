@@ -126,10 +126,10 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if ((actionID == MCH.GaussRound || actionID == MCH.Ricochet) && (!IsEnabled(CustomComboPreset.MachinistGaussRoundRicochetFeatureOption) || GetJobGauge<MCHGauge>().IsOverheated))
             {
-                if (CanUseAction(MCH.Ricochet))
-                    return CalcBestAction(actionID, MCH.GaussRound, MCH.Ricochet);
+                if (CanUseAction(OriginalHook(MCH.Ricochet)))
+                    return OriginalHook(CalcBestAction(actionID, MCH.GaussRound, MCH.Ricochet));
 
-                return MCH.GaussRound;
+                return OriginalHook(MCH.GaussRound);
             }
 
             return actionID;
