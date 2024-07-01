@@ -63,7 +63,8 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Debuffs
         {
             public const ushort
-                MugVuln = 638;
+                MugVuln = 638,
+                Dokumori = 3849;
         }
 
         public static class Levels
@@ -258,7 +259,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.Hide)
             {
-                if (IsEnabled(CustomComboPreset.NinjaMugLockoutFeature) && IsActionOffCooldown(OriginalHook(NIN.Mug)) && TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3)
+                if (IsEnabled(CustomComboPreset.NinjaMugLockoutFeature) && IsActionOffCooldown(OriginalHook(NIN.Mug)) && ((TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3) || (TargetHasEffectAny(NIN.Debuffs.Dokumori) && FindTargetEffectAny(NIN.Debuffs.Dokumori)?.RemainingTime > 3)))
                     return actionID;
 
                 if (HasCondition(ConditionFlag.InCombat))
@@ -276,7 +277,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return actionID == OriginalHook(NIN.Mug) && IsActionOffCooldown(OriginalHook(NIN.Mug)) && TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3 ? SMN.Physick : actionID;
+            return actionID == OriginalHook(NIN.Mug) && IsActionOffCooldown(OriginalHook(NIN.Mug)) && ((TargetHasEffectAny(NIN.Debuffs.MugVuln) && FindTargetEffectAny(NIN.Debuffs.MugVuln)?.RemainingTime > 3) || (TargetHasEffectAny(NIN.Debuffs.Dokumori) && FindTargetEffectAny(NIN.Debuffs.Dokumori)?.RemainingTime > 3)) ? SMN.Physick : actionID;
         }
     }
 

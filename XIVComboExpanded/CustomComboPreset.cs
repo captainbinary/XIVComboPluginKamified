@@ -463,10 +463,6 @@ namespace XIVComboExpandedestPlugin
         DarkDeliriumFeature = 3206,
 
         [OrderedEnum]
-        [CustomComboInfo("Living Shadow Feature", "Replaces Bloodspiller and Quietus with Living Shadow if its cooldown is up and you have 50 or more Blood Gauge.", DRK.JobID, DRK.Bloodspiller, DRK.Quietus)]
-        DarkLivingShadowFeature = 3207,
-
-        [OrderedEnum]
         [CustomComboInfo("Edge to Flood Feature", "Replaces Edge of Darkness/Shadow with Flood of Darkness/Shadow if currently using your AoE combo (as well as synced content before you unlock Edge).", DRK.JobID, DRK.EdgeOfDarkness, DRK.EdgeOfShadow)]
         DarkEdgeToFloodFeature = 3209,
 

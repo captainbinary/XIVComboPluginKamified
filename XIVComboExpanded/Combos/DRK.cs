@@ -129,20 +129,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class DarkLivingShadowFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.DarkLivingShadowFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            var gauge = GetJobGauge<DRKGauge>();
-            if (IsActionOffCooldown(DRK.LivingShadow) && level >= DRK.Levels.LivingShadow && gauge.Blood >= 50)
-                return DRK.LivingShadow;
-
-            return actionID;
-        }
-    }
-
     internal class DarkEdgeToFloodFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DarkEdgeToFloodFeature;
