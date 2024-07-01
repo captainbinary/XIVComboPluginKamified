@@ -117,7 +117,7 @@ namespace XIVComboExpandedestPlugin
         BlackFlareDespairFeature = 2511,
 
         [OrderedEnum]
-        [CustomComboInfo("High Thunder to High Thunder 2 Feature", "Change Flare to Despair when you are not using AoE spells and have it available.", BLM.JobID, BLM.Thunder, BLM.Thunder3, BLM.HighThunder)]
+        [CustomComboInfo("High Thunder to High Thunder 2 Feature", "Change High Thunder to High Thunder 2 when you are using AoE spells and have it available.", BLM.JobID, BLM.Thunder, BLM.Thunder3, BLM.HighThunder)]
         BlackThunder2Feature = 2526,
 
         [OrderedEnum]
