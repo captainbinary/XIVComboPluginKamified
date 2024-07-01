@@ -91,10 +91,10 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2524
+        // latest enum: 2525
 
         [OrderedEnum]
-        [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
+        [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.\nWill also swap them for Blizzard 1/Fire 1 when one is not available while synced.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
         BlackEnochianFeature = 2501,
 
         [OrderedEnum]
@@ -193,7 +193,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [CustomComboInfo("Flare Star to Manafont", "Flare Star becomes Manafont when it is not available.", BLM.JobID, BLM.FlareStar)]
-        BlackFlareStarFeature = 2524,
+        BlackFlareStarFeature = 2525,
 
         #endregion
         // ====================================================================================
