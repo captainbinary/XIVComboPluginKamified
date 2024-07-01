@@ -6,7 +6,13 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.3:
+  "Changelog": "1.5.0.8:
+    * Flare to Despair now works via reverse-AoE action detection, like Xenoglossy to Foul.
+    * High Thunder to High Thunder 2 added.
+    * Disclaimer added to (Between the) Ley Lines.
+    * Despair to Transpose removed.
+    
+    1.5.0.3:
     * Initial Viper features added. More will be added later when there is further access to Job Gauge variables via Client Structs.
     
     1.5.0.1:

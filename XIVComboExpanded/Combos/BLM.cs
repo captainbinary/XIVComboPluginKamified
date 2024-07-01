@@ -15,11 +15,13 @@ namespace XIVComboExpandedestPlugin.Combos
             Fire = 141,
             Blizzard = 142,
             Thunder = 144,
+            HighThunder = 36896,
             Blizzard2 = 25793,
             Fire2 = 147,
             Transpose = 149,
             Fire3 = 152,
             Thunder2 = 7447,
+            HighThunder2 = 36987,
             Thunder3 = 153,
             Thunder4 = 7420,
             Blizzard3 = 154,
@@ -63,6 +65,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Levels
         {
             public const byte
+                Thunder2 = 26,
                 Fire3 = 35,
                 Freeze = 40,
                 Blizzard3 = 35,
@@ -94,22 +97,6 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.UmbralSoul)
             {
                 if (!GetJobGauge<BLMGauge>().InUmbralIce || level < BLM.Levels.UmbralSoul)
-                    return BLM.Transpose;
-            }
-
-            return actionID;
-        }
-    }
-
-    internal class BlackDespairTransposeFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.BlackDespairTransposeFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == BLM.Despair)
-            {
-                if (GetJobGauge<BLMGauge>().InUmbralIce || LocalPlayer?.CurrentMp == 0 || level < BLM.Levels.Despair)
                     return BLM.Transpose;
             }
 
@@ -182,7 +169,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Fire4 || actionID == BLM.Blizzard4)
             {
-                var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+                var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
                 var gauge = GetJobGauge<BLMGauge>();
 
                 var isAoE = false;
@@ -250,9 +237,24 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Flare && !IsEnabled(CustomComboPreset.BlackFreezeFlareFeature))
             {
-                if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
+                var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+                if (!aoeSpells.Contains(this.FilteredLastComboMove) && level >= BLM.Levels.Despair)
                     return BLM.Despair;
             }
+
+            return actionID;
+        }
+    }
+
+    internal class BlackThunder2Feature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackThunder2Feature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+            if (aoeSpells.Contains(this.FilteredLastComboMove) && level >= BLM.Levels.Thunder2)
+                return OriginalHook(BLM.Thunder2);
 
             return actionID;
         }
@@ -274,7 +276,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (!gauge.InAstralFire && !gauge.InUmbralIce)
                     return actionID;
 
-                if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair && gauge.InAstralFire)
+                var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+                if (!aoeSpells.Contains(this.FilteredLastComboMove) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
                     return BLM.Despair;
 
                 if (gauge.ElementTimeRemaining <= 0) return actionID;
@@ -299,7 +302,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.BlackFireBlizzard2Option) && gauge.AstralFireStacks < 3)
                     return actionID;
 
-                if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
+                var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+                if (!aoeSpells.Contains(this.FilteredLastComboMove) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair && gauge.InAstralFire)
                     return BLM.Despair;
 
                 if (IsEnabled(CustomComboPreset.BlackTripleHF2Option) && level >= BLM.Levels.HighFire2)
@@ -411,7 +415,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+            var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
             return aoeSpells.Contains(this.FilteredLastComboMove) || level < BLM.Levels.Xenoglossy ? BLM.Foul : actionID;
         }
     }
@@ -425,7 +429,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Scathe && level >= BLM.Levels.Xenoglossy)
             {
                 var polyglotCap = level < BLM.Levels.EnhancedPolyglot2 ? 2 : 3;
-                var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+                var aoeSpells = new List<uint>() { BLM.HighThunder2, BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
                 var gauge = GetJobGauge<BLMGauge>();
                 if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < polyglotCap) || CurrentTarget is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
                     return BLM.Amplifier;

@@ -91,7 +91,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2525
+        // latest enum: 2526
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.\nWill also swap them for Blizzard 1/Fire 1 when one is not available while synced.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -113,8 +113,12 @@ namespace XIVComboExpandedestPlugin
         BlackEnochianButNotFeature = 2524,
 
         [OrderedEnum]
-        [CustomComboInfo("Flare to Despair Feature", "Change Flare to Despair when Thunder III is applied to your target.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
+        [CustomComboInfo("Flare to Despair Feature", "Change Flare to Despair when you are not using AoE spells and have it available.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
         BlackFlareDespairFeature = 2511,
+
+        [OrderedEnum]
+        [CustomComboInfo("High Thunder to High Thunder 2 Feature", "Change Flare to Despair when you are not using AoE spells and have it available.", BLM.JobID, BLM.Thunder, BLM.Thunder3, BLM.HighThunder)]
+        BlackThunder2Feature = 2526,
 
         [OrderedEnum]
         [CustomComboInfo("Freeze/Flare Switcher", "Change Freeze or Flare to whichever action you can currently use.", BLM.JobID, BLM.Freeze, BLM.Flare)]
@@ -132,10 +136,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Transpose Feature", "When you have no target, spells of the opposite element (if you are in UI/AF) become Transpose.", BLM.JobID, BLM.Freeze, BLM.Blizzard4, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2, BLM.Fire4, BLM.Flare, BLM.Despair, BLM.Fire, BLM.Fire2, BLM.Fire3, BLM.HighFire2)]
         BlackTransposeFeature = 2516,
-
-        [OrderedEnum]
-        [CustomComboInfo("Despair to Transpose", "When you are in Umbral Ice or have zero MP, Despair becomes Transpose.\nThis is primarily for use in the Paradox rotation.", BLM.JobID, BLM.Despair)]
-        BlackDespairTransposeFeature = 2517,
 
         [OrderedEnum]
         [CustomComboInfo("Umbral Soul to Transpose", "When you are outside of Umbral Ice, Umbral Soul becomes Transpose.", BLM.JobID, BLM.UmbralSoul)]
@@ -159,7 +159,7 @@ namespace XIVComboExpandedestPlugin
         BlackFireBlizzard2Option = 2514,
 
         [OrderedEnum]
-        [CustomComboInfo("(Between the) Ley Lines", "Change Ley Lines into BTL when Ley Lines is active.", BLM.JobID, BLM.LeyLines)]
+        [CustomComboInfo("(Between the) Ley Lines", "Change Ley Lines into Between the Lines when Ley Lines is active.\nMake sure to disable the vanilla Ley Lines to Retrace feature before applying this!", BLM.JobID, BLM.LeyLines)]
         BlackLeyLinesFeature = 2504,
 
         [OrderedEnum]
