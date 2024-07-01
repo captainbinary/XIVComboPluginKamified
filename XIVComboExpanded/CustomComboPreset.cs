@@ -1440,7 +1440,7 @@ namespace XIVComboExpandedestPlugin
         ViperTailFeature = 4101,
 
         [OrderedEnum]
-        [CustomComboInfo("Coiling Dens", "Replace your combos with the Coil/Den actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw)]
+        [CustomComboInfo("Coiling Dens", "Replace your left/right combos with each Coil/Den action while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw)]
         ViperCoilFeature = 4102,
 
         [OrderedEnum]
@@ -1449,7 +1449,7 @@ namespace XIVComboExpandedestPlugin
         ViperCoilAwakenedOption = 4103,
 
         [OrderedEnum]
-        [CustomComboInfo("Bloody Fangs", "Replace your combos and Coil/Den moves with the Twinfang/blood actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
+        [CustomComboInfo("Bloody Fangs", "Replace your left/right combos and Coil/Den moves with the Twinfang/blood actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperBloodFangFeature = 4104,
 
         /*        [OrderedEnum]
