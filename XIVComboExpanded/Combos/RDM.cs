@@ -17,6 +17,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Veraero2 = 16525,
             Verthunder2 = 16524,
             Impact = 16526,
+            GrandImpact = 37006,
             Redoublement = 7516,
             EnchantedRedoublement = 7529,
             Zwerchhau = 7512,
@@ -81,6 +82,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 Verholy = 70,
                 Reprise = 76,
                 Scorch = 80,
+                Jolt3 = 84,
+                VerprocBuff = 94,
                 Resolution = 90;
         }
     }
@@ -211,6 +214,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == RDM.Verstone || actionID == RDM.Verfire)
             {
+                if (OriginalHook(RDM.Jolt2) == RDM.GrandImpact)
+                    return RDM.GrandImpact;
+
                 if (level >= RDM.Levels.Resolution && lastComboMove == RDM.Scorch)
                     return RDM.Resolution;
 
@@ -248,6 +254,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.RedMageVerprocComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise && IsMoving())
                     return OriginalHook(RDM.Reprise);
+
+                if (level >= RDM.Levels.Jolt3 && level < RDM.Levels.VerprocBuff)
+                    return OriginalHook(RDM.Jolt2);
 
                 if (actionID == RDM.Verstone && HasEffect(RDM.Buffs.VerstoneReady))
                     return RDM.Verstone;

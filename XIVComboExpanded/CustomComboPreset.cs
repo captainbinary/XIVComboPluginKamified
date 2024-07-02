@@ -1073,7 +1073,7 @@ namespace XIVComboExpandedestPlugin
         RedMageMeleeComboPlusPlus = 3503,
 
         [OrderedEnum]
-        [CustomComboInfo("Verproc into Jolt", "Replaces Verstone/Verfire with Jolt/Scorch when no proc is available.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        [CustomComboInfo("Verproc into Jolt", "Replaces Verstone/Verfire with Jolt/Scorch when no proc is available, assuming you're not in the strange 84-93 gap where Jolt 3 is better.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
         RedMageVerprocCombo = 3504,
 
         [OrderedEnum]
