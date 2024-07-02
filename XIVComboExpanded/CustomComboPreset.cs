@@ -142,13 +142,8 @@ namespace XIVComboExpandedestPlugin
         BlackUmbralSoulTransposeFeature = 2518,
 
         [OrderedEnum]
-        [CustomComboInfo("Fire 2 Feature", "(High) Fire 2 becomes Flare in Astral Fire if you have one Umbral Heart, or low MP, or if you have Enhanced Flare.", BLM.JobID, BLM.Fire2, BLM.HighFire2)]
+        [CustomComboInfo("Fire 2 Feature", "(High) Fire 2 becomes Flare in Astral Fire.", BLM.JobID, BLM.Fire2, BLM.HighFire2)]
         BlackFire2Feature = 2508,
-
-        [OrderedEnum]
-        [ParentCombo(BlackFire2Feature)]
-        [CustomComboInfo("Fire 2 Triple High Fire 2 Feature", "When you have High Fire 2 unlocked, allows for a third cast of High Fire 2 when you have two Umbral Hearts and don't have Triplecast up.\nPlease note that you should put Flare on your bar if you are using this feature; you will need to manual flare at 2 hearts at certain points where mobs are about to die in order to not lose DPS.", BLM.JobID, BLM.Fire2, BLM.HighFire2)]
-        BlackTripleHF2Option = 2519,
 
         [OrderedEnum]
         [CustomComboInfo("Ice 2 Feature", "(High) Blizzard 2 becomes Freeze in Umbral Ice.", BLM.JobID, BLM.Blizzard2, BLM.HighBlizzard2)]
@@ -167,7 +162,7 @@ namespace XIVComboExpandedestPlugin
         BlackFireFeature = 2505,
 
         [OrderedEnum]
-        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 after you have unlocked it and are not in Umbral Ice 3, and also becomes Paradox when available.", BLM.JobID, BLM.Blizzard)]
+        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 after you have unlocked it and are not in Umbral Ice 3.", BLM.JobID, BLM.Blizzard)]
         BlackBlizzardFeature = 2506,
 
         [OrderedEnum]
@@ -410,10 +405,6 @@ namespace XIVComboExpandedestPlugin
         [ConflictingCombos(DragoonNastrondFeature)]
         [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown (and you have more than 7.5s of LotD left), or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonStarfireDiveFeature = 2208,
-
-        [OrderedEnum]
-        [CustomComboInfo("Lance Charge to Dragon Sight", "Lance Charge becomes Dragon Sight while on cooldown.\nDragon Sight takes priority over Battle Litany.", DRG.JobID, DRG.LanceCharge)]
-        DragoonLanceSightFeature = 2217,
 
         [OrderedEnum]
         [CustomComboInfo("Lance Charge to Battle Litany", "Lance Charge becomes Battle Litany while on cooldown.", DRG.JobID, DRG.LanceCharge)]

@@ -6,7 +6,12 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.8:
+  "Changelog": "1.5.0.11:
+    * Blizzard 1/3 Feature now works properly.
+    * High Fire 2 to Flare feature rewritten now that Enhanced Flare is gone and (High) Fire 2 is no longer used after switching to Astral Fire if you have Flare.
+    * Lance Charge to Dragon Sight removed because Dragon Sight no longer exists.
+    
+    1.5.0.8:
     * Flare to Despair now works via reverse-AoE action detection, like Xenoglossy to Foul.
     * High Thunder to High Thunder 2 added.
     * Disclaimer added to (Between the) Ley Lines.

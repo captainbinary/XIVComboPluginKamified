@@ -209,8 +209,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (gauge.InUmbralIce)
                 {
-                    if (level >= BLM.Levels.Blizzard3 && IsEnabled(CustomComboPreset.BlackBlizzardFeature))
-                        return BLM.Blizzard3;
+                    if (level >= BLM.Levels.Blizzard3 && IsEnabled(CustomComboPreset.BlackBlizzardFeature) && (gauge.UmbralIceStacks < 3 || !gauge.InUmbralIce))
+                            return BLM.Blizzard3;
                     return OriginalHook(BLM.Blizzard);
                 }
                 else
@@ -306,13 +306,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (!aoeSpells.Contains(this.FilteredLastComboMove) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair && gauge.InAstralFire)
                     return BLM.Despair;
 
-                if (IsEnabled(CustomComboPreset.BlackTripleHF2Option) && level >= BLM.Levels.HighFire2)
-                {
-                    if (gauge.UmbralHearts == 2 && LocalPlayer?.CurrentMp >= 3800 && !HasEffect(BLM.Buffs.Triplecast))
-                        return actionID;
-                }
-
-                if (level >= BLM.Levels.Flare && (gauge.UmbralHearts == 1 || LocalPlayer?.CurrentMp < 3800 || HasEffect(BLM.Buffs.EnhancedFlare)) && gauge.InAstralFire)
+                if (level >= BLM.Levels.Flare && gauge.InAstralFire)
                     return BLM.Flare;
             }
 
@@ -366,7 +360,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Blizzard)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (level >= BLM.Levels.Blizzard3)
+                if (level >= BLM.Levels.Blizzard3 && (gauge.UmbralIceStacks < 3 || !gauge.InUmbralIce))
                     return BLM.Blizzard3;
                 return OriginalHook(BLM.Blizzard);
             }
