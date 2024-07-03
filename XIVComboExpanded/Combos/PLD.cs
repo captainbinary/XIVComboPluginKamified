@@ -97,7 +97,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (HasEffect(PLD.Buffs.NotNoMercy))
                 {
-                    bool currentlyNotSonicBreak = OriginalHook(PLD.NotNoMercy) == PLD.NotNoMercy;
+                    bool currentlyNotSonicBreak = OriginalHook(PLD.NotNoMercy) != PLD.NotNoMercy;
                     if (IsActionOffCooldown(OriginalHook(PLD.Requiescat)) && CanUseAction(OriginalHook(PLD.Requiescat)))
                     {
                         if (!currentlyNotSonicBreak)
