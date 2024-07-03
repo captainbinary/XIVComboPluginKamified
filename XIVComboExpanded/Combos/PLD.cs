@@ -98,11 +98,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (HasEffect(PLD.Buffs.NotNoMercy))
                 {
                     bool currentlyNotSonicBreak = OriginalHook(PLD.NotNoMercy) == PLD.NotNoMercy;
-                    if (IsActionOffCooldown(PLD.Requiescat) && CanUseAction(PLD.Requiescat))
+                    if (IsActionOffCooldown(OriginalHook(PLD.Requiescat)) && CanUseAction(OriginalHook(PLD.Requiescat)))
                     {
                         if (!currentlyNotSonicBreak)
-                            return GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? PLD.Requiescat : actionID;
-                        return PLD.Requiescat;
+                            return GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? OriginalHook(PLD.Requiescat) : actionID;
+                        return OriginalHook(PLD.Requiescat);
                     }
 
                     if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
@@ -169,7 +169,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
                     return OriginalHook(PLD.NotGnashingFangCombo);
 
-                if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
+                if (OriginalHook(PLD.Requiescat) != PLD.Requiescat && OriginalHook(PLD.Requiescat) != PLD.Imperator)
                     return OriginalHook(PLD.Requiescat);
             }
 
@@ -188,7 +188,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (level >= PLD.Levels.NotGnashingFangCombo || OriginalHook(PLD.NotGnashingFangCombo) != PLD.NotGnashingFangCombo)
                     return OriginalHook(PLD.NotGnashingFangCombo);
 
-                if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
+                if (OriginalHook(PLD.Requiescat) != PLD.Requiescat && OriginalHook(PLD.Requiescat) != PLD.Imperator)
                     return OriginalHook(PLD.Requiescat);
 
                 if (IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit))
@@ -271,7 +271,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == PLD.Requiescat)
+            if (actionID == PLD.Requiescat || actionID == PLD.Imperator)
             {
                 if (CanUseAction(PLD.NotGnashingFangCombo) || OriginalHook(PLD.NotGnashingFangCombo) != PLD.NotGnashingFangCombo)
                     return OriginalHook(PLD.NotGnashingFangCombo);
