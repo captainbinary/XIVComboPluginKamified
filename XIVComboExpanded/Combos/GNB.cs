@@ -24,6 +24,7 @@ namespace XIVComboExpandedestPlugin.Combos
             FatedCircle = 16163,
             Bloodfest = 16164,
             DoubleDown = 25760,
+            ReignOfBeasts = 36937,
             Hypervelocity = 25759,
             FatedBrand = 36936,
             LightningShot = 16143;
@@ -202,6 +203,18 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class GunbreakerBurstHeartFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBurstHeartFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(OriginalHook(GNB.ReignOfBeasts)))
+                return OriginalHook(GNB.ReignOfBeasts);
+            return actionID;
+        }
+    }
+
     internal class GunbreakerBloodfestOvercapFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBloodfestOvercapFeature;
@@ -217,8 +230,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<GNBGauge>();
                 if (gauge.Ammo == 0 && level >= GNB.Levels.Bloodfest)
                     return GNB.Bloodfest;
-                if (OriginalHook(GNB.Bloodfest) != GNB.Bloodfest)
-                    return OriginalHook(GNB.Bloodfest);
             }
 
             return actionID;

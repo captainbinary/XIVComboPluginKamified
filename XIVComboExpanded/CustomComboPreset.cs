@@ -473,7 +473,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region GUNBREAKER
 
-        // last used enum: 3716
+        // last used enum: 3717
 
         [OrderedEnum]
         [CustomComboInfo("Solid Barrel Combo", "Replace Solid Barrel with its combo chain.", GNB.JobID, GNB.SolidBarrel)]
@@ -486,7 +486,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(GunbreakerSolidBarrelCombo)]
-        [CustomComboInfo("Burst Strike Feature", "In addition to the Solid Barrel Combo, add Burst Strike when charges are full.", GNB.JobID, GNB.SolidBarrel)]
+        [CustomComboInfo("Solid Barrel Combo to Burst Strike", "In addition to the Solid Barrel Combo, add Burst Strike when charges are full.", GNB.JobID, GNB.SolidBarrel)]
         GunbreakerBurstStrikeFeature = 3710,
 
         [OrderedEnum]
@@ -501,20 +501,6 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Fated Circle Continuation", "Replace Fated Circle with Continuation when appropriate.", GNB.JobID, GNB.FatedCircle)]
         GunbreakerFatedCircleContinuation = 3716,
 
-/*      [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("Bow Shock / Sonic Break Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.", GNB.JobID, GNB.BowShock, GNB.SonicBreak)]
-        GunbreakerBowShockSonicBreakFeature = 3704,*/
-
-        [OrderedEnum]
-        [CustomComboInfo("No Mercy Bow Shock Feature", "Replace No Mercy with Bow Shock while No Mercy is active.\nIf No Mercy is currently Sonic Break, it will only take effect while the GCD is rolling.", GNB.JobID, GNB.NoMercy)]
-        GunbreakerNoMercyFeature = 3708,
-
-/*      [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("Bow Shock / Sonic Break Option", "Makes it so Bow Shock only appears while the GCD is rolling in the above features. This is to prevent a rare clipping issue that naturally occurs in the current GNB rotation, but is a very minor DPS loss.\nRequires either Bow Shock / Sonic Break Feature", GNB.JobID, GNB.NoMercy)]
-        GunbreakerBowShockSonicBreakOption = 3713,*/
-
         [OrderedEnum]
         [CustomComboInfo("Demon Slaughter Combo", "Replace Demon Slaughter with its combo chain.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
         GunbreakerDemonSlaughterCombo = 3705,
@@ -526,25 +512,33 @@ namespace XIVComboExpandedestPlugin
         GunbreakerEvilDemonSlaughterCombo = 3709,
 
         [OrderedEnum]
-        [CustomComboInfo("Fated Circle Feature", "In addition to the Demon Slaughter combo, add Fated Circle when charges are full.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
+        [ParentCombo(GunbreakerDemonSlaughterCombo)]
+        [CustomComboInfo("Demon Slaughter Combo to Fated Circle", "In addition to the Demon Slaughter combo, add Fated Circle when charges are full.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
         GunbreakerFatedCircleFeature = 3706,
 
         [OrderedEnum]
-        [CustomComboInfo("Burst Strike/Fated Circle to Bloodfest Feature", "Replace Burst Strike and Fated Circle with Bloodfest if you have no powder gauge.\nAdditionally, replaces them with the Lionheart combo if available.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
-        GunbreakerBloodfestOvercapFeature = 3707,
-
-        [OrderedEnum]
-        [CustomComboInfo("No Mercy to Double Down Feature", "Replace No Mercy with Double Down while No Mercy is active and it is off-cooldown.\nThis takes priority over Bow Shock/Sonic Break if the No Mercy feature is enabled.", GNB.JobID, GNB.NoMercy)]
-        GunbreakerNoMercyDoubleDownFeature = 3712,
-
-        [OrderedEnum]
-        [CustomComboInfo("Burst Strike to Fated Circle Feature", "Replace Burst Strike with Fated Circle if you are currently using your AoE combo.", GNB.JobID, GNB.BurstStrike)]
+        [CustomComboInfo("Burst Strike to Fated Circle", "Replace Burst Strike with Fated Circle if you are currently using your AoE combo.", GNB.JobID, GNB.BurstStrike)]
         GunbreakerBurstStrikeToFatedCircleFeature = 3715,
 
         [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("Double Down Feature", "Replace Burst Strike and Fated Circle with Double Down when available.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
+        [CustomComboInfo("Burst Strike/Fated Circle to Bloodfest", "Replace Burst Strike and Fated Circle with Bloodfest if you have no powder gauge.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
+        GunbreakerBloodfestOvercapFeature = 3707,
+
+        [OrderedEnum]
+        [CustomComboInfo("Burst Strike/Fated Circle to Double Down", "Replace Burst Strike and Fated Circle with Double Down when it is available.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
         GunbreakerDoubleDownFeature = 3711,
+
+        [OrderedEnum]
+        [CustomComboInfo("Burst Strike/Fated Circle to Lion Heart Combo", "Replace Burst Strike and Fated Circle with the Lion Heart combo when it is available.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
+        GunbreakerBurstHeartFeature = 3717,
+
+        [OrderedEnum]
+        [CustomComboInfo("No Mercy to Bow Shock", "Replace No Mercy with Bow Shock while No Mercy is active.\nIf No Mercy is currently Sonic Break, it will only take effect while the GCD is rolling.", GNB.JobID, GNB.NoMercy)]
+        GunbreakerNoMercyFeature = 3708,
+
+        [OrderedEnum]
+        [CustomComboInfo("No Mercy to Double Down", "Replace No Mercy with Double Down while No Mercy is active and it is off-cooldown.\nThis takes priority over Bow Shock/Sonic Break if the No Mercy feature is enabled.", GNB.JobID, GNB.NoMercy)]
+        GunbreakerNoMercyDoubleDownFeature = 3712,
 
         #endregion
         // ====================================================================================
