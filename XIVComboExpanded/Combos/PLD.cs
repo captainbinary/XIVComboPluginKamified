@@ -95,17 +95,17 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == PLD.NotNoMercy)
             {
-                if (HasEffect(PLD.Buffs.NotNoMercy))
+                bool currentlyNotSonicBreak = OriginalHook(PLD.NotNoMercy) != PLD.NotNoMercy;
+                if (HasEffect(PLD.Buffs.NotNoMercy) || currentlyNotSonicBreak)
                 {
-                    bool currentlyNotSonicBreak = OriginalHook(PLD.NotNoMercy) != PLD.NotNoMercy;
                     if (IsActionOffCooldown(OriginalHook(PLD.Requiescat)) && CanUseAction(OriginalHook(PLD.Requiescat)))
                     {
-                        if (!currentlyNotSonicBreak)
+                        if (currentlyNotSonicBreak)
                             return GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? OriginalHook(PLD.Requiescat) : actionID;
                         return OriginalHook(PLD.Requiescat);
                     }
 
-                    if (OriginalHook(PLD.Requiescat) != PLD.Requiescat)
+                    if (OriginalHook(PLD.Requiescat) != PLD.Requiescat && OriginalHook(PLD.Requiescat) != PLD.Imperator)
                         return OriginalHook(PLD.Requiescat);
 
                     if (!currentlyNotSonicBreak && CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)) && IsEnabled(CustomComboPreset.PaladinRequiescatCombo))
