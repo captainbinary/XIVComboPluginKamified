@@ -473,7 +473,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region GUNBREAKER
 
-        // last used enum: 3717
+        // last used enum: 3718
 
         [OrderedEnum]
         [CustomComboInfo("Solid Barrel Combo", "Replace Solid Barrel with its combo chain.", GNB.JobID, GNB.SolidBarrel)]
@@ -515,6 +515,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(GunbreakerDemonSlaughterCombo)]
         [CustomComboInfo("Demon Slaughter Combo to Fated Circle", "In addition to the Demon Slaughter combo, add Fated Circle when charges are full.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
         GunbreakerFatedCircleFeature = 3706,
+
+        [OrderedEnum]
+        [ParentCombo(GunbreakerDemonSlaughterCombo)]
+        [CustomComboInfo("Demon Slaughter Combo to Lion Heart Combo", "Replace the Demon Slaughter combo with the Lion Heart (Reign of Beasts) combo when available.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
+        GunbreakerDemonHeartFeature = 3718,
 
         [OrderedEnum]
         [CustomComboInfo("Burst Strike to Fated Circle", "Replace Burst Strike with Fated Circle if you are currently using your AoE combo.", GNB.JobID, GNB.BurstStrike)]
@@ -1019,7 +1024,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region RED MAGE
 
-        // latest enum: 3523
+        // latest enum: 3525
 
         [OrderedEnum]
         [CustomComboInfo("Redoublement Combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
@@ -1069,6 +1074,18 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Verproc into Jolt", "Replaces Verstone/Verfire with Jolt/Scorch when no proc is available, assuming you're not in the strange 84-93 gap where Jolt 3 is better.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
         RedMageVerprocCombo = 3504,
+
+        [OrderedEnum]
+        [ParentCombo(RedMageVerprocCombo)]
+        [ConflictingCombos(RedMageVerprocComboVerstoneOption)]
+        [CustomComboInfo("Verproc into Jolt Verfire Opt Out", "Verfire does NOT change into Jolt (or any Jolt-related actions).", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        RedMageVerprocComboVerfireOption = 3524,
+
+        [OrderedEnum]
+        [ParentCombo(RedMageVerprocCombo)]
+        [ConflictingCombos(RedMageVerprocComboVerfireOption)]
+        [CustomComboInfo("Verproc into Jolt Verstone Opt Out", "Verstone does NOT change into Jolt (or any Jolt-related actions).", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        RedMageVerprocComboVerstoneOption = 3525,
 
         [OrderedEnum]
         [ParentCombo(RedMageVerprocCombo)]

@@ -214,14 +214,17 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == RDM.Verstone || actionID == RDM.Verfire)
             {
-                if (OriginalHook(RDM.Jolt2) == RDM.GrandImpact)
-                    return RDM.GrandImpact;
+                if ((actionID == RDM.Verfire && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerfireOption)) || (actionID == RDM.Verstone && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerstoneOption)))
+                {
+                    if (OriginalHook(RDM.Jolt2) == RDM.GrandImpact)
+                        return RDM.GrandImpact;
 
-                if (level >= RDM.Levels.Resolution && lastComboMove == RDM.Scorch)
-                    return RDM.Resolution;
+                    if (level >= RDM.Levels.Resolution && lastComboMove == RDM.Scorch)
+                        return RDM.Resolution;
 
-                if (level >= RDM.Levels.Scorch && (lastComboMove == RDM.Verflare || lastComboMove == RDM.Verholy))
-                    return RDM.Scorch;
+                    if (level >= RDM.Levels.Scorch && (lastComboMove == RDM.Verflare || lastComboMove == RDM.Verholy))
+                        return RDM.Scorch;
+                }
 
                 if (actionID == RDM.Verstone && OriginalHook(RDM.Verthunder2) == RDM.Verflare && CanUseAction(RDM.Verholy))
                     return RDM.Verholy;
@@ -255,8 +258,9 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.RedMageVerprocComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise && IsMoving())
                     return OriginalHook(RDM.Reprise);
 
-                if (level >= RDM.Levels.Jolt3 && level < RDM.Levels.VerprocBuff)
-                    return OriginalHook(RDM.Jolt2);
+                if ((actionID == RDM.Verfire && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerfireOption)) || (actionID == RDM.Verstone && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerstoneOption)))
+                    if (level >= RDM.Levels.Jolt3 && level < RDM.Levels.VerprocBuff)
+                        return OriginalHook(RDM.Jolt2);
 
                 if (actionID == RDM.Verstone && HasEffect(RDM.Buffs.VerstoneReady))
                     return RDM.Verstone;
@@ -264,7 +268,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (actionID == RDM.Verfire && HasEffect(RDM.Buffs.VerfireReady))
                     return RDM.Verfire;
 
-                return OriginalHook(RDM.Jolt2);
+                if ((actionID == RDM.Verfire && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerfireOption)) || (actionID == RDM.Verstone && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerstoneOption)))
+                    return OriginalHook(RDM.Jolt2);
             }
 
             return actionID;

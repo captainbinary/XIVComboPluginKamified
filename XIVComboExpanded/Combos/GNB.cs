@@ -264,6 +264,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == (IsEnabled(CustomComboPreset.GunbreakerEvilDemonSlaughterCombo) ? GNB.DemonSlice : GNB.DemonSlaughter))
             {
+                if (IsEnabled(CustomComboPreset.GunbreakerDemonHeartFeature) && CanUseAction(OriginalHook(GNB.ReignOfBeasts)))
+                    return OriginalHook(GNB.ReignOfBeasts);
+
                 if (comboTime > 0 && lastComboMove == GNB.DemonSlice && level >= GNB.Levels.DemonSlaughter)
                 {
                     if (IsEnabled(CustomComboPreset.GunbreakerFatedCircleFeature) && level >= GNB.Levels.FatedCircle)

@@ -22,6 +22,7 @@ namespace XIVComboExpandedestPlugin.Combos
             FloodOfShadow = 16469,
             EdgeOfShadow = 16470,
             LivingShadow = 16472,
+            Disesteem = 36932,
             Shadowbringer = 25757,
             AbyssalDrain = 3641,
             Unmend = 3624,
@@ -99,8 +100,8 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<DRKGauge>();
 
-                if (IsEnabled(CustomComboPreset.DarkStalsteemFeature) && OriginalHook(DRK.LivingShadow) != DRK.LivingShadow && CanUseAction(OriginalHook(DRK.LivingShadow)))
-                    return OriginalHook(DRK.LivingShadow);
+                if (IsEnabled(CustomComboPreset.DarkStalsteemFeature) && CanUseAction(DRK.Disesteem))
+                    return DRK.Disesteem;
 
                 if (comboTime > 0 && lastComboMove == DRK.Unleash && level >= DRK.Levels.StalwartSoul)
                 {
