@@ -21,6 +21,7 @@ namespace XIVComboExpandedestPlugin.Combos
             StandardStep = 15997,
             TechnicalStep = 15998,
             Tillana = 25790,
+            LastDance = 36983,
             // Fans
             FanDance1 = 16007,
             FanDance2 = 16008,
@@ -174,6 +175,19 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 return OriginalHook(DNC.TechnicalStep);
             }
+
+            return actionID;
+        }
+    }
+
+    internal class DancerLastDanceFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerLastDanceFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(DNC.LastDance))
+                return DNC.LastDance;
 
             return actionID;
         }

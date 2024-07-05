@@ -48,6 +48,7 @@ namespace XIVComboExpandedestPlugin.Combos
             FourthGeneration = 34630,
             Ouroboros = 34631,
             WrithingSnap = 34632,
+            UncoiledFury = 34633,
             Slither = 34646;
 
         public static class Buffs
@@ -97,7 +98,11 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if (!InMeleeRange())
+            {
+                if (CanUseAction(VPR.UncoiledFury) && IsEnabled(CustomComboPreset.ViperSteelFangRangedFuryOption))
+                    return VPR.UncoiledFury;
                 return VPR.WrithingSnap;
+            }
 
             return actionID;
         }
@@ -189,6 +194,19 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class ViperTwinTailsFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperTwinTailsFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(OriginalHook(VPR.SerpentsTail)))
+                return OriginalHook(VPR.SerpentsTail);
+
+            return actionID;
+        }
+    }
+
     internal class ViperCoilFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.ViperCoilFeature;
@@ -203,9 +221,11 @@ namespace XIVComboExpandedestPlugin.Combos
                     return OriginalHook(VPR.SwiftskinsCoil);
             }
 
+            bool swap = IsEnabled(CustomComboPreset.ViperCoilFeatureSwapOption);
+
             if (actionID == VPR.SteelFangs || actionID == VPR.DreadFangs)
                 if (CanUseAction(VPR.HuntersCoil) || CanUseAction(VPR.SwiftskinsCoil))
-                    return actionID == VPR.SteelFangs ? VPR.HuntersCoil : VPR.SwiftskinsCoil;
+                    return (actionID == VPR.SteelFangs && !swap) || (actionID == VPR.DreadFangs && swap) ? VPR.HuntersCoil : VPR.SwiftskinsCoil;
 
             if (actionID == VPR.SteelMaw || actionID == VPR.DreadMaw)
                 if (CanUseAction(VPR.HuntersDen) || CanUseAction(VPR.SwiftskinsDen))

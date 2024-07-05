@@ -6,7 +6,14 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.17:
+  "Changelog": "1.5.0.18:
+    * Swiftcast into Raise should change into Raise if abilities aren't available due to Amnesia.
+    * DNC Standard Step into Last Dance added.
+    * VPR Coiling Dens Swap Option added.
+    * VPR Twin Tails feature added (Twinfang/blood into Serpent's Tail).
+    * VPR Furious Steel Fang option for Writhing Steel Fang feature added.
+    
+    1.5.0.17:
     * GNB Demon Slaughter combo to Lion Heart combo added.
     * Optional Jolt opt-out features for Verfire/Verstone each for the Verproc combo added.
     * DRK Stalwart Soul to Disesteem feature should now work if you have the vanilla Living Shadow to Disesteem function disabled.

@@ -57,7 +57,9 @@ namespace XIVComboExpandedestPlugin.Combos
             public const ushort
                 Reprisal = 1193,
                 Feint = 1195,
-                Addle = 1203;
+                Addle = 1203,
+                Amnesia = 5,
+                Amnesia2 = 1092;
         }
 
         public static class Levels
@@ -84,7 +86,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro)
             {
-                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast))
+                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast) && !HasEffect(All.Debuffs.Amnesia) && !HasEffect(All.Debuffs.Amnesia2))
                     || level <= All.Levels.Raise
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;

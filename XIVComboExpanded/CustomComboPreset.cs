@@ -254,7 +254,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DANCER
 
-        // latest enum: 3820
+        // latest enum: 3821
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -329,6 +329,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Devilment Feature", "Change Devilment into Starfall Dance after use.", DNC.JobID, DNC.Devilment)]
         DancerDevilmentFeature = 3806,
+
+        [OrderedEnum]
+        [CustomComboInfo("Standard Step into Last Dance", "Change Standard Step into Last Dance when available.", DNC.JobID, DNC.StandardStep)]
+        DancerLastDanceFeature = 3821,
 
         [OrderedEnum]
         [CustomComboInfo("Technical Step Lockout Feature", "Locks out Technical Step while it is available and more than 8s remain on its raid buff, to prevent overwriting raid buffs.", DNC.JobID, DNC.TechnicalStep)]
@@ -1443,12 +1447,21 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(ViperCoilFeature)]
+        [CustomComboInfo("Coiling Dens Swap Option", "Swap the Coil actions for your left/right actions (so Swiftskin's Coil is left and Hunter's Coil is right).", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        ViperCoilFeatureSwapOption = 4110,
+
+        [OrderedEnum]
+        [ParentCombo(ViperCoilFeature)]
         [CustomComboInfo("Coiling Dens Reawakening Option", "Additionally replace your aoe combos with Third/Fourth Generation instead of First/Second.", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
         ViperCoilAwakenedOption = 4103,
 
         [OrderedEnum]
         [CustomComboInfo("Bloody Fangs", "Replace your left/right combos and Coil/Den moves with the Twinfang/blood actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperBloodFangFeature = 4104,
+
+        [OrderedEnum]
+        [CustomComboInfo("Twin Tails", "Replace Twinfang/blood with Serpent's Tail when it is active.", VPR.JobID, VPR.Twinfang, VPR.Twinblood)]
+        ViperTwinTailsFeature = 4108,
 
         /*        [OrderedEnum]
                 [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and your last action was Fourth Generation.", VPR.JobID, VPR.DreadFangs, VPR.DreadMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
@@ -1457,6 +1470,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Writhing Steel Fang", "Replace your Steel Fang combo with Writhing Snap while out of melee range.", VPR.JobID, VPR.SteelFangs)]
         ViperSteelFangRangedFeature = 4106,
+
+        [OrderedEnum]
+        [ParentCombo(ViperSteelFangRangedFeature)]
+        [CustomComboInfo("Furious Steel Fang", "Have Uncoiled Fury replace Writhing Snap on the Steel Fang combo if you have Rattling Coil stacks.", VPR.JobID, VPR.SteelFangs)]
+        ViperSteelFangRangedFuryOption = 4109,
 
         [OrderedEnum]
         [CustomComboInfo("Slithering Dread Fang", "Replace your Dread Fang combo with Slither while out of melee range or targeting a player.", VPR.JobID, VPR.DreadFangs)]
