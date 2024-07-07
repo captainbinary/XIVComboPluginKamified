@@ -216,9 +216,6 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if ((actionID == RDM.Verfire && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerfireOption)) || (actionID == RDM.Verstone && !IsEnabled(CustomComboPreset.RedMageVerprocComboVerstoneOption)))
                 {
-                    if (OriginalHook(RDM.Jolt2) == RDM.GrandImpact)
-                        return RDM.GrandImpact;
-
                     if (level >= RDM.Levels.Resolution && lastComboMove == RDM.Scorch)
                         return RDM.Resolution;
 

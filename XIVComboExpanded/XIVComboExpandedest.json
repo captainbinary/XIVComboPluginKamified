@@ -6,7 +6,11 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.18:
+  "Changelog": "1.5.0.19:
+    * RDM's Verproc into Jolt combo now no longer gets replaced by Grand Impact outside of Jolt.
+    * Fixed minor Autocrossbow into Hypercharge visual bug.
+    
+    1.5.0.18:
     * Swiftcast into Raise should change into Raise if abilities aren't available due to Amnesia.
     * DNC Standard Step into Last Dance added.
     * VPR Coiling Dens Swap Option added.

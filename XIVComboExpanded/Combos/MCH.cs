@@ -179,9 +179,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<MCHGauge>();
                 if (!gauge.IsOverheated && CanUseAction(MCH.Hypercharge))
                     return MCH.Hypercharge;
-
-                if (!CanUseAction(MCH.AutoCrossbow))
-                    return MCH.HeatBlast;
             }
 
             return actionID;
