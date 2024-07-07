@@ -1438,7 +1438,7 @@ namespace XIVComboExpandedestPlugin
         #region VIPER
 
         [OrderedEnum]
-        [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nThis applies to all of your combo actions in Reawakening, but this will be fixed later.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
+        [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nIn Reawakening, this applies to *all* your combo actions (because it's pretty hard to track your combo step there).", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperTailFeature = 4101,
 
         [OrderedEnum]
@@ -1463,9 +1463,9 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Twin Tails", "Replace Twinfang/blood with Serpent's Tail when it is active.", VPR.JobID, VPR.Twinfang, VPR.Twinblood)]
         ViperTwinTailsFeature = 4108,
 
-        /*        [OrderedEnum]
-                [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and your last action was Fourth Generation.", VPR.JobID, VPR.DreadFangs, VPR.DreadMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
-                ViperOuroborosFeature = 4105,*/
+        [OrderedEnum]
+        [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and you are on your last stack of Anguine Tribute.", VPR.JobID, VPR.DreadFangs, VPR.DreadMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
+        ViperOuroborosFeature = 4105,
 
         [OrderedEnum]
         [CustomComboInfo("Writhing Steel Fang", "Replace your Steel Fang combo with Writhing Snap while out of melee range.", VPR.JobID, VPR.SteelFangs)]

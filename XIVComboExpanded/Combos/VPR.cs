@@ -70,26 +70,27 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    /*internal class ViperOuroborosFeature : CustomCombo
+    internal class ViperOuroborosFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.ViperOuroborosFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (CanUseAction(VPR.Ouroboros) && lastComboMove == VPR.FourthGeneration)
+            var gauge = GetJobGauge<VPRGauge>();
+            if (CanUseAction(VPR.Ouroboros) && gauge.AnguineTribute == 1 && (!IsEnabled(CustomComboPreset.ViperTailFeature) || !CanUseAction(OriginalHook(VPR.SerpentsTail))))
             {
                 if (actionID == VPR.SwiftskinsCoil || actionID == VPR.SwiftskinsDen)
                     return VPR.Ouroboros;
                 if (IsEnabled(CustomComboPreset.ViperCoilAwakenedOption))
                 {
-                    if (actionID == VPR.DreadFangs || actionID == VPR.DreadMaw)
+                    if (actionID == VPR.DreadMaw)
                         return VPR.Ouroboros;
                 }
             }
 
             return actionID;
         }
-    }*/
+    }
 
     internal class ViperSteelFangRangedFeature : CustomCombo
     {
