@@ -33,6 +33,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Reassemble = 2876,
             Wildfire = 2878,
             HeatBlast = 7410,
+            BlazingShot = 36978,
             HotShot = 2872,
             Drill = 16498,
             Bioblaster = 16499,

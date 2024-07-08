@@ -41,6 +41,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Twinblood = 35922,
             TwinfangBite = 34636,
             TwinfangThresh = 34638,
+            UncoiledTwinfang = 34644,
+            UncoiledTwinblood = 34645,
             Reawaken = 34626,
             FirstGeneration = 34627,
             SecondGeneration = 34628,
@@ -100,6 +102,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (!InMeleeRange())
             {
+                if (IsEnabled(CustomComboPreset.ViperBloodFangFeature) && OriginalHook(VPR.Twinblood) == VPR.UncoiledTwinblood)
+                    return actionID;
                 if (CanUseAction(VPR.UncoiledFury) && IsEnabled(CustomComboPreset.ViperSteelFangRangedFuryOption))
                     return VPR.UncoiledFury;
                 return VPR.WrithingSnap;
@@ -115,6 +119,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (IsEnabled(CustomComboPreset.ViperBloodFangFeature) && OriginalHook(VPR.Twinblood) == VPR.UncoiledTwinblood)
+                return actionID;
             if (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player)
                 return VPR.Slither;
 

@@ -565,7 +565,7 @@ namespace XIVComboExpandedestPlugin
         MachinistSpreadShotFeature = 3102,
 
         [OrderedEnum]
-        [CustomComboInfo("Hypercharge Feature", "Replace Heat Blast and Auto Crossbow with Hypercharge when not overheated.", MCH.JobID, MCH.HeatBlast, MCH.AutoCrossbow)]
+        [CustomComboInfo("Hypercharge Feature", "Replace Heat Blast and Auto Crossbow with Hypercharge when not overheated.", MCH.JobID, MCH.HeatBlast, MCH.BlazingShot, MCH.AutoCrossbow)]
         MachinistOverheatFeature = 3103,
 
         [OrderedEnum]
