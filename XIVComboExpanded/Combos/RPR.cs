@@ -166,7 +166,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<RPRGauge>();
 
-                if (HasEffect(RPR.Buffs.EnhancedGibbet) && gauge.EnshroudedTimeRemaining == 0)
+                if (HasEffect(RPR.Buffs.EnhancedGibbet) && gauge.EnshroudedTimeRemaining == 0 && !IsEnabled(CustomComboPreset.ReaperGibbetGallowsShroudOnlyOption))
                     return OriginalHook(RPR.Gibbet);
 
                 if (HasEffect(RPR.Buffs.EnhancedVoidReaping))
@@ -177,7 +177,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<RPRGauge>();
 
-                if (HasEffect(RPR.Buffs.EnhancedGallows) && gauge.EnshroudedTimeRemaining == 0)
+                if (HasEffect(RPR.Buffs.EnhancedGallows) && gauge.EnshroudedTimeRemaining == 0 && !IsEnabled(CustomComboPreset.ReaperGibbetGallowsShroudOnlyOption))
                     return OriginalHook(RPR.Gallows);
 
                 if (HasEffect(RPR.Buffs.EnhancedCrossReaping))
