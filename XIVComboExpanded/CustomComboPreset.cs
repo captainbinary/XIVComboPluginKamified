@@ -231,7 +231,7 @@ namespace XIVComboExpandedestPlugin
         BardRadiantFeature = 2307,
 
         [OrderedEnum]
-        [CustomComboInfo("Radiant Strikes Feature", "Replaces Radiant Finale with Raging Strikes if Raging Strikes is off-cooldown.\nThis takes priority over Battle Voice if Radiant Voice is enabled.", BRD.JobID, BRD.RadiantFinale)]
+        [CustomComboInfo("Radiant Strikes Feature", "Replaces Radiant Finale with Raging Strikes if Raging Strikes is off-cooldown and Radiant Finale is not.\nBattle Voice takes priority if Radiant Voice is enabled.", BRD.JobID, BRD.RadiantFinale)]
         BardRadiantStrikesFeature = 2309,
 
         [OrderedEnum]
@@ -1033,7 +1033,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region RED MAGE
 
-        // latest enum: 3525
+        // latest enum: 3526
 
         [OrderedEnum]
         [CustomComboInfo("Redoublement Combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
@@ -1081,7 +1081,7 @@ namespace XIVComboExpandedestPlugin
         RedMageMeleeComboPlusPlus = 3503,
 
         [OrderedEnum]
-        [CustomComboInfo("Verproc into Jolt", "Replaces Verstone/Verfire with Jolt/Scorch when no proc is available. In the strange gap between level 84-93 where Jolt 3 is always better, Verstone/verfire will always be replaced with Jolt 3.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        [CustomComboInfo("Verproc into Jolt", "Replaces Verstone/Verfire with Jolt/Scorch when no proc is available. In the strange gap between level 84-93 where Jolt 3 is always better, Verstone/verfire will always be replaced with Jolt 3.", RDM.JobID, RDM.Verstone, RDM.Verfire, RDM.Verthunder, RDM.Verthunder3)]
         RedMageVerprocCombo = 3504,
 
         [OrderedEnum]
@@ -1110,6 +1110,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(RedMageVerprocComboPlus)]
         [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Fire)", "Turns Verfire into Verthunder when out of combat.", RDM.JobID, RDM.Verfire)]
         RedMageVerprocOpenerFeatureFire = 3507,
+
+        [OrderedEnum]
+        [ParentCombo(RedMageVerprocComboPlus)]
+        [CustomComboInfo("Verproc into Jolt Plus Verthunder Option", "Verthunder is used as the base for the black magic side of Verproc into Jolt, not Verfire.\nThis is so you can use Verfire by itself even with acceleration up to use a slightly more optimal opener.", RDM.JobID, RDM.Verthunder)]
+        RedMageVerprocComboVerthunderOption = 3526,
 
         [OrderedEnum]
         [ParentCombo(RedMageVerprocComboPlus)]

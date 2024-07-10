@@ -6,7 +6,11 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.22:
+  "Changelog": "1.5.0.23:
+    * BRD Battle Voice/Radiant Finale/Raging Strikes priority changed to conform with new rotation.
+    * Verproc into Jolt Plus Verthunder Option added so that you can always use Verfire. This is because the most optimal opener for Red Mage requires using Verfire during Acceleration.
+    
+    1.5.0.22:
     * Shroud only option added to Enhanced Gallows and Gibbets.
     
     1.5.0.20:

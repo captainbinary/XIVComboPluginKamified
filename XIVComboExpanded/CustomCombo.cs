@@ -68,7 +68,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected uint[] FilteredLastComboMoves { get; set; } = new uint[]
         {
-            BRD.EmpyrealArrow,
             BRD.RainOfDeath,
             BRD.ApexArrow,
             BRD.BlastArrow,
