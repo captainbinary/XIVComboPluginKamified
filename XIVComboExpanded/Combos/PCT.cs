@@ -17,6 +17,8 @@ namespace XIVComboExpandedestPlugin.Combos
     {
         public const byte JobID = 42;
 
+        public const uint MaxPaint = 5;
+
         public const uint
             FireInRed = 34650,
             BlizzardInCyan = 34653,
@@ -40,6 +42,7 @@ namespace XIVComboExpandedestPlugin.Combos
             public const ushort
                 SubtractivePalette = 3674,
                 MonochromeTones = 3691,
+                AetherhuesII = 3676,
                 RainbowBright = 3679,
                 HammerTime = 3680,
                 Starstruck = 3681;
@@ -54,7 +57,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Levels
         {
             public const byte
-                Placeholder = 0;
+                HolyInWhite = 80;
         }
     }
 
@@ -64,13 +67,33 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == PCT.FireInRed)
-                if (HasEffect(PCT.Buffs.SubtractivePalette))
-                    return OriginalHook(PCT.BlizzardInCyan);
+            var isAoE = actionID == PCT.FireInRed ? false : true;
 
-            if (actionID == PCT.Fire2InRed)
-                if (HasEffect(PCT.Buffs.SubtractivePalette))
-                    return OriginalHook(PCT.Blizzard2InCyan);
+            if (IsEnabled(CustomComboPreset.PictSubMovementOption) && IsMoving() && level >= PCT.Levels.HolyInWhite)
+            {
+                if (HasEffect(PCT.Buffs.MonochromeTones) && IsEnabled(CustomComboPreset.PictCometFeature))
+                    return PCT.CometInBlack;
+                return PCT.HolyInWhite;
+            }
+
+            if (IsEnabled(CustomComboPreset.PictSubHolyOption) || IsEnabled(CustomComboPreset.PictSubOvercapOption))
+            {
+                var gauge = GetJobGauge<PCTGauge>();
+                var maxPalette = 100;
+
+                if (IsEnabled(CustomComboPreset.PictSubHolyOption) && HasEffect(PCT.Buffs.AetherhuesII) && gauge.Paint == PCT.MaxPaint)
+                {
+                    if (HasEffect(PCT.Buffs.MonochromeTones) && IsEnabled(CustomComboPreset.PictCometFeature))
+                        return PCT.CometInBlack;
+                    return PCT.HolyInWhite;
+                }
+
+                if (IsEnabled(CustomComboPreset.PictSubOvercapOption) && HasEffect(PCT.Buffs.AetherhuesII) && !HasEffect(PCT.Buffs.SubtractivePalette) && gauge.PalleteGauge == maxPalette)
+                    return PCT.SubtractivePalette;
+            }
+
+            if (HasEffect(PCT.Buffs.SubtractivePalette))
+               return isAoE ? OriginalHook(PCT.Blizzard2InCyan) : OriginalHook(PCT.BlizzardInCyan);
 
             return actionID;
         }
@@ -141,6 +164,25 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (HasEffect(PCT.Buffs.Starstruck))
                 return PCT.StarPrism;
+
+            return actionID;
+        }
+    }
+
+    internal class PictDripFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PictDripFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<PCTGauge>();
+
+            if (gauge.Paint == PCT.MaxPaint && HasCondition(ConditionFlag.InCombat))
+            {
+                if (HasEffect(PCT.Buffs.MonochromeTones) && IsEnabled(CustomComboPreset.PictCometFeature))
+                    return PCT.CometInBlack;
+                return PCT.HolyInWhite;
+            }
 
             return actionID;
         }

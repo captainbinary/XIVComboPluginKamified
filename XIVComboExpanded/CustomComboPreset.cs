@@ -619,48 +619,43 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MONK
 
-        // latest enum: 2030
+        // latest enum: 2031
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Leaping Opo Combo", "Replace Leaping Opo/Bootshine with Monk's Leaping combo.\nIt is recommended that you still have them separately available just for Perfect Balance.", MNK.JobID, MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick)]
-        MonkBootshineCombo = 2019,
+        [CustomComboInfo("Leaping Opo Combo", "Replace Leaping Opo/Bootshine with Monk's Leaping Opo/Rising Raptor/Pouncing Coeurl combo.", MNK.JobID, MNK.LeapingOpo, MNK.Bootshine)]
+        MonkOpoCombo = 2019,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick/Twin Snakes/Demolish combo.\nIt is recommended that you still have them separately available just for Perfect Balance.", MNK.JobID, MNK.DragonKick, MNK.TwinSnakes)]
+        [CustomComboInfo("Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick combo.\nNot recommended with the current (absurdly broken) Monk rotation that has you spamming Dragon Kick/Bootshine interchangeably a lot.", MNK.JobID, MNK.DragonKick)]
         MonkDragonKickCombo = 2020,
 
         [OrderedEnum]
-        [ParentCombo(MonkDragonKickCombo)]
-        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.", MNK.JobID)]
-        MonkDragonKickComboSnakeOption = 2023,
-
-        [OrderedEnum]
         [ConflictingCombos(MonkPerfectBalanceFeatureLockout)]
-        [CustomComboInfo("Perfect Balance to Demolish", "Replace Perfect Balance with Demolish while in Perfect Balance.", MNK.JobID, MNK.PerfectBalance)]
+        [CustomComboInfo("Perfect Balance to Demolish", "Replace Perfect Balance with Demolish while in Perfect Balance, so you don't need it on your bar separately.", MNK.JobID, MNK.PerfectBalance)]
         MonkPerfectBalanceDemolishFeature = 2026,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift, MNK.SnapPunch, MNK.Demolish, MNK.Bootshine, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar, PLD.TotalEclipse)]
+        [CustomComboInfo("Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.RisingRaptor, MNK.FormShift, MNK.SnapPunch, MNK.PouncingCoeurl, MNK.Demolish, MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar, PLD.TotalEclipse, MNK.PerfectBalance)]
         MonkMeditationReminder = 2013,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury, MNK.FormShift, PLD.TotalEclipse)]
+        [CustomComboInfo("AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury, MNK.FormShift, PLD.TotalEclipse)]
         MonkAoECombo = 2001,
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("Monk AoE Combo Experimental No-Blitz Option", "Enabling this option makes it so that Total Eclipse is the basis for your main AoE combo, and Masterful Blitz is untouched.\n" +
+        [CustomComboInfo("Experimental No-Blitz Option", "Enabling this option makes it so that Total Eclipse is the basis for your main AoE combo, and Masterful Blitz is untouched.\n" +
             "To get Total Eclipse onto your Monk hotbar, use a shared hotbar, a macro, or a plugin like ReAction.", MNK.JobID)]
         MonkAoEComboBlitzOption = 2027,
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into 1-2-3 AoE combo in Perfect Balance.", MNK.JobID, MNK.FormShift)]
+        [CustomComboInfo("Form Shift Option", "Enabling this option has Form Shift turn into 1-2-3 AoE combo in Perfect Balance.", MNK.JobID, MNK.FormShift)]
         MonkAoEComboFormOption = 2009,
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
+        [CustomComboInfo("Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
         MonkAoEMeditationFeature = 2014,
 
         // [OrderedEnum]
@@ -669,23 +664,23 @@ namespace XIVComboExpandedestPlugin
         // MonkAoEBalanceFeature = 2006,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Kick Leaping Opo Feature (NOT WORKING)", "Replaces Dragon Kick with Leaping Opo/Bootshine if Leaden Fist is up, and vice-versa when Leaden Fist is not up for Leaping Opo/Bootshine in combos.\nThis feature is currently not working, as Dalamud's Monk Gauge variables need to be updated.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Draconic Leap", "Replaces Dragon Kick with Leaping Opo/Bootshine (and vice-versa) if Leaden Fist is up.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
         MonkDragonKickBootshineFeature = 2002,
 
-        /*[OrderedEnum]
-        [CustomComboInfo("Monk Twin Snakes Rising Raptor Feature", "Replaces Twin Snakes with Rising Raptor/True Strike if Raptor's Fury is up, and vice-versa when Raptor's Fury is not up for Rising Raptor/True Strike in combos.", MNK.JobID, MNK.TwinSnakes)]
-        MonkTwinSnakesRisingRaptorFeature = 2030,
+        [OrderedEnum]
+        [CustomComboInfo("Twin Raptors", "Replaces Twin Snakes with Rising Raptor/True Strike if Raptor's Fury is up, as well as vice versa for Rising Raptor in combos.", MNK.JobID, MNK.TwinSnakes)]
+        MonkTwinRaptorsFeature = 2030,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Demolish Pouncing Coeurl Feature", "Replaces Demolish with Pouncing Coeurl/Snap Punch if Coeurl's Fury is up, and vice-versa when Coeurl's Fury is not up for Pouncing Coeurl/Snap Punch in combos.", MNK.JobID, MNK.Demolish)]
-        MonkDemolishPouncingCoeurlFeature = 2031,*/
+        [CustomComboInfo("Demolishing Pounce", "Replaces Demolish with Pouncing Coeurl/Snap Punch if Coeurl's Fury is up, as well as vice versa for Pouncing Coeurl in combos.", MNK.JobID, MNK.Demolish)]
+        MonkDemolishingPounceFeature = 2031,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Kick Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Dragon Kick/Leaping Opo Balance Feature", "Replaces Dragon Kick and Leaping Opo with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
         MonkDragonKickBalanceFeature = 2005,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Clap Feature", "Replaces Dragon Kick with Thunderclap if you are out of melee range, or have a player targeted.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Leaping Dragon Clap Feature", "Replaces Dragon Kick and Leaping Opo with Thunderclap if you are out of melee range, or have a player targeted.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
         MonkDragonClapFeature = 2022,
 
         [OrderedEnum]
@@ -899,9 +894,28 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region PICTOMANCER
 
+        // last used enum: 4209
+
         [OrderedEnum]
         [CustomComboInfo("Subtracting Your Combos", "Replace your normal combos with subtractive combos while you have Subtractive Palette active.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
         PictSubFeature = 4201,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [ParentCombo(PictSubFeature)]
+        [CustomComboInfo("Holding Your Holy", "Replace your combos with Holy in White if your next action will overcap White Paint.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
+        PictSubHolyOption = 4203,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [ParentCombo(PictSubFeature)]
+        [CustomComboInfo("Cleansing Your Palette", "Replace your combos with Subtractive Palette if your next action will overcap gauge.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
+        PictSubOvercapOption = 4207,
+
+        [OrderedEnum]
+        [ParentCombo(PictSubFeature)]
+        [CustomComboInfo("Hallowed Movement", "Replace your combos with Holy in White if you are moving and don't have an instant cast.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
+        PictSubMovementOption = 4208,
 
         [OrderedEnum]
         [CustomComboInfo("Holy Comets!", "Replace Holy in White with Comet in Black when available.", PCT.JobID, PCT.HolyInWhite)]
@@ -918,6 +932,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Prisms in your Starscape", "Replace Scenic Muse with Star Prism when available.", PCT.JobID, PCT.ScenicMuse)]
         PictStarFeature = 4206,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("The Holiest of Drip", "Replace Rainbow Drip with Holy in White if it would overcap White Paint and you are in combat.", PCT.JobID, PCT.RainbowDrip)]
+        PictDripFeature = 4209,
 
         #endregion
         // ====================================================================================
