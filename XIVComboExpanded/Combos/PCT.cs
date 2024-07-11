@@ -69,7 +69,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var isAoE = actionID == PCT.FireInRed ? false : true;
 
-            if (IsEnabled(CustomComboPreset.PictSubMovementOption) && IsMoving() && level >= PCT.Levels.HolyInWhite)
+            if (IsEnabled(CustomComboPreset.PictSubMovementOption) && IsMoving() && !HasEffect(All.Buffs.Swiftcast) && level >= PCT.Levels.HolyInWhite)
             {
                 if (HasEffect(PCT.Buffs.MonochromeTones) && IsEnabled(CustomComboPreset.PictCometFeature))
                     return PCT.CometInBlack;
