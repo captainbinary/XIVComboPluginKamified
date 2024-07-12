@@ -363,6 +363,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == (IsEnabled(CustomComboPreset.ReaperGibbetGallowsSoulSliceOption) ? RPR.SoulSlice : RPR.ShadowOfDeath))
             {
                 var gauge = GetJobGauge<RPRGauge>();
+                if (OriginalHook(RPR.Communio) != RPR.Communio && IsEnabled(CustomComboPreset.ReaperComboCommunioFeature) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsShroudOption) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsSoulSliceOption))
+                    return OriginalHook(RPR.Communio);
                 if (gauge.EnshroudedTimeRemaining > 0 && IsEnabled(CustomComboPreset.ReaperGibbetGallowsShroudOption) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsSoulSliceOption))
                 {
                     if (IsEnabled(CustomComboPreset.ReaperLemureFeature))
@@ -375,8 +377,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
                     if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
                     {
-                        if (OriginalHook(RPR.Communio) != RPR.Communio)
-                            return OriginalHook(RPR.Communio);
                         if (HasEffect(RPR.Buffs.Enshrouded) && gauge.LemureShroud == 1 && level >= RPR.Levels.Communio)
                             return RPR.Communio;
                     }
