@@ -6,7 +6,10 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.25:
+  "Changelog": "1.5.0.27:
+    * Added separate option for combo-ing Gibbet and Gallows together only in the Slice combo.
+    
+    1.5.0.25:
     * Three PCT additions added, very secretive.
     * PCT main combo movement feature added.
     * MNK rework. Stuff removed, stuff added. Probably should check it out yourself and redo your bars. I'd ideally just recommend not playing Monk at all in its currently abysmal state, but if you're levelling everything to 100, you'll have to eventually.

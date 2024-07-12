@@ -942,7 +942,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region REAPER
 
-        // latest enum: 3924
+        // latest enum: 3925
 
         [OrderedEnum]
         [CustomComboInfo("Slice Combo", "Replace Slice with its combo chain.", RPR.JobID, RPR.Slice, RPR.InfernalSlice)]
@@ -986,6 +986,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(ReaperGibbetGallowsFeature)]
+        [CustomComboInfo("Gibbets and Gallows Combo", "Gibbet becomes Gallows when Gallows is enhanced and vice-versa, but only in combo. It is removed from Shadow of Death/Soul Slice as a result after one is enhanced.", RPR.JobID, RPR.Gibbet, RPR.Gallows)]
+        ReaperGibbetGallowsComboOption = 3925,
+
+        [OrderedEnum]
+        [ParentCombo(ReaperGibbetGallowsFeature)]
         [CustomComboInfo("Gibbets and Gallows Soul Slice Option", "Have Soul Slice be replaced in the Gibbets and Gallows Feature instead of Shadow of Death.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath, RPR.SoulSlice)]
         ReaperGibbetGallowsSoulSliceOption = 3919,
 
@@ -995,7 +1000,7 @@ namespace XIVComboExpandedestPlugin
         ReaperGibbetGallowsShroudOption = 3920,
 
         [OrderedEnum]
-        [CustomComboInfo("Enhanced Gallows and Gibbets Feature", "Gibbet becomes Gallows when Gallows is enhanced and vice-versa. If Gibbets and Gallows Feature is enabled, Gallows is removed from Shadow of Death/Soul Slice while either is enhanced.", RPR.JobID, RPR.Gibbet, RPR.Gallows)]
+        [CustomComboInfo("Enhanced Gallows and Gibbets Feature", "Gibbet becomes Gallows when Gallows is enhanced and vice-versa.", RPR.JobID, RPR.Gibbet, RPR.Gallows)]
         ReaperGibbetGallowsOption = 3905,
 
         [OrderedEnum]
