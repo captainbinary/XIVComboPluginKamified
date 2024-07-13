@@ -273,13 +273,13 @@ namespace XIVComboExpandedestPlugin.Combos
                         case 3:
                             return MNK.FourPointFury;
                         case 2:
-                            if (!gauge.BeastChakra.Contains(BeastChakra.OPOOPO))
+                            if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
                                 return MNK.FourPointFury;
                             return MNK.Rockbreaker;
                         case 1:
-                            if (gauge.BeastChakra.Contains(BeastChakra.COEURL) && !gauge.BeastChakra.Contains(BeastChakra.OPOOPO))
+                            if (gauge.BeastChakra.Contains(BeastChakra.OPOOPO) && !gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
                                 return MNK.FourPointFury;
-                            if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                            if (!gauge.BeastChakra.Contains(BeastChakra.COEURL))
                                 return MNK.Rockbreaker;
                             return OriginalHook(MNK.ArmOfTheDestroyer);
                     }
