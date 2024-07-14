@@ -407,7 +407,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(DragoonNastrondFeature)]
-        [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown (and you have more than 7.5s of LotD left), or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
+        [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown, or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonStarfireDiveFeature = 2208,
 
         [OrderedEnum]

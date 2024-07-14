@@ -233,12 +233,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (OriginalHook(DRG.Stardiver) != DRG.Stardiver) return OriginalHook(DRG.Stardiver);
-            if (OriginalHook(DRG.DragonfireDive) != DRG.DragonfireDive) return OriginalHook(DRG.DragonfireDive);
+            if (OriginalHook(DRG.DragonfireDive) != DRG.DragonfireDive && !IsActionOffCooldown(DRG.Stardiver) && OriginalHook(DRG.Stardiver) == DRG.Stardiver) return OriginalHook(DRG.DragonfireDive);
 
-            var gauge = GetJobGauge<DRGGauge>();
-
-            return (IsActionOffCooldown(DRG.DragonfireDive) && gauge.LOTDTimer > 7.5) || !gauge.IsLOTDActive || !IsActionOffCooldown(DRG.Stardiver) ? DRG.DragonfireDive : DRG.Stardiver;
+            return !IsActionOffCooldown(DRG.DragonfireDive) && CanUseAction(DRG.Stardiver) ? actionID : DRG.DragonfireDive;
         }
     }
 
