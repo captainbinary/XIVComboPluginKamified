@@ -401,12 +401,6 @@ namespace XIVComboExpandedestPlugin
         DragoonJumpFeature = 2201,
 
         [OrderedEnum]
-        [ConflictingCombos(DragoonStarfireDiveFeature)]
-        [CustomComboInfo("Stardiver to Nastrond", "Stardiver becomes Nastrond after Stardiver is used, and becomes Geirskogul outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
-        DragoonNastrondFeature = 2206,
-
-        [OrderedEnum]
-        [ConflictingCombos(DragoonNastrondFeature)]
         [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown, or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonStarfireDiveFeature = 2208,
 

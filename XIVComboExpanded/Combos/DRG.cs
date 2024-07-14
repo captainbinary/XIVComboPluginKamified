@@ -213,20 +213,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class DragoonNastrondFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.DragoonNastrondFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (OriginalHook(DRG.Stardiver) != DRG.Stardiver) return OriginalHook(DRG.Stardiver);
-
-            var gauge = GetJobGauge<DRGGauge>();
-
-            return !IsActionOffCooldown(DRG.Stardiver) || !CanUseAction(DRG.Stardiver) ? OriginalHook(DRG.Geirskogul) : DRG.Stardiver;
-        }
-    }
-
     internal class DragoonStarfireDiveFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DragoonStarfireDiveFeature;
