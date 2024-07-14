@@ -48,7 +48,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 BattleLitany = 786,
                 SharperFangAndClaw = 802,
                 EnhancedWheelingThrust = 803,
-                DiveReady = 1243;
+                DiveReady = 1243,
+                NastrondReady = 3844;
         }
 
         public static class Debuffs
@@ -222,7 +223,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             var gauge = GetJobGauge<DRGGauge>();
 
-            return IsActionOffCooldown(DRG.Nastrond) || !gauge.IsLOTDActive || !IsActionOffCooldown(DRG.Stardiver) ? OriginalHook(DRG.Geirskogul) : DRG.Stardiver;
+            return !HasEffect(DRG.Buffs.NastrondReady) || !gauge.IsLOTDActive || !IsActionOffCooldown(DRG.Stardiver) ? OriginalHook(DRG.Geirskogul) : DRG.Stardiver;
         }
     }
 

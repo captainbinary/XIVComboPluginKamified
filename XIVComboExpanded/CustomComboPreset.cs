@@ -402,7 +402,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(DragoonStarfireDiveFeature)]
-        [CustomComboInfo("Stardiver to Nastrond", "Stardiver becomes Nastrond when Nastrond is off-cooldown, and becomes Geirskogul outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
+        [CustomComboInfo("Stardiver to Nastrond", "Stardiver becomes Nastrond after Stardiver is used, and becomes Geirskogul outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonNastrondFeature = 2206,
 
         [OrderedEnum]
