@@ -384,7 +384,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return IsEnabled(CustomComboPreset.ReaperGibbetGallowsSwap) ? OriginalHook(RPR.Gibbet) : OriginalHook(RPR.Gallows);
                 }
 
-                if ((HasEffect(RPR.Buffs.SoulReaver) && !HasEffect(RPR.Buffs.Enshrouded)) && (!IsEnabled(CustomComboPreset.ReaperGibbetGallowsComboOption) || (!HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.EnhancedGibbet))))
+                if (((HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Executioner)) && !HasEffect(RPR.Buffs.Enshrouded)) && (!IsEnabled(CustomComboPreset.ReaperGibbetGallowsComboOption) || (!HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.EnhancedGibbet))))
                 {
                     return IsEnabled(CustomComboPreset.ReaperGibbetGallowsSwap) ? OriginalHook(RPR.Gibbet) : OriginalHook(RPR.Gallows);
                 }
