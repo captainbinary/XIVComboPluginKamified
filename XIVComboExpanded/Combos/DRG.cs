@@ -223,7 +223,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             var gauge = GetJobGauge<DRGGauge>();
 
-            return !HasEffect(DRG.Buffs.NastrondReady) || !gauge.IsLOTDActive || !IsActionOffCooldown(DRG.Stardiver) ? OriginalHook(DRG.Geirskogul) : DRG.Stardiver;
+            return !IsActionOffCooldown(DRG.Stardiver) || !CanUseAction(DRG.Stardiver) ? OriginalHook(DRG.Geirskogul) : DRG.Stardiver;
         }
     }
 
