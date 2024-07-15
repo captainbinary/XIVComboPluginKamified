@@ -6,7 +6,9 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.33:
+  "Changelog": "
+    
+    1.5.0.33:
     * Removed Stardiver to Nastrond. It doesn't make much sense anymore with the Nastrond changes, it's incompatible with the opener, and Stardiver to Dragonfire Dive just works better (and now follows opener order).
     
     1.5.0.27:

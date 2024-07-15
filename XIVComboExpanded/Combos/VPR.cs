@@ -104,7 +104,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.ViperBloodFangFeature) && OriginalHook(VPR.Twinblood) == VPR.UncoiledTwinblood)
                     return actionID;
-                if (CanUseAction(VPR.UncoiledFury) && IsEnabled(CustomComboPreset.ViperSteelFangRangedFuryOption))
+                if (CanUseAction(VPR.UncoiledFury) && IsEnabled(CustomComboPreset.ViperSnapUncoiledFuryFeature))
                     return VPR.UncoiledFury;
                 return VPR.WrithingSnap;
             }
@@ -123,6 +123,19 @@ namespace XIVComboExpandedestPlugin.Combos
                 return actionID;
             if (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player)
                 return VPR.Slither;
+
+            return actionID;
+        }
+    }
+
+    internal class ViperSnapUncoiledFuryFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperSnapUncoiledFuryFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(VPR.UncoiledFury))
+                return VPR.UncoiledFury;
 
             return actionID;
         }

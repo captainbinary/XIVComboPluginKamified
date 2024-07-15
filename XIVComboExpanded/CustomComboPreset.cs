@@ -1500,13 +1500,14 @@ namespace XIVComboExpandedestPlugin
         ViperSteelFangRangedFeature = 4106,
 
         [OrderedEnum]
-        [ParentCombo(ViperSteelFangRangedFeature)]
-        [CustomComboInfo("Furious Steel Fang", "Have Uncoiled Fury replace Writhing Snap on the Steel Fang combo if you have Rattling Coil stacks.", VPR.JobID, VPR.SteelFangs)]
-        ViperSteelFangRangedFuryOption = 4109,
-
-        [OrderedEnum]
         [CustomComboInfo("Slithering Dread Fang", "Replace your Dread Fang combo with Slither while out of melee range or targeting a player.", VPR.JobID, VPR.DreadFangs)]
         ViperDreadFangDashFeature = 4107,
+
+        [OrderedEnum]
+        [CustomComboInfo("Snapping Fury", "Have Uncoiled Fury replace Writhing Snap if you have Rattling Coil stacks.", VPR.JobID, VPR.WrithingSnap)]
+        ViperSnapUncoiledFuryFeature = 4109,
+
+
 
         #endregion
         // ====================================================================================
