@@ -217,10 +217,10 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
                         return BLM.Fire3;
-                    if (gauge.IsParadoxActive)
-                        return OriginalHook(BLM.Fire);
                     if (level >= BLM.Levels.Fire3 && IsEnabled(CustomComboPreset.BlackFireFeature) && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
                         return BLM.Fire3;
+                    if (gauge.IsParadoxActive)
+                        return OriginalHook(BLM.Fire);
                     return OriginalHook(BLM.Fire);
                 }
             }
@@ -380,10 +380,10 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<BLMGauge>();
                 if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
                     return BLM.Fire3;
-                if (gauge.IsParadoxActive)
-                    return OriginalHook(BLM.Fire);
                 if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
                     return BLM.Fire3;
+                if (gauge.IsParadoxActive)
+                    return OriginalHook(BLM.Fire);
                 return OriginalHook(BLM.Fire);
             }
 
@@ -452,8 +452,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            // This should be replaced with gauge once gauge is ready to prevent action flickering.
-            return actionID == BLM.FlareStar && CanUseAction(BLM.FlareStar) ? BLM.FlareStar : BLM.Manafont;
+            var gauge = GetJobGauge<BLMGauge>();
+            return actionID == BLM.FlareStar && gauge.AstralSoulStacks == 6 ? BLM.FlareStar : BLM.Manafont;
         }
     }
 }

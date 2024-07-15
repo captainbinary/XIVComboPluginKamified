@@ -219,7 +219,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (OriginalHook(DRG.DragonfireDive) != DRG.DragonfireDive && !IsActionOffCooldown(DRG.Stardiver) && OriginalHook(DRG.Stardiver) == DRG.Stardiver) return OriginalHook(DRG.DragonfireDive);
+            if (OriginalHook(DRG.DragonfireDive) != DRG.DragonfireDive && (!IsActionOffCooldown(DRG.Stardiver) || !CanUseAction(DRG.Stardiver)) && OriginalHook(DRG.Stardiver) == DRG.Stardiver) return OriginalHook(DRG.DragonfireDive);
 
             return !IsActionOffCooldown(DRG.DragonfireDive) && CanUseAction(DRG.Stardiver) ? actionID : DRG.DragonfireDive;
         }
