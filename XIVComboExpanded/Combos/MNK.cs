@@ -221,7 +221,8 @@ namespace XIVComboExpandedestPlugin.Combos
                     return MNK.Demolish;
                 }
 
-                bool hasForm = HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.OpoOpoForm);
+                bool hasForm = HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.OpoOpoForm) || level < MNK.Levels.DragonKick;
+
                 if ((gauge.OpoOpoFury > 0 || level < MNK.Levels.DragonKick) && hasForm && IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature)
                     && (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)))
                     return OriginalHook(MNK.Bootshine);
@@ -356,7 +357,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (new[] { MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick }.Contains(actionID) && (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)))
+            bool hasForm = HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.OpoOpoForm);
+
+            if (new[] { MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick }.Contains(actionID) && hasForm && (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)))
             {
                 var gauge = GetJobGauge<MNKGauge>();
                 if (gauge.OpoOpoFury > 0 || level < MNK.Levels.DragonKick)

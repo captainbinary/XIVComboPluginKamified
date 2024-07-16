@@ -668,7 +668,7 @@ namespace XIVComboExpandedestPlugin
         // MonkAoEBalanceFeature = 2006,
 
         [OrderedEnum]
-        [CustomComboInfo("Draconic Leap", "Replaces Dragon Kick with Leaping Opo/Bootshine (and vice-versa) if Leaden Fist is up.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
+        [CustomComboInfo("Draconic Leap", "Replaces Dragon Kick with Leaping Opo/Bootshine if Opo-Opo's Fury is up, as well as vice versa for Leaping Opo in combos.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
         MonkDragonKickBootshineFeature = 2002,
 
         [OrderedEnum]
