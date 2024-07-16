@@ -91,7 +91,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2526
+        // latest enum: 2528
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.\nWill also swap them for Blizzard 1/Fire 1 when one is not available while synced.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -113,8 +113,12 @@ namespace XIVComboExpandedestPlugin
         BlackEnochianButNotFeature = 2524,
 
         [OrderedEnum]
-        [CustomComboInfo("Flare to Despair Feature", "Change Flare to Despair when you are not using AoE spells and have it available.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
+        [CustomComboInfo("Flare to Despair", "Change Flare to Despair when you are not using AoE spells and have it available.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
         BlackFlareDespairFeature = 2511,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flare to Flare Star", "Change Flare to Flare Star when available.", BLM.JobID, BLM.Flare)]
+        BlackFlareStarFeature = 2527,
 
         [OrderedEnum]
         [CustomComboInfo("High Thunder to High Thunder 2 Feature", "Change High Thunder to High Thunder 2 when you are using AoE spells and have it available.", BLM.JobID, BLM.Thunder, BLM.Thunder3, BLM.HighThunder)]
@@ -188,7 +192,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [CustomComboInfo("Flare Star to Manafont", "Flare Star becomes Manafont when it is not available.", BLM.JobID, BLM.FlareStar)]
-        BlackFlareStarFeature = 2525,
+        BlackFlareFontFeature = 2525,
 
         #endregion
         // ====================================================================================
@@ -1513,7 +1517,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region WARRIOR
 
-        // last used enum: 2117
+        // last used enum: 2118
 
         [OrderedEnum]
         [CustomComboInfo("Storm's Path Combo", "Replace Storm's Path with its combo chain.", WAR.JobID, WAR.StormsPath)]
@@ -1592,6 +1596,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Upheaval to Orogeny", "Replace your Upheaval with Orogeny while you are in the midst of your AoE combo.", WAR.JobID, WAR.Upheaval)]
         WarriorUporgyFeature = 2114,
 
+        [OrderedEnum]
+        [CustomComboInfo("Primal Upheaval", "Replace Upheaval/Orogeny with Primal Wrath while available.", WAR.JobID, WAR.Upheaval, WAR.Orogeny)]
+        WarriorPrimalUpheavalFeature = 2118,
+
         #endregion
         // ====================================================================================
         #region WHITE MAGE
@@ -1605,15 +1613,19 @@ namespace XIVComboExpandedestPlugin
         WhiteMageRaptureMiseryFeature = 2402,
 
         [OrderedEnum]
-        [CustomComboInfo("Holy into Misery", "Replaces Holy/Holy 3 with Afflatus Misery when Misery is ready to be used and you have a target.", WHM.JobID, WHM.Holy, WHM.Holyga)]
+        [CustomComboInfo("Holy into Misery", "Replaces Holy/Holy III with Afflatus Misery when Misery is ready to be used and you have a target.", WHM.JobID, WHM.Holy, WHM.Holyga)]
         WhiteMageHolyMiseryFeature = 2405,
 
         [OrderedEnum]
-        [CustomComboInfo("Cure 2 to Cure Level Sync", "Changes Cure 2 to Cure when below level 30 in synced content.", WHM.JobID, WHM.Cure2)]
+        [CustomComboInfo("Holy into Glare IV", "Replaces Holy/Holy III with Glare IV when it is ready to be used and you have a target.\nHas lesser priority than Afflatus Misery if that feature is also enabled.", WHM.JobID, WHM.Holy, WHM.Holyga)]
+        WhiteMageHolyGlareFeature = 2407,
+
+        [OrderedEnum]
+        [CustomComboInfo("Cure 2 to Cure Level Sync", "Changes Cure II to Cure when below level 30 in synced content.", WHM.JobID, WHM.Cure2)]
         WhiteMageCureFeature = 2403,
 
         [OrderedEnum]
-        [CustomComboInfo("Afflatus Feature", "Changes Cure 2 into Afflatus Solace, and Medica into Afflatus Rapture, when lilies are up.", WHM.JobID, WHM.Cure2, WHM.Medica)]
+        [CustomComboInfo("Afflatus Feature", "Changes Cure II into Afflatus Solace, and Medica into Afflatus Rapture, when lilies are up.", WHM.JobID, WHM.Cure2, WHM.Medica)]
         WhiteMageAfflatusFeature = 2404,
 
         [OrderedEnum]

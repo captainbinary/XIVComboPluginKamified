@@ -229,6 +229,17 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class BlackFlareStarFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareStarFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<BLMGauge>();
+            return gauge.AstralSoulStacks == 6 ? BLM.FlareStar : actionID;
+        }
+    }
+
     internal class BlackFlareDespairFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareDespairFeature;
@@ -270,6 +281,9 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<BLMGauge>();
 
+                if (gauge.AstralSoulStacks == 6 && IsEnabled(CustomComboPreset.BlackFlareStarFeature))
+                    return BLM.FlareStar;
+
                 if (IsEnabled(CustomComboPreset.BlackFreezeFlareFoulFeature) && gauge.PolyglotStacks > 0 && level >= BLM.Levels.Xenoglossy && IsMoving() && !HasEffect(BLM.Buffs.Triplecast) && !HasEffect(All.Buffs.Swiftcast))
                     return BLM.Foul;
 
@@ -298,6 +312,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Fire2 || actionID == BLM.HighFire2)
             {
                 var gauge = GetJobGauge<BLMGauge>();
+
+                if (gauge.AstralSoulStacks == 6 && IsEnabled(CustomComboPreset.BlackFlareStarFeature))
+                    return BLM.FlareStar;
 
                 if (IsEnabled(CustomComboPreset.BlackFireBlizzard2Option) && gauge.AstralFireStacks < 3)
                     return actionID;
@@ -446,9 +463,9 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class BlackFlareStarFeature : CustomCombo
+    internal class BlackFlareFontFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareStarFeature;
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareFontFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

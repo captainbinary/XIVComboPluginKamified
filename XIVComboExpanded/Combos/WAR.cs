@@ -30,7 +30,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Tomahawk = 46,
             Orogeny = 25752,
             Upheaval = 7387,
-            Onslaught = 7386;
+            Onslaught = 7386,
+            PrimalWrath = 36924;
 
         public static class Buffs
         {
@@ -244,6 +245,19 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (CanUseAction(OriginalHook(WAR.Decimate)) && (lastComboMove == WAR.MythrilTempest || lastComboMove == WAR.Overpower))
                     return OriginalHook(WAR.Decimate);
             }
+
+            return actionID;
+        }
+    }
+
+    internal class WarriorPrimalUpheavalFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.WarriorPrimalUpheavalFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(WAR.PrimalWrath))
+                return WAR.PrimalWrath;
 
             return actionID;
         }

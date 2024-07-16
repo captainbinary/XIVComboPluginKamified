@@ -25,12 +25,14 @@ namespace XIVComboExpandedestPlugin.Combos
             Tetragrammaton = 3570,
             Benediction = 140,
             Aquaveil = 25861,
-            LiturgyOfTheBell = 25862;
+            LiturgyOfTheBell = 25862,
+            Glareja = 37009;
 
         public static class Buffs
         {
             public const ushort
-                Zagadoo = 155;
+                Zagadoo = 155,
+                SacredSight = 3879;
         }
 
         public static class Debuffs
@@ -93,6 +95,19 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (gauge.BloodLily == 3 && CurrentTarget is not null)
                 return WHM.AfflatusMisery;
+
+            return actionID;
+        }
+    }
+
+    internal class WhiteMageHolyGlareFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.WhiteMageHolyGlareFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (HasEffect(WHM.Buffs.SacredSight) && CurrentTarget is not null)
+                return WHM.Glareja;
 
             return actionID;
         }
