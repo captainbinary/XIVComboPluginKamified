@@ -68,6 +68,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 TrueStrike = 4,
                 SnapPunch = 6,
                 Meditation = 15,
+                TwinSnakes = 18,
                 Rockbreaker = 30,
                 Demolish = 30,
                 FourPointFury = 45,
@@ -151,26 +152,23 @@ namespace XIVComboExpandedestPlugin.Combos
             if (IsEnabled(CustomComboPreset.MonkDragonKickBalanceFeature) && !gauge.BeastChakra.Contains(BeastChakra.NONE) && CanUseAction(OriginalHook(MNK.MasterfulBlitz)))
                 return OriginalHook(MNK.MasterfulBlitz);
 
-            if (IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature) && !HasEffect(MNK.Buffs.RaptorForm) && !HasEffect(MNK.Buffs.CoeurlForm))
+            if (HasEffect(MNK.Buffs.RaptorForm))
             {
-                if (gauge.OpoOpoFury == 0 && CanUseAction(MNK.DragonKick))
-                    return MNK.DragonKick;
-                return OriginalHook(MNK.Bootshine);
-            }
-
-            if (IsEnabled(CustomComboPreset.MonkTwinRaptorsFeature) && HasEffect(MNK.Buffs.RaptorForm))
-            {
-                if (gauge.RaptorFury == 0 && CanUseAction(MNK.TwinSnakes))
+                if (gauge.RaptorFury == 0 && level >= MNK.Levels.TwinSnakes && IsEnabled(CustomComboPreset.MonkTwinRaptorsFeature) && !IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption))
                     return MNK.TwinSnakes;
                 return OriginalHook(MNK.TrueStrike);
             }
 
-            if (IsEnabled(CustomComboPreset.MonkDemolishingPounceFeature) && HasEffect(MNK.Buffs.CoeurlForm))
+            if (HasEffect(MNK.Buffs.CoeurlForm))
             {
-                if (gauge.CoeurlFury == 0 && CanUseAction(MNK.Demolish))
+                if (gauge.CoeurlFury == 0 && level >= MNK.Levels.Demolish && IsEnabled(CustomComboPreset.MonkDemolishingPounceFeature) && !IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption))
                     return MNK.Demolish;
                 return OriginalHook(MNK.SnapPunch);
             }
+
+            if (gauge.OpoOpoFury == 0 && level >= MNK.Levels.DragonKick && IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature)
+                && (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))))
+                return MNK.DragonKick;
 
             return actionID;
         }
@@ -208,27 +206,44 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(MNK.MasterfulBlitz);
                 }
 
-                if (IsEnabled(CustomComboPreset.MonkTwinRaptorsFeature) && (HasEffect(MNK.Buffs.RaptorForm) || HasEffect(MNK.Buffs.PerfectBalance)))
+                if (HasEffect(MNK.Buffs.RaptorForm))
                 {
-                    if (gauge.RaptorFury > 0 || !CanUseAction(MNK.TwinSnakes))
+                    if (IsEnabled(CustomComboPreset.MonkTwinRaptorsFeature) && !IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) && (gauge.RaptorFury > 0 || level < MNK.Levels.TwinSnakes))
                         return OriginalHook(MNK.TrueStrike);
                     return MNK.TwinSnakes;
                 }
 
-                if (IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature) && !HasEffect(MNK.Buffs.RaptorForm) && !HasEffect(MNK.Buffs.CoeurlForm))
+                if (HasEffect(MNK.Buffs.CoeurlForm))
                 {
-                    if (gauge.OpoOpoFury > 0 || !CanUseAction(MNK.DragonKick))
-                        return OriginalHook(MNK.Bootshine);
-                }
-
-                if (IsEnabled(CustomComboPreset.MonkDemolishingPounceFeature) && HasEffect(MNK.Buffs.CoeurlForm))
-                {
-                    if (gauge.CoeurlFury > 0 || !CanUseAction(MNK.Demolish))
+                    if ((gauge.CoeurlFury > 0 || level < MNK.Levels.Demolish) && IsEnabled(CustomComboPreset.MonkDemolishingPounceFeature) && !IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption))
                         return OriginalHook(MNK.SnapPunch);
                     return MNK.Demolish;
                 }
 
+                if ((gauge.OpoOpoFury > 0 || level < MNK.Levels.DragonKick) && IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature)
+                    && (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))))
+                    return OriginalHook(MNK.Bootshine);
+
                 return MNK.DragonKick;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class MonkFormSnakes : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkFormSnakes;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.FormShift && HasEffect(MNK.Buffs.PerfectBalance))
+            {
+                var gauge = GetJobGauge<MNKGauge>();
+                if (IsEnabled(CustomComboPreset.MonkTwinRaptorsFeature))
+                    if (gauge.RaptorFury > 0)
+                        return OriginalHook(MNK.TrueStrike);
+                return MNK.TwinSnakes;
             }
 
             return actionID;
@@ -344,8 +359,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (new[] { MNK.Bootshine, MNK.LeapingOpo, MNK.DragonKick }.Contains(actionID))
             {
                 var gauge = GetJobGauge<MNKGauge>();
-                if (gauge.OpoOpoFury > 0 || !CanUseAction(MNK.DragonKick))
-                    return OriginalHook(MNK.Bootshine);
+                if (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)))
+                    if (gauge.OpoOpoFury > 0 || level < MNK.Levels.DragonKick)
+                        return OriginalHook(MNK.Bootshine);
                 return MNK.DragonKick;
             }
 
@@ -360,8 +376,9 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<MNKGauge>();
-            if (gauge.RaptorFury > 0 || !CanUseAction(MNK.TwinSnakes))
-                return OriginalHook(MNK.TrueStrike);
+            if (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)))
+                if (gauge.RaptorFury > 0 || level < MNK.Levels.TwinSnakes)
+                    return OriginalHook(MNK.TrueStrike);
             return actionID;
         }
     }
@@ -373,8 +390,9 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<MNKGauge>();
-            if (gauge.CoeurlFury > 0 || !CanUseAction(MNK.Demolish))
-                return OriginalHook(MNK.SnapPunch);
+            if (!IsEnabled(CustomComboPreset.MonkPerfectBalanceFuryOption) || (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)))
+                if (gauge.CoeurlFury > 0 || level < MNK.Levels.Demolish)
+                    return OriginalHook(MNK.SnapPunch);
             return actionID;
         }
     }

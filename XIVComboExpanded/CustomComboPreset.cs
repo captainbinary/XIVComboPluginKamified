@@ -617,15 +617,20 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MONK
 
-        // latest enum: 2031
+        // latest enum: 2033
 
         [OrderedEnum]
         [CustomComboInfo("Leaping Opo Combo", "Replace Leaping Opo/Bootshine with Monk's Leaping Opo/Rising Raptor/Pouncing Coeurl combo.", MNK.JobID, MNK.LeapingOpo, MNK.Bootshine)]
         MonkOpoCombo = 2019,
 
         [OrderedEnum]
-        [CustomComboInfo("Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick combo.\nNot recommended with the current (absurdly broken) Monk rotation that has you spamming Dragon Kick/Bootshine interchangeably a lot.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick combo.", MNK.JobID, MNK.DragonKick)]
         MonkDragonKickCombo = 2020,
+
+        [OrderedEnum]
+        [ConflictingCombos(MonkAoEComboFormOption)]
+        [CustomComboInfo("Form Shift to Twin Snakes", "Replace Form Shift with Twin Snakes during Perfect Balance.", MNK.JobID, MNK.FormShift)]
+        MonkFormSnakes = 2032,
 
         [OrderedEnum]
         [ConflictingCombos(MonkPerfectBalanceFeatureLockout)]
@@ -648,6 +653,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
+        [ConflictingCombos(MonkFormSnakes)]
         [CustomComboInfo("Form Shift Option", "Enabling this option has Form Shift turn into 1-2-3 AoE combo in Perfect Balance.", MNK.JobID, MNK.FormShift)]
         MonkAoEComboFormOption = 2009,
 
@@ -672,6 +678,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Demolishing Pounce", "Replaces Demolish with Pouncing Coeurl/Snap Punch if Coeurl's Fury is up, as well as vice versa for Pouncing Coeurl in combos.", MNK.JobID, MNK.Demolish)]
         MonkDemolishingPounceFeature = 2031,
+
+        [OrderedEnum]
+        [CustomComboInfo("Perfect Balance Fury Option", "With this enabled, the three above Fury features only apply during Perfect Balance or Form Shift.", MNK.JobID, MNK.DragonKick)]
+        MonkPerfectBalanceFuryOption = 2033,
 
         [OrderedEnum]
         [CustomComboInfo("Dragon Kick/Leaping Opo Balance Feature", "Replaces Dragon Kick and Leaping Opo with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
