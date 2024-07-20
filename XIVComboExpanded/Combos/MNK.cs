@@ -99,7 +99,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return (actionID == MNK.RiddleOfFire && IsActionOffCooldown(MNK.Brotherhood) && !IsActionOffCooldown(MNK.RiddleOfFire) && CanUseAction(MNK.Brotherhood))
+            return (actionID == MNK.RiddleOfFire && IsActionOffCooldown(MNK.Brotherhood) && CanUseAction(MNK.Brotherhood))
                 && (!IsEnabled(CustomComboPreset.MonkBrotherhoodLockoutFeature) || !(HasEffectAny(MNK.Buffs.Brotherhood) && FindEffectAny(MNK.Buffs.Brotherhood)?.RemainingTime > 3)) ? MNK.Brotherhood : actionID;
         }
     }

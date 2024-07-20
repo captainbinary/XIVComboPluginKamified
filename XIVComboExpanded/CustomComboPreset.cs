@@ -705,7 +705,7 @@ namespace XIVComboExpandedestPlugin
         MonkPerfectBalanceFeatureLockout = 2021,
 
         [OrderedEnum]
-        [CustomComboInfo("Riddle of Fire to Brotherhood", "Riddle of Fire becomes Brotherhood if the former is on cooldown and the latter is not.", MNK.JobID, MNK.RiddleOfFire)]
+        [CustomComboInfo("Riddle of Fire to Brotherhood", "Riddle of Fire becomes Brotherhood if Brotherhood is on cooldown.", MNK.JobID, MNK.RiddleOfFire)]
         MonkRiddleToBrotherFeature = 2011,
 
         [OrderedEnum]
