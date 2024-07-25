@@ -219,15 +219,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == SMN.Fester)
-            {
-                var gauge = GetJobGauge<SMNGauge>();
+            var gauge = GetJobGauge<SMNGauge>();
 
-                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergyDrain) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming)) return All.LucidDreaming;
+            if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergyDrain) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming)) return All.LucidDreaming;
 
-                if (!gauge.HasAetherflowStacks)
-                    return SMN.EnergyDrain;
-            }
+            if (!gauge.HasAetherflowStacks)
+                return SMN.EnergyDrain;
 
             return actionID;
         }

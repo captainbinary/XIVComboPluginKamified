@@ -72,6 +72,9 @@ namespace XIVComboExpandedestPlugin.Combos
             BRD.ApexArrow,
             BRD.BlastArrow,
             BRD.RadiantFinale,
+            BRD.EmpyrealArrow,
+            36976, // Resonant Arrow
+            36977, // Radiant Encore
             PLD.NotFatedCircle,
             PLD.NotGnashingFangCombo,
             PLD.NotGnashingFang,
@@ -90,12 +93,15 @@ namespace XIVComboExpandedestPlugin.Combos
             RDM.Resolution,
             RDM.Impact,
             RDM.Scatter,
+            RDM.GrandImpact,
             3545, // Elixir Field
             25882, // Flint Strike
             3543, // Tornado Kick
             25768, // Rising Phoenix
             25769, // Phantom Rush
             25765, // Celestial Revolution (AKA Monk Bunny)
+            36949, // Wind's Reply
+            36950, // Fire's Reply
             0,
         };
 

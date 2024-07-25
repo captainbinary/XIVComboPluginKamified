@@ -226,7 +226,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (OriginalHook(actionID) != actionID)
+            if (OriginalHook(actionID) != actionID && actionID != SGE.Physis && actionID != SGE.Physis2)
                 return OriginalHook(actionID);
 
             if ((actionID == SGE.Physis || actionID == SGE.Physis2) &&

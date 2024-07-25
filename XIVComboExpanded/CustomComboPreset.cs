@@ -1479,6 +1479,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region VIPER
 
+        // last used enum: 4113
+
         [OrderedEnum]
         [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nIn Reawakening, this applies to *all* your combo actions (because it's pretty hard to track your combo step there).", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperTailFeature = 4101,
@@ -1506,6 +1508,11 @@ namespace XIVComboExpandedestPlugin
         ViperTwinTailsFeature = 4108,
 
         [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Twisted Twins", "Replace Twinfang/blood with the other when buffed and active.", VPR.JobID, VPR.Twinfang, VPR.Twinblood)]
+        ViperTwistedTwinsFeature = 4111,
+
+        [OrderedEnum]
         [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and you are on your last stack of Anguine Tribute.", VPR.JobID, VPR.DreadFangs, VPR.DreadMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
         ViperOuroborosFeature = 4105,
 
@@ -1521,7 +1528,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Snapping Fury", "Have Uncoiled Fury replace Writhing Snap if you have Rattling Coil stacks.", VPR.JobID, VPR.WrithingSnap)]
         ViperSnapUncoiledFuryFeature = 4109,
 
+        [OrderedEnum]
+        [CustomComboInfo("Twin Fury", "Have Twinfang/Twinblood replace Uncoiled Fury in order when available after Uncoiled Fury.", VPR.JobID, VPR.UncoiledFury)]
+        ViperTwinFuryFeature = 4112,
 
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Reawakened Fangs", "Steel Fangs will become your entire Reawakening combo while it is available.", VPR.JobID, VPR.SteelFangs)]
+        ViperReawakenedFangsFeature = 4113,
 
         #endregion
         // ====================================================================================

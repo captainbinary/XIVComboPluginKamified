@@ -56,7 +56,12 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
-                Placeholder = 0;
+                HuntersVenom = 3657,
+                SwiftskinsVenom = 3658,
+                FellhuntersVenom = 3659,
+                FellskinsVenom = 3660,
+                PoisedTwinfang = 3665,
+                PoisedTwinblood = 3666;
         }
 
         public static class Debuffs
@@ -170,21 +175,43 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (OriginalHook(VPR.SteelFangs) == VPR.FirstGeneration)
                 {
-                    /*if (IsEnabled(CustomComboPreset.ViperCoilAwakenedOption))
-                    {
-                        if ((actionID == VPR.SteelFangs || actionID == VPR.SteelMaw) && lastComboMove == VPR.ThirdGeneration)
-                            return OriginalHook(VPR.SerpentsTail);
-                        if ((actionID == VPR.DreadFangs || actionID == VPR.DreadMaw) && lastComboMove == VPR.FourthGeneration)
-                            return OriginalHook(VPR.SerpentsTail);
-                    }
-
-                    if (OriginalHook(actionID) == lastComboMove)
-                        return OriginalHook(VPR.SerpentsTail);*/
                     return OriginalHook(VPR.SerpentsTail);
                 }
                 else if (actionID == ReturnParentCombo(lastComboMove))
                 {
                     return OriginalHook(VPR.SerpentsTail);
+                }
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class ViperReawakenedFangsFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperReawakenedFangsFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+
+            var gauge = GetJobGauge<VPRGauge>();
+            var maxTribute = CanUseAction(VPR.Ouroboros) ? 5 : 4;
+            var tribute = (int)gauge.AnguineTribute;
+
+            if (tribute > 0)
+            {
+                switch (tribute)
+                {
+                    case var value when value == maxTribute:
+                        return VPR.FirstGeneration;
+                    case var value when value == maxTribute - 1:
+                        return VPR.SecondGeneration;
+                    case var value when value == maxTribute - 2:
+                        return VPR.ThirdGeneration;
+                    case var value when value == maxTribute - 3:
+                        return VPR.FourthGeneration;
+                    case var value when value == maxTribute - 4:
+                        return VPR.Ouroboros;
                 }
             }
 
@@ -204,7 +231,20 @@ namespace XIVComboExpandedestPlugin.Combos
                     return actionID;
                 if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && new[] { VPR.SteelFangs, VPR.DreadFangs, VPR.HuntersCoil, VPR.SwiftskinsCoil }.Contains(actionID))
                     return actionID;
-                if (new[] { VPR.SteelFangs, VPR.SteelMaw, VPR.HuntersCoil, VPR.HuntersDen }.Contains(actionID))
+
+                if (IsEnabled(CustomComboPreset.ViperTwistedTwinsFeature))
+                {
+                    var fangBuffs = new[] { VPR.Buffs.PoisedTwinfang, VPR.Buffs.HuntersVenom, VPR.Buffs.FellhuntersVenom };
+
+                    if (fangBuffs.Any(x => HasEffect(x)))
+                        return OriginalHook(VPR.Twinfang);
+                    else
+                        return OriginalHook(VPR.Twinblood);
+                }
+
+                var isFang = new[] { VPR.SteelFangs, VPR.SteelMaw, VPR.HuntersCoil, VPR.HuntersDen }.Contains(actionID);
+
+                if (isFang)
                     return OriginalHook(VPR.Twinfang);
                 else
                     return OriginalHook(VPR.Twinblood);
@@ -222,6 +262,44 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (CanUseAction(OriginalHook(VPR.SerpentsTail)))
                 return OriginalHook(VPR.SerpentsTail);
+
+            return actionID;
+        }
+    }
+
+    internal class ViperTwistedTwinsFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperTwistedTwinsFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var fangBuffs = new[] { VPR.Buffs.PoisedTwinfang, VPR.Buffs.HuntersVenom, VPR.Buffs.FellhuntersVenom };
+
+            if (CanUseAction(OriginalHook(VPR.Twinfang)))
+            {
+                if (fangBuffs.Any(x => HasEffect(x)))
+                    return OriginalHook(VPR.Twinfang);
+                else
+                    return OriginalHook(VPR.Twinblood);
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class ViperTwinFuryFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperTwinFuryFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(OriginalHook(VPR.Twinfang)))
+            {
+                if (HasEffect(VPR.Buffs.PoisedTwinfang))
+                    return OriginalHook(VPR.Twinfang);
+                else if (HasEffect(VPR.Buffs.PoisedTwinblood))
+                    return OriginalHook(VPR.Twinblood);
+            }
 
             return actionID;
         }
