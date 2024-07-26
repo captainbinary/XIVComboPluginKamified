@@ -797,7 +797,7 @@ namespace XIVComboExpandedestPlugin
         NinjaTapNinjutsuFeature = 3020,
 
         [OrderedEnum]
-        [CustomComboInfo("Armor Crush / Forked Raiju Feature", "Replaces the Armor Crush combo with Forked Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
+        [CustomComboInfo("Armor Crush / Forked Raiju Feature", "Replaces Armor Crush with Forked Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
         NinjaArmorCrushRaijuFeature = 3012,
 
         [OrderedEnum]
@@ -1479,7 +1479,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region VIPER
 
-        // last used enum: 4113
+        // last used enum: 4114
 
         [OrderedEnum]
         [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nIn Reawakening, this applies to *all* your combo actions (because it's pretty hard to track your combo step there).", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
@@ -1491,8 +1491,13 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(ViperCoilFeature)]
-        [CustomComboInfo("Coiling Dens Swap Option", "Swap the Coil actions for your left/right actions (so Swiftskin's Coil is left and Hunter's Coil is right).", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        [CustomComboInfo("Coiling Dens Coil Swap Option", "Swap the Coil actions for your left/right actions (so Swiftskin's Coil is left and Hunter's Coil is right).", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
         ViperCoilFeatureSwapOption = 4110,
+
+        [OrderedEnum]
+        [ParentCombo(ViperCoilFeature)]
+        [CustomComboInfo("Coiling Dens Den Swap Option", "Swap the Den actions for your left/right actions (so Swiftskin's Den is left and Hunter's Den is right).", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        ViperCoilFeatureDenSwapOption = 4114,
 
         [OrderedEnum]
         [ParentCombo(ViperCoilFeature)]

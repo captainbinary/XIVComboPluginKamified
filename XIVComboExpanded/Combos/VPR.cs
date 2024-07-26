@@ -320,6 +320,7 @@ namespace XIVComboExpandedestPlugin.Combos
             }
 
             bool swap = IsEnabled(CustomComboPreset.ViperCoilFeatureSwapOption);
+            bool denSwap = IsEnabled(CustomComboPreset.ViperCoilFeatureDenSwapOption);
 
             if (actionID == VPR.SteelFangs || actionID == VPR.DreadFangs)
                 if (CanUseAction(VPR.HuntersCoil) || CanUseAction(VPR.SwiftskinsCoil))
@@ -327,7 +328,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (actionID == VPR.SteelMaw || actionID == VPR.DreadMaw)
                 if (CanUseAction(VPR.HuntersDen) || CanUseAction(VPR.SwiftskinsDen))
-                    return actionID == VPR.SteelMaw ? VPR.HuntersDen : VPR.SwiftskinsDen;
+                    return (actionID == VPR.SteelMaw && !denSwap) || (actionID == VPR.DreadMaw && denSwap) ? VPR.HuntersDen : VPR.SwiftskinsDen;
 
             return actionID;
         }

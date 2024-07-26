@@ -115,6 +115,23 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class NinjaArmorCrushRaijuFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaArmorCrushRaijuFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
+            {
+                if (IsEnabled(CustomComboPreset.NinjaSmartRaijuFeature))
+                    return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
+                return NIN.ForkedRaiju;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class NinjaArmorCrushCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaArmorCrushCombo;
