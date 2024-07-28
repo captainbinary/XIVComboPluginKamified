@@ -225,7 +225,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (actionID == GNB.BurstStrike && IsEnabled(CustomComboPreset.GunbreakerBurstStrikeCont) && level >= GNB.Levels.EnhancedContinuation && HasEffect(GNB.Buffs.ReadyToBlast))
                     return GNB.Hypervelocity;
-                if (actionID == GNB.FatedCircle && IsEnabled(CustomComboPreset.GunbreakerFatedCircleContinuation) && OriginalHook(GNB.Continuation) == GNB.FatedBrand)
+                if ((actionID == GNB.FatedCircle || (actionID == GNB.BurstStrike && IsEnabled(CustomComboPreset.GunbreakerBurstStrikeToFatedCircleFeature))) && IsEnabled(CustomComboPreset.GunbreakerFatedCircleContinuation) && OriginalHook(GNB.Continuation) == GNB.FatedBrand)
                     return GNB.FatedBrand;
                 var gauge = GetJobGauge<GNBGauge>();
                 if (gauge.Ammo == 0 && level >= GNB.Levels.Bloodfest)
