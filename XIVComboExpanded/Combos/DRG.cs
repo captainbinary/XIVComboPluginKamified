@@ -166,7 +166,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (lastComboMove == OriginalHook(DRG.FullThrust) && CanUseAction(DRG.FangAndClaw))
                         return DRG.FangAndClaw;
 
-                    if (lastComboMove == DRG.FangAndClaw && CanUseAction(DRG.Drakesbane))
+                    if (CanUseAction(DRG.Drakesbane))
                         return DRG.Drakesbane;
                 }
 
@@ -199,7 +199,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (lastComboMove == OriginalHook(DRG.ChaosThrust) && CanUseAction(DRG.WheelingThrust))
                         return DRG.WheelingThrust;
 
-                    if (lastComboMove == DRG.WheelingThrust && CanUseAction(DRG.Drakesbane))
+                    if (CanUseAction(DRG.Drakesbane))
                         return DRG.Drakesbane;
                 }
 

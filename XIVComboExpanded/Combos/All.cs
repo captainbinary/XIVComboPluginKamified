@@ -1,8 +1,9 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System.Collections.Generic;
+
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 using Microsoft.VisualBasic;
-using System.Collections.Generic;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -17,6 +18,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Raise = 125,
             Ascend = 3603,
             Egeiro = 24287,
+            AngelWhisper = 18317,
             SolidReason = 232,
             AgelessWords = 215,
             WiseToTheWorldMIN = 26521,
@@ -84,10 +86,10 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro)
+            if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro || actionID == All.AngelWhisper)
             {
                 if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast) && !HasEffect(All.Debuffs.Amnesia) && !HasEffect(All.Debuffs.Amnesia2))
-                    || level <= All.Levels.Raise
+                    || (level <= All.Levels.Raise && actionID != All.AngelWhisper)
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
             }
