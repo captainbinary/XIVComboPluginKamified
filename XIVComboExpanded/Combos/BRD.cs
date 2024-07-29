@@ -228,7 +228,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return actionID == BRD.RadiantFinale && CanUseAction(BRD.BattleVoice) && (IsActionOffCooldown(BRD.RadiantFinale) || !CanUseAction(OriginalHook(BRD.RadiantFinale))) && IsActionOffCooldown(BRD.BattleVoice) && !(IsEnabled(CustomComboPreset.BardBattleVoiceLockoutFeature) && HasEffectAny(BRD.Buffs.BattleVoice) && FindEffectAny(BRD.Buffs.BattleVoice)?.RemainingTime > 3) ? BRD.BattleVoice : actionID;
+            if (IsEnabled(CustomComboPreset.BardRadiantVoiceOption) && IsActionOffCooldown(BRD.RadiantFinale) && level >= BRD.Levels.RadiantFinale)
+                return actionID;
+            if ((CanUseAction(BRD.BattleVoice) || level < BRD.Levels.RadiantFinale) && IsActionOffCooldown(BRD.BattleVoice))
+                return BRD.BattleVoice;
+            return actionID;
+            // return actionID == BRD.RadiantFinale && CanUseAction(BRD.BattleVoice) && (IsActionOffCooldown(BRD.RadiantFinale) || !CanUseAction(OriginalHook(BRD.RadiantFinale))) && IsActionOffCooldown(BRD.BattleVoice) && !(IsEnabled(CustomComboPreset.BardBattleVoiceLockoutFeature) && HasEffectAny(BRD.Buffs.BattleVoice) && FindEffectAny(BRD.Buffs.BattleVoice)?.RemainingTime > 3) ? BRD.BattleVoice : actionID;
         }
     }
 
@@ -238,8 +243,11 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return actionID == BRD.RadiantFinale && ((IsActionOffCooldown(BRD.RagingStrikes) && !IsActionOffCooldown(BRD.RadiantFinale)) || (!CanUseAction(OriginalHook(BRD.RadiantFinale))) ||
-                (IsEnabled(CustomComboPreset.BardRadiantFeature) && !IsActionOffCooldown(BRD.BattleVoice) && level < BRD.Levels.RadiantFinale)) ? BRD.RagingStrikes : actionID;
+            if (level < BRD.Levels.RadiantFinale || (IsActionOffCooldown(BRD.RagingStrikes) && !IsActionOffCooldown(BRD.RadiantFinale)))
+                return BRD.RagingStrikes;
+            return actionID;
+            /* return actionID == BRD.RadiantFinale && ((IsActionOffCooldown(BRD.RagingStrikes) && !IsActionOffCooldown(BRD.RadiantFinale)) || (!CanUseAction(OriginalHook(BRD.RadiantFinale))) ||
+                (IsEnabled(CustomComboPreset.BardRadiantFeature) && !IsActionOffCooldown(BRD.BattleVoice) && level < BRD.Levels.RadiantFinale)) ? BRD.RagingStrikes : actionID; */
         }
     }
 

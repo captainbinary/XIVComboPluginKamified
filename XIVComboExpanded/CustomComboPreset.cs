@@ -198,19 +198,19 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BARD
 
-        // latest enum: 2314
+        // latest enum: 2315
 
         [OrderedEnum]
         [CustomComboInfo("Burst Shot into Refulgent Arrow", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
         BardStraightShotUpgradeFeature = 2302,
 
         [OrderedEnum]
-        [CustomComboInfo("Iron Jaws Feature", "Iron Jaws is replaced with Stormbite/Windbite if it is not up, or you do not have Iron Jaws yet.", BRD.JobID, BRD.IronJaws)]
+        [CustomComboInfo("Biting Jaws", "Iron Jaws is replaced with Stormbite/Windbite if it is not up, or you do not have Iron Jaws yet.", BRD.JobID, BRD.IronJaws)]
         BardIronJawsFeature = 2311,
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Iron Jaws Feature Plus", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.\nThis is a separate feature from Iron Jaws Feature, and will overwrite it if both are enabled.", BRD.JobID, BRD.IronJaws)]
+        [CustomComboInfo("Biting Jaws Plus", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.\nThis is a separate feature from Biting Jaws, and will overwrite it if both are enabled.", BRD.JobID, BRD.IronJaws)]
         BardIronJawsFeaturePlus = 2303,
 
         [OrderedEnum]
@@ -231,23 +231,28 @@ namespace XIVComboExpandedestPlugin
         BardPerfectSidesFeature = 2314,
 
         [OrderedEnum]
-        [CustomComboInfo("Radiant Voice Feature", "Replaces Radiant Finale with Battle Voice if Battle Voice is off-cooldown.", BRD.JobID, BRD.RadiantFinale)]
+        [CustomComboInfo("Radiant Voice", "Replaces Radiant Finale with Battle Voice if Battle Voice is off-cooldown.", BRD.JobID, BRD.RadiantFinale)]
         BardRadiantFeature = 2307,
 
         [OrderedEnum]
-        [CustomComboInfo("Radiant Strikes Feature", "Replaces Radiant Finale with Raging Strikes if Raging Strikes is off-cooldown and Radiant Finale is not.\nBattle Voice takes priority if Radiant Voice is enabled.", BRD.JobID, BRD.RadiantFinale)]
+        [ParentCombo(BardRadiantFeature)]
+        [CustomComboInfo("Radiant Voice Evil Option", "Replaces Radiant Finale with Battle Voice after Radiant Finale is used, instead.", BRD.JobID, BRD.RadiantFinale)]
+        BardRadiantVoiceOption = 2315,
+
+        [OrderedEnum]
+        [CustomComboInfo("Radiant Strikes", "Replaces Radiant Finale with Raging Strikes if Raging Strikes is off-cooldown and Radiant Finale is not.\nBattle Voice takes priority if Radiant Voice is enabled.", BRD.JobID, BRD.RadiantFinale)]
         BardRadiantStrikesFeature = 2309,
 
         [OrderedEnum]
-        [CustomComboInfo("Battle Voice Lockout Feature", "Locks out Battle Voice while it is available and more than 3s remain on its buff, to prevent overwriting raid buffs.", BRD.JobID, BRD.BattleVoice)]
+        [CustomComboInfo("Battle Voice Lockout", "Locks out Battle Voice while it is available and more than 3s remain on its buff, to prevent overwriting raid buffs.", BRD.JobID, BRD.BattleVoice)]
         BardBattleVoiceLockoutFeature = 2312,
 
         [OrderedEnum]
-        [CustomComboInfo("Radiant Finale Lockout Feature", "Locks out Radiant Finale while it is available and more than 3s remain on its buff, to prevent overwriting raid buffs.", BRD.JobID, BRD.RadiantFinale)]
+        [CustomComboInfo("Radiant Finale Lockout", "Locks out Radiant Finale while it is available and more than 3s remain on its buff, to prevent overwriting raid buffs.", BRD.JobID, BRD.RadiantFinale)]
         BardRadiantLockoutFeature = 2313,
 
         [OrderedEnum]
-        [CustomComboInfo("Barrage Feature", "Replaces Barrage with Refulgent Arrow/Straight Shot if you have Hawkeye.", BRD.JobID, BRD.Barrage)]
+        [CustomComboInfo("Barraging Arrow", "Replaces Barrage with Refulgent Arrow/Straight Shot if you have Hawkeye.", BRD.JobID, BRD.Barrage)]
         BardBarrageFeature = 2308,
 
         [OrderedEnum]
