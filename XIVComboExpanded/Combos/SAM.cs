@@ -61,7 +61,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Kyuten = 62,
                 Guren = 70,
                 Senei = 72,
-                TsubameGaeshi = 76,
+                TsubameGaeshi = 74,
                 Shoha = 80,
                 Hyosetsu = 86,
                 OgiNamikiri = 90;

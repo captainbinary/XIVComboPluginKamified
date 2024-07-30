@@ -1487,30 +1487,30 @@ namespace XIVComboExpandedestPlugin
         // last used enum: 4114
 
         [OrderedEnum]
-        [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nIn Reawakening, this applies to *all* your combo actions (because it's pretty hard to track your combo step there).", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
+        [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nIn Reawakening, this applies to *all* your combo actions (because it's pretty hard to track your combo step there).", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperTailFeature = 4101,
 
         [OrderedEnum]
-        [CustomComboInfo("Coiling Dens", "Replace your left/right combos with each Coil/Den action while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw)]
+        [CustomComboInfo("Coiling Dens", "Replace your left/right combos with each Coil/Den action while they are available.", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw)]
         ViperCoilFeature = 4102,
 
         [OrderedEnum]
         [ParentCombo(ViperCoilFeature)]
-        [CustomComboInfo("Coiling Dens Coil Swap Option", "Swap the Coil actions for your left/right actions (so Swiftskin's Coil is left and Hunter's Coil is right).", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        [CustomComboInfo("Coiling Dens Coil Swap Option", "Swap the Coil actions for your left/right actions (so Swiftskin's Coil is left and Hunter's Coil is right).", VPR.JobID, VPR.SteelMaw, VPR.ReavingMaw)]
         ViperCoilFeatureSwapOption = 4110,
 
         [OrderedEnum]
         [ParentCombo(ViperCoilFeature)]
-        [CustomComboInfo("Coiling Dens Den Swap Option", "Swap the Den actions for your left/right actions (so Swiftskin's Den is left and Hunter's Den is right).", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        [CustomComboInfo("Coiling Dens Den Swap Option", "Swap the Den actions for your left/right actions (so Swiftskin's Den is left and Hunter's Den is right).", VPR.JobID, VPR.SteelMaw, VPR.ReavingMaw)]
         ViperCoilFeatureDenSwapOption = 4114,
 
         [OrderedEnum]
         [ParentCombo(ViperCoilFeature)]
-        [CustomComboInfo("Coiling Dens Reawakening Option", "Additionally replace your aoe combos with Third/Fourth Generation instead of First/Second.", VPR.JobID, VPR.SteelMaw, VPR.DreadMaw)]
+        [CustomComboInfo("Coiling Dens Reawakening Option", "Additionally replace your aoe combos with Third/Fourth Generation instead of First/Second.", VPR.JobID, VPR.SteelMaw, VPR.ReavingMaw)]
         ViperCoilAwakenedOption = 4103,
 
         [OrderedEnum]
-        [CustomComboInfo("Bloody Fangs", "Replace your left/right combos and Coil/Den moves with the Twinfang/blood actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.DreadFangs, VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
+        [CustomComboInfo("Bloody Fangs", "Replace your left/right combos and Coil/Den moves with the Twinfang/blood actions while they are available.", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperBloodFangFeature = 4104,
 
         [OrderedEnum]
@@ -1523,15 +1523,15 @@ namespace XIVComboExpandedestPlugin
         ViperTwistedTwinsFeature = 4111,
 
         [OrderedEnum]
-        [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and you are on your last stack of Anguine Tribute.", VPR.JobID, VPR.DreadFangs, VPR.DreadMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
+        [CustomComboInfo("Atmospheric Ouroboros", "Replace Fourth Generation with Ouroboros if it is available and you are on your last stack of Anguine Tribute.", VPR.JobID, VPR.ReavingFangs, VPR.ReavingMaw, VPR.SwiftskinsCoil, VPR.SwiftskinsDen)]
         ViperOuroborosFeature = 4105,
 
         [OrderedEnum]
-        [CustomComboInfo("Writhing Steel Fang", "Replace your Steel Fang combo with Writhing Snap while out of melee range.", VPR.JobID, VPR.SteelFangs)]
+        [CustomComboInfo("Writhing Steel Fangs", "Replace your Steel Fangs combo with Writhing Snap while out of melee range.", VPR.JobID, VPR.SteelFangs)]
         ViperSteelFangRangedFeature = 4106,
 
         [OrderedEnum]
-        [CustomComboInfo("Slithering Dread Fang", "Replace your Dread Fang combo with Slither while out of melee range or targeting a player.", VPR.JobID, VPR.DreadFangs)]
+        [CustomComboInfo("Slithering Reaving Fangs", "Replace your Reaving Fangs combo with Slither while out of melee range or targeting a player.", VPR.JobID, VPR.ReavingFangs)]
         ViperDreadFangDashFeature = 4107,
 
         [OrderedEnum]

@@ -19,7 +19,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         public const uint
             SteelFangs = 34606,
-            DreadFangs = 34607,
+            ReavingFangs = 34607,
             HuntersSting = 34608,
             SwiftskinsSting = 34609,
             FlankstingStrike = 34610,
@@ -27,7 +27,7 @@ namespace XIVComboExpandedestPlugin.Combos
             HindstingStrike = 34612,
             HindsbaneFang = 34613,
             SteelMaw = 34614,
-            DreadMaw = 34615,
+            ReavingMaw = 34615,
             HuntersBite = 34616,
             SwiftskinsBite = 34617,
             JaggedMaw = 34618,
@@ -90,7 +90,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return VPR.Ouroboros;
                 if (IsEnabled(CustomComboPreset.ViperCoilAwakenedOption))
                 {
-                    if (actionID == VPR.DreadMaw)
+                    if (actionID == VPR.ReavingMaw)
                         return VPR.Ouroboros;
                 }
             }
@@ -159,11 +159,11 @@ namespace XIVComboExpandedestPlugin.Combos
                     return VPR.SteelFangs;
                 case VPR.FlanksbaneFang:
                 case VPR.HindsbaneFang:
-                    return VPR.DreadFangs;
+                    return VPR.ReavingFangs;
                 case VPR.JaggedMaw:
                     return VPR.SteelMaw;
                 case VPR.BloodiedMaw:
-                    return VPR.DreadMaw;
+                    return VPR.ReavingMaw;
             }
 
             return lastComboMove;
@@ -227,9 +227,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (CanUseAction(OriginalHook(VPR.Twinfang)))
             {
-                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && new[] { VPR.SteelMaw, VPR.DreadMaw, VPR.HuntersDen, VPR.SwiftskinsDen }.Contains(actionID))
+                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && new[] { VPR.SteelMaw, VPR.ReavingMaw, VPR.HuntersDen, VPR.SwiftskinsDen }.Contains(actionID))
                     return actionID;
-                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && new[] { VPR.SteelFangs, VPR.DreadFangs, VPR.HuntersCoil, VPR.SwiftskinsCoil }.Contains(actionID))
+                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && new[] { VPR.SteelFangs, VPR.ReavingFangs, VPR.HuntersCoil, VPR.SwiftskinsCoil }.Contains(actionID))
                     return actionID;
 
                 if (IsEnabled(CustomComboPreset.ViperTwistedTwinsFeature))
@@ -315,20 +315,20 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (actionID == VPR.SteelMaw)
                     return OriginalHook(VPR.HuntersCoil);
-                if (actionID == VPR.DreadMaw)
+                if (actionID == VPR.ReavingMaw)
                     return OriginalHook(VPR.SwiftskinsCoil);
             }
 
             bool swap = IsEnabled(CustomComboPreset.ViperCoilFeatureSwapOption);
             bool denSwap = IsEnabled(CustomComboPreset.ViperCoilFeatureDenSwapOption);
 
-            if (actionID == VPR.SteelFangs || actionID == VPR.DreadFangs)
+            if (actionID == VPR.SteelFangs || actionID == VPR.ReavingFangs)
                 if (CanUseAction(VPR.HuntersCoil) || CanUseAction(VPR.SwiftskinsCoil))
-                    return (actionID == VPR.SteelFangs && !swap) || (actionID == VPR.DreadFangs && swap) ? VPR.HuntersCoil : VPR.SwiftskinsCoil;
+                    return (actionID == VPR.SteelFangs && !swap) || (actionID == VPR.ReavingFangs && swap) ? VPR.HuntersCoil : VPR.SwiftskinsCoil;
 
-            if (actionID == VPR.SteelMaw || actionID == VPR.DreadMaw)
+            if (actionID == VPR.SteelMaw || actionID == VPR.ReavingMaw)
                 if (CanUseAction(VPR.HuntersDen) || CanUseAction(VPR.SwiftskinsDen))
-                    return (actionID == VPR.SteelMaw && !denSwap) || (actionID == VPR.DreadMaw && denSwap) ? VPR.HuntersDen : VPR.SwiftskinsDen;
+                    return (actionID == VPR.SteelMaw && !denSwap) || (actionID == VPR.ReavingMaw && denSwap) ? VPR.HuntersDen : VPR.SwiftskinsDen;
 
             return actionID;
         }
