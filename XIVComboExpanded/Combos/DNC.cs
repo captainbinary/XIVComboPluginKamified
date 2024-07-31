@@ -262,7 +262,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.ReverseCascade)
             {
-                if (this.FilteredLastComboMove == DNC.Windmill || this.FilteredLastComboMove == DNC.Bladeshower)
+                if ((this.FilteredLastComboMove == DNC.Windmill || this.FilteredLastComboMove == DNC.Bladeshower) && IsEnabled(CustomComboPreset.DancerReverseCascadeComboAoE))
                 {
                     if (level >= DNC.Levels.Bloodshower && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
                         return DNC.Bloodshower;
