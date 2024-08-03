@@ -263,7 +263,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DANCER
 
-        // latest enum: 3821
+        // latest enum: 3822
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -342,6 +342,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Standard Step into Last Dance", "Change Standard Step into Last Dance when available.", DNC.JobID, DNC.StandardStep)]
         DancerLastDanceFeature = 3821,
+
+        [OrderedEnum]
+        [CustomComboInfo("Standard Step into Technical Step", "Change Standard Step into Technical Step when Standard Step is on cooldown.", DNC.JobID, DNC.StandardStep)]
+        DancerStandardechnicalStepFeature = 3822,
 
         [OrderedEnum]
         [CustomComboInfo("Technical Step Lockout Feature", "Locks out Technical Step while it is available and more than 8s remain on its raid buff, to prevent overwriting raid buffs.", DNC.JobID, DNC.TechnicalStep)]

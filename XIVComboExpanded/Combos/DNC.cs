@@ -180,6 +180,25 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class DancerStandardechnicalStepFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerStandardechnicalStepFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (OriginalHook(DNC.TechnicalStep) != DNC.TechnicalStep)
+                return OriginalHook(DNC.TechnicalStep);
+
+            if (IsEnabled(CustomComboPreset.DancerTechnicalLockoutFeature) && HasEffectAny(DNC.Buffs.TechnicalFinish) && FindEffectAny(DNC.Buffs.TechnicalFinish)?.RemainingTime > 8)
+                return actionID;
+
+            if (CanUseAction(DNC.TechnicalStep) && IsActionOffCooldown(DNC.TechnicalStep) && !IsActionOffCooldown(DNC.StandardStep))
+                return DNC.TechnicalStep;
+
+            return actionID;
+        }
+    }
+
     internal class DancerLastDanceFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DancerLastDanceFeature;
