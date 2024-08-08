@@ -128,7 +128,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DRG.FullThrust || actionID == DRG.HeavensThrust)
             {
-                if (lastComboMove == OriginalHook(DRG.Disembowel) && comboTime > 0) return OriginalHook(DRG.ChaosThrust);
+                if (lastComboMove == OriginalHook(DRG.Disembowel) && comboTime > 0 && level >= DRG.Levels.ChaosThrust) return OriginalHook(DRG.ChaosThrust);
 
                 if (lastComboMove == OriginalHook(DRG.ChaosThrust) && CanUseAction(DRG.WheelingThrust))
                     return DRG.WheelingThrust;
