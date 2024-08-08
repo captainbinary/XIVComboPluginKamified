@@ -367,7 +367,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DRAGOON
 
-        // latest enum: 2219
+        // latest enum: 2220
 
         [OrderedEnum]
         [CustomComboInfo("Heavens' Thrust Combo", "Replace Heavens'/Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
@@ -393,8 +393,12 @@ namespace XIVComboExpandedestPlugin
         DragoonChaosThrustComboOption = 2209,
 
         [OrderedEnum]
-        [CustomComboInfo("Heavens' Thrust to Chaotic Spring", "Heavens'/Full Thrust becomes Chaotic Spring/Chaos Thrust after using Spiral Blow/Disembowel. Works even with combos on.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        [CustomComboInfo("Heavens' Thrust to Chaotic Spring", "Heavens'/Full Thrust becomes Chaotic Spring/Chaos Thrust after using Spiral Blow/Disembowel.\nWith combos, the Heavens' Thrust combo becomes the Chaotic Spring combo.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullChaosFeature = 2215,
+
+        [OrderedEnum]
+        [CustomComboInfo("Chaotic Glide", "Spiral Blow/Disembowel and Chaotic Spring/Chaos Thrust (plus their combos) become Winged Glide when out of melee range.", DRG.JobID, DRG.Disembowel, DRG.SpiralBlow, DRG.ChaosThrust, DRG.ChaoticSpring)]
+        DragoonChaoticGlideFeature = 2220,
 
         [OrderedEnum]
         [CustomComboInfo("True/Raiden Thrust to Wyrmwind", "Replace True/Raiden Thrust with Wyrmwind Thrust when available.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust, DRG.TrueThrust)]

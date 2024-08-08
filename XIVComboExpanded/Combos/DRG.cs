@@ -1,5 +1,6 @@
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
+using System.Linq;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -13,6 +14,7 @@ namespace XIVComboExpandedestPlugin.Combos
             TrueThrust = 75,
             VorpalThrust = 78,
             Disembowel = 87,
+            SpiralBlow = 36955,
             FullThrust = 84,
             ChaosThrust = 88,
             HeavensThrust = 25771,
@@ -22,6 +24,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Drakesbane = 36952,
             RaidenThrust = 16479,
             PiercingTalon = 90,
+            WingedGlide = 36951,
             // AoE
             DoomSpike = 86,
             SonicThrust = 7397,
@@ -74,6 +77,21 @@ namespace XIVComboExpandedestPlugin.Combos
                 HighJump = 74,
                 RaidenThrust = 76,
                 Stardiver = 80;
+        }
+    }
+
+    internal class DragoonChaoticGlideFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DragoonChaoticGlideFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (new[] { DRG.Disembowel, DRG.SpiralBlow, DRG.ChaosThrust, DRG.ChaoticSpring }.Contains(actionID) && !InMeleeRange() && CanUseAction(DRG.WingedGlide))
+            {
+                return DRG.WingedGlide;
+            }
+
+            return actionID;
         }
     }
 
