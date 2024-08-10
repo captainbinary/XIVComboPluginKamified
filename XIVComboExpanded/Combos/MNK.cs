@@ -123,7 +123,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<MNKGauge>();
-            return !HasCondition(ConditionFlag.InCombat) && gauge.Chakra < 5 ? OriginalHook(MNK.Meditation) : actionID;
+            return !HasCondition(ConditionFlag.InCombat) && gauge.Chakra < 5 && CanUseAction(OriginalHook(MNK.Meditation)) ? OriginalHook(MNK.Meditation) : actionID;
         }
     }
 
