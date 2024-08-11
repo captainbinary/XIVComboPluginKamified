@@ -10,6 +10,7 @@ using System.Linq;
 
 using Dalamud.Game.ClientState.JobGauge.Types;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
+using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -56,12 +57,20 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
+                FlankstungVenom = 3645,
+                FlanksbaneVenom = 3646,
+                HindstungVenom = 3647,
+                HindsbaneVenom = 3648,
+                GrimhuntersVenom = 3649,
+                GrimskinsVenom = 3650,
                 HuntersVenom = 3657,
                 SwiftskinsVenom = 3658,
                 FellhuntersVenom = 3659,
                 FellskinsVenom = 3660,
                 PoisedTwinfang = 3665,
-                PoisedTwinblood = 3666;
+                PoisedTwinblood = 3666,
+                HonedSteel = 3672,
+                HonedReavers = 3772;
         }
 
         public static class Debuffs
@@ -177,7 +186,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     return OriginalHook(VPR.SerpentsTail);
                 }
-                else if (actionID == ReturnParentCombo(lastComboMove))
+                else if (actionID == ReturnParentCombo(lastComboMove) || IsEnabled(CustomComboPreset.ViperStrikingFangsFeature))
                 {
                     return OriginalHook(VPR.SerpentsTail);
                 }
@@ -329,6 +338,67 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == VPR.SteelMaw || actionID == VPR.ReavingMaw)
                 if (CanUseAction(VPR.HuntersDen) || CanUseAction(VPR.SwiftskinsDen))
                     return (actionID == VPR.SteelMaw && !denSwap) || (actionID == VPR.ReavingMaw && denSwap) ? VPR.HuntersDen : VPR.SwiftskinsDen;
+
+            return actionID;
+        }
+    }
+
+    internal class ViperReavingSteelFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperReavingSteelFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (OriginalHook(actionID) == actionID)
+            {
+                if (actionID == VPR.SteelFangs || actionID == VPR.ReavingFangs)
+                {
+                    if (HasEffect(VPR.Buffs.HonedReavers))
+                        return VPR.ReavingFangs;
+                    if (HasEffect(VPR.Buffs.HonedSteel))
+                        return VPR.SteelFangs;
+                }
+                if (actionID == VPR.SteelMaw || actionID == VPR.ReavingMaw)
+                {
+                    if (HasEffect(VPR.Buffs.HonedReavers))
+                        return VPR.ReavingMaw;
+                    if (HasEffect(VPR.Buffs.HonedSteel))
+                        return VPR.SteelMaw;
+                }
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class ViperStrikingFangsFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ViperStrikingFangsFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (new[] { VPR.HuntersSting, VPR.SwiftskinsSting, VPR.HuntersBite, VPR.SwiftskinsBite }.Contains(lastComboMove) && GetJobGauge<VPRGauge>().AnguineTribute == 0)
+            {
+                if (actionID == VPR.SteelFangs || actionID == VPR.ReavingFangs)
+                {
+                    if (HasEffect(VPR.Buffs.FlankstungVenom))
+                        return VPR.FlankstingStrike;
+                    if (HasEffect(VPR.Buffs.FlanksbaneVenom))
+                        return VPR.FlanksbaneFang;
+                    if (HasEffect(VPR.Buffs.HindstungVenom))
+                        return VPR.HindstingStrike;
+                    if (HasEffect(VPR.Buffs.HindsbaneVenom))
+                        return VPR.HindsbaneFang;
+                }
+
+                if (actionID == VPR.SteelMaw || actionID == VPR.ReavingMaw)
+                {
+                    if (HasEffect(VPR.Buffs.GrimhuntersVenom))
+                        return VPR.JaggedMaw;
+                    if (HasEffect(VPR.Buffs.GrimskinsVenom))
+                        return VPR.BloodiedMaw;
+                }
+            }
 
             return actionID;
         }

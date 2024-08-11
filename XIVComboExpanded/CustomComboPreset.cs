@@ -11,7 +11,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MULTIPLE CLASSES/DOL
 
-        // Latest enum: 9011
+        // Latest enum: 9013
 
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE/BLU with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro, All.AngelWhisper)]
@@ -56,6 +56,14 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Cast Light / Electric Current Feature", "Replace Cast Light with Electric Current when underwater.", All.JobID, All.CastLight)]
         DolCastLightElectricCurrentFeature = 9009,
+
+        [OrderedEnum]
+        [CustomComboInfo("Hooking Hooksets", "Replace Precision/Powerful Hookset with Hook when it is available and you do not have Inefficient Hooking.", All.JobID, All.PrecisionHookset, All.PowerfulHookset)]
+        DolHookingHooksetsFeature = 9012,
+
+        [OrderedEnum]
+        [CustomComboInfo("Chummy Cast", "Replace Chum with Cast if Chum has already been used or you have less than 100 GP (less than 150 if you have Inefficient Hooking).", All.JobID, All.Chum)]
+        DolChummyCastFeature = 9013,
 
         #endregion
 
@@ -1492,11 +1500,20 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region VIPER
 
-        // last used enum: 4114
+        // last used enum: 4116
 
         [OrderedEnum]
         [CustomComboInfo("Fanged Tails", "Your last-used action becomes Serpent's Tail when it is active.\nIn Reawakening, this applies to *all* your combo actions (because it's pretty hard to track your combo step there).", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen)]
         ViperTailFeature = 4101,
+
+        [OrderedEnum]
+        [CustomComboInfo("Reaving Steel", "Steel/Reaving Fangs/Maw will become whatever current combo starter is empowered.", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw)]
+        ViperReavingSteelFeature = 4115,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Striking Fangs", "The last action of your combo will become whatever usable combo ender is currently empowered.", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw)]
+        ViperStrikingFangsFeature = 4116,
 
         [OrderedEnum]
         [CustomComboInfo("Coiling Dens", "Replace your left/right combos with each Coil/Den action while they are available.", VPR.JobID, VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw)]

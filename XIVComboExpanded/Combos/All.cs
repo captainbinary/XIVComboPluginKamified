@@ -31,6 +31,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Hook = 296,
             CastLight = 2135,
             Snagging = 4100,
+            Chum = 4104,
+            PrecisionHookset = 4179,
+            PowerfulHookset = 4103,
             SurfaceSlap = 4595,
             Gig = 7632,
             VeteranTrade = 7906,
@@ -51,7 +54,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 EurekaMoment = 2765,
                 Troubadour = 1934,
                 Tactician = 1951,
-                ShieldSamba = 1826;
+                ShieldSamba = 1826,
+                Chum = 763;
         }
 
         public static class Debuffs
@@ -61,7 +65,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 Feint = 1195,
                 Addle = 1203,
                 Amnesia = 5,
-                Amnesia2 = 1092;
+                Amnesia2 = 1092,
+                InefficientHooking = 764;
         }
 
         public static class Levels
@@ -208,6 +213,49 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (HasCondition(ConditionFlag.Diving))
                     return All.ElectricCurrent;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class DoLHookingHooksetsFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DolHookingHooksetsFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == All.PrecisionHookset || actionID == All.PowerfulHookset)
+            {
+                if (CanUseAction(All.Hook) && !HasEffect(All.Debuffs.InefficientHooking))
+                    return All.Hook;
+                if (HasCondition(ConditionFlag.Diving) && IsEnabled(CustomComboPreset.DolCastGigFeature))
+                    return All.Gig;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class DoLChummyCastFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DolChummyCastFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == All.Chum && LocalPlayer is not null)
+            {
+                if (HasCondition(ConditionFlag.Fishing) && IsEnabled(CustomComboPreset.DolCastHookFeature))
+                    return All.Hook;
+                if (HasCondition(ConditionFlag.Diving) && IsEnabled(CustomComboPreset.DolCastGigFeature))
+                    return All.Gig;
+
+                if (LocalPlayer.CurrentGp < 100 ||
+                    (LocalPlayer.CurrentGp < 150 && HasEffect(All.Debuffs.InefficientHooking)) ||
+                    HasEffect(All.Buffs.Chum))
+                {
+                    return All.Cast;
+                }
             }
 
             return actionID;
