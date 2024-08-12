@@ -232,16 +232,26 @@ namespace XIVComboExpandedestPlugin.Combos
             uint[] aoes = { MCH.SpreadShot, MCH.Scattergun };
             if (level >= MCH.Levels.Chainsaw)
             {
-                if (IsActionOffCooldown(OriginalHook(MCH.Chainsaw)) && !noChainsaw)
-                    return OriginalHook(MCH.Chainsaw);
-                if (GetCooldown(MCH.Drill).CooldownRemaining <= 20 && IsEnabled(CustomComboPreset.MachinistBioDrillFeature) && CanUseAction(MCH.Bioblaster))
+                if (GetCooldown(MCH.Drill).CooldownRemaining == 0 && IsEnabled(CustomComboPreset.MachinistBioDrillFeature) && CanUseAction(MCH.Bioblaster)) // Bioblaster if full charges
                     if (Array.Exists(aoes, element => element == lastComboMove) && !HasEffect(MCH.Buffs.Reassemble))
                         return MCH.Bioblaster;
-                if (IsActionOffCooldown(MCH.AirAnchor))
+                if (!Array.Exists(aoes, element => element == lastComboMove) && IsActionOffCooldown(MCH.AirAnchor)) // Air Anchor if not in AoE
                     return MCH.AirAnchor;
-                if (GetCooldown(MCH.Drill).CooldownRemaining <= 20)
+                if (!Array.Exists(aoes, element => element == lastComboMove) && GetCooldown(MCH.Drill).CooldownRemaining == 0) // Drill if not in AoE and full charges
                     return MCH.Drill;
-                return noChainsaw ? MCH.AirAnchor : OriginalHook(MCH.Chainsaw);
+                if (IsActionOffCooldown(MCH.Chainsaw) && !noChainsaw) // Chainsaw
+                    return MCH.Chainsaw;
+                if (GetCooldown(MCH.Drill).CooldownRemaining <= 20) // Drill/Bioblaster if not full on charges
+                {
+                    if (IsEnabled(CustomComboPreset.MachinistBioDrillFeature) && CanUseAction(MCH.Bioblaster))
+                        if (Array.Exists(aoes, element => element == lastComboMove) && !HasEffect(MCH.Buffs.Reassemble))
+                            return MCH.Bioblaster;
+                    return MCH.Drill;
+                }
+
+                if (Array.Exists(aoes, element => element == lastComboMove) && IsActionOffCooldown(MCH.AirAnchor)) // Air Anchor if AoE
+                    return MCH.AirAnchor;
+                return noChainsaw ? MCH.AirAnchor : OriginalHook(MCH.Chainsaw); // Chainsaw cooldown or Excavator
             }
 
             if (level >= MCH.Levels.AirAnchor)
