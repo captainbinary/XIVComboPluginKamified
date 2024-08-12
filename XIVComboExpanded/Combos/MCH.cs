@@ -241,6 +241,8 @@ namespace XIVComboExpandedestPlugin.Combos
                     return MCH.Drill;
                 if (IsActionOffCooldown(MCH.Chainsaw) && !noChainsaw) // Chainsaw
                     return MCH.Chainsaw;
+                if (OriginalHook(MCH.Chainsaw) != MCH.Chainsaw) // Excavator
+                    return OriginalHook(MCH.Chainsaw);
                 if (GetCooldown(MCH.Drill).CooldownRemaining <= 20) // Drill/Bioblaster if not full on charges
                 {
                     if (IsEnabled(CustomComboPreset.MachinistBioDrillFeature) && CanUseAction(MCH.Bioblaster))
