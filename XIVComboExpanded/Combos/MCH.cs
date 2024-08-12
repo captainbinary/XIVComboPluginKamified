@@ -246,7 +246,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (GetCooldown(MCH.Drill).CooldownRemaining <= 20) // Drill/Bioblaster if not full on charges
                 {
                     if (IsEnabled(CustomComboPreset.MachinistBioDrillFeature) && CanUseAction(MCH.Bioblaster))
-                        if (Array.Exists(aoes, element => element == lastComboMove) && !HasEffect(MCH.Buffs.Reassemble))
+                        if (Array.Exists(aoes, element => element == lastComboMove) && !HasEffect(MCH.Buffs.Reassemble) && !HasEffect(MCH.Buffs.Reassemble))
                             return MCH.Bioblaster;
                     return MCH.Drill;
                 }
