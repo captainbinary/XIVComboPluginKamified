@@ -381,13 +381,13 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (actionID == VPR.SteelFangs || actionID == VPR.ReavingFangs)
                 {
-                    if (HasEffect(VPR.Buffs.FlankstungVenom))
+                    if (HasEffect(VPR.Buffs.FlankstungVenom) && lastComboMove == VPR.HuntersSting)
                         return VPR.FlankstingStrike;
-                    if (HasEffect(VPR.Buffs.FlanksbaneVenom))
+                    if (HasEffect(VPR.Buffs.FlanksbaneVenom) && lastComboMove == VPR.HuntersSting)
                         return VPR.FlanksbaneFang;
-                    if (HasEffect(VPR.Buffs.HindstungVenom))
+                    if (HasEffect(VPR.Buffs.HindstungVenom) && lastComboMove == VPR.SwiftskinsSting)
                         return VPR.HindstingStrike;
-                    if (HasEffect(VPR.Buffs.HindsbaneVenom))
+                    if (HasEffect(VPR.Buffs.HindsbaneVenom) && lastComboMove == VPR.SwiftskinsSting)
                         return VPR.HindsbaneFang;
                 }
 
