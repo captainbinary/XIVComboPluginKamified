@@ -153,12 +153,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var currentAction = !CanUseAction(OriginalHook(MCH.Chainsaw)) && IsEnabled(CustomComboPreset.MachinistReassembleOption) ? MCH.Drill : OriginalHook(MCH.Chainsaw);
 
-            if (IsEnabled(CustomComboPreset.MachinistChainsawFeature))
-            {
-                currentAction = MachinistChainsawFeature.ChooseChainsawAction(level, this.FilteredLastComboMove);
-            }
+            var currentAction = MachinistChainsawFeature.ChooseChainsawAction(level, this.FilteredLastComboMove);
 
             var cooldownElapsed = GetCooldown(currentAction).CooldownElapsed;
             // This delay makes sure you don't fatfinger Reassemble twice if you are using it after it gets charges and are smashing the button.

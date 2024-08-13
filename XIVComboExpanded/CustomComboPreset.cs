@@ -606,15 +606,6 @@ namespace XIVComboExpandedestPlugin
         MachinistHyperfireFeature = 3107,
 
         [OrderedEnum]
-        [CustomComboInfo("Reassemble to Chainsaw", "Reassemble becomes Chainsaw while Reassemble is active.", MCH.JobID, MCH.Reassemble)]
-        MachinistReassembleFeature = 3111,
-
-        [OrderedEnum]
-        [ParentCombo(MachinistReassembleFeature)]
-        [CustomComboInfo("Reassemble to Chainsaw: Drill Sync", "Chainsaw on Reassemble becomes Drill while synced, for muscle memory purposes.", MCH.JobID, MCH.Reassemble)]
-        MachinistReassembleOption = 3112,
-
-        [OrderedEnum]
         [CustomComboInfo("Drill to Bioblaster", "Drill becomes Bioblaster if Reassemble is not active and your last combo action was Spread Shot/Scattergun.", MCH.JobID, MCH.Drill)]
         MachinistBioDrillFeature = 3114,
 
@@ -631,8 +622,14 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Chainsaw Cycling Feature", "Replace Chainsaw with Air Anchor and then Drill, in a priority system. Does not replace any other actions, so you can easily watch their cooldowns.", MCH.JobID, MCH.Chainsaw)]
+        [CustomComboInfo("Chainsaw Cycling Feature", "Replace Chainsaw with Air Anchor and Drill, based on the priority of each cooldown. Does not replace any other actions, so you can easily watch their cooldowns.", MCH.JobID, MCH.Chainsaw)]
         MachinistChainsawFeature = 3113,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [ParentCombo(MachinistChainsawFeature)]
+        [CustomComboInfo("Reassemble to Chainsaw", "Reassemble becomes Chainsaw's cycling actions while Reassemble is active.", MCH.JobID, MCH.Reassemble)]
+        MachinistReassembleFeature = 3111,
 
         #endregion
         // ====================================================================================
