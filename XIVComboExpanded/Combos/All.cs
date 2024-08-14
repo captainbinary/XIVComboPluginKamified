@@ -45,7 +45,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Addle = 7560,
             Troubadour = 7405,
             Tactician = 16889,
-            ShieldSamba = 16012;
+            ShieldSamba = 16012,
+            Sprint = 3,
+            IsleSprint = 31314;
 
         public static class Buffs
         {
@@ -98,6 +100,18 @@ namespace XIVComboExpandedestPlugin.Combos
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
             }
+
+            return actionID;
+        }
+    }
+
+    internal class AllIsleSprintFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AllIsleSprintFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (Service.ClientState.TerritoryType == 1055) return All.IsleSprint;
 
             return actionID;
         }

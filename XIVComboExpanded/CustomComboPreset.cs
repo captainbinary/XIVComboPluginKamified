@@ -11,11 +11,15 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MULTIPLE CLASSES/DOL
 
-        // Latest enum: 9013
+        // Latest enum: 9014
 
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE/BLU with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro, All.AngelWhisper)]
         AllSwiftcastFeature = 9001,
+
+        [OrderedEnum]
+        [CustomComboInfo("Isle Sprint", "Replaces Sprint with Isle Sprint while you're in your Island Sanctuary.\nBecause apparently this hasn't been updated in SimpleTweaks after two months.", All.JobID, All.Sprint)]
+        AllIsleSprintFeature = 9014,
 
         [OrderedEnum]
         [CustomComboInfo("Eureka Feature", "Replaces Solid Reason/Ageless Words with Wise to the World when you have Eureka Moment up.", All.JobID, All.SolidReason, All.AgelessWords)]
