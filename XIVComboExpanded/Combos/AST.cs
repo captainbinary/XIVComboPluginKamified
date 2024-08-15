@@ -149,7 +149,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (OriginalHook(actionID) != actionID)
                 return OriginalHook(actionID);
-            return OriginalHook(actionID) == actionID && HasCondition(ConditionFlag.InCombat) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
+            return OriginalHook(actionID) == actionID && HasCondition(ConditionFlag.InCombat) && IsActionOffCooldown(All.LucidDreaming) && GetCooldown(actionID).CooldownRemaining > Service.Configuration.LucidCooldownOffset && LocalPlayer?.CurrentMp <= Service.Configuration.LucidMPThreshold && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }
 }

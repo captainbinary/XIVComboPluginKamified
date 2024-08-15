@@ -247,7 +247,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(level >= SGE.Levels.Physis2 ? SGE.Physis2 : SGE.Physis) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming))
                 return All.LucidDreaming;
 
-            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
+            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && GetCooldown(actionID).CooldownRemaining > Service.Configuration.LucidCooldownOffset && LocalPlayer?.CurrentMp <= Service.Configuration.LucidMPThreshold && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }
 }

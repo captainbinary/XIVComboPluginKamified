@@ -24,3 +24,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters should be on same line or separate lines", Justification = "Stop", Scope = "namespaceanddescendants", Target = "~N:XIVComboExpandedestPlugin")]
 [assembly: SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1201:Elements should appear in the correct order", Justification = "Shush", Scope = "member", Target = "~P:XIVComboExpandedestPlugin.PluginConfiguration.SecretCombos")]
 [assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:Elements should be documented", Justification = "<Pending>", Scope = "member", Target = "~P:XIVComboExpandedestPlugin.XIVComboExpandedestPlugin.Framework")]
+[assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1500:Braces for multi-line statements should not share line", Justification = "<Pending>", Scope = "member", Target = "~M:XIVComboExpandedestPlugin.ConfigWindow.Draw")]

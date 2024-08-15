@@ -223,6 +223,30 @@ namespace XIVComboExpandedestPlugin
                             ImGui.Spacing();
                         }
 
+                        if (new[] { CustomComboPreset.AstrologianLucidReminderFeature, CustomComboPreset.RedMageLucidReminderFeature, CustomComboPreset.SageLucidReminderFeature,
+                                    CustomComboPreset.ScholarLucidReminderFeature, CustomComboPreset.SummonerLucidReminderFeature, CustomComboPreset.WhiteMageLucidReminderFeature, }.Contains(preset) && enabled)
+                        {
+                            int lucidThreshold = (int)Service.Configuration.LucidMPThreshold;
+                            var lucidOffset = (float)Service.Configuration.LucidCooldownOffset;
+
+                            ImGui.Indent();
+                            var inputChanged = false;
+                            inputChanged |= ImGui.InputInt("MP Threshold", ref lucidThreshold, 0);
+                            inputChanged |= ImGui.InputFloat("Cooldown Remaining Offset", ref lucidOffset);
+                            ImGui.Unindent();
+
+                            if (inputChanged)
+                            {
+                                lucidThreshold = Math.Clamp(lucidThreshold, 0, 10000);
+                                lucidOffset = Math.Clamp(lucidOffset, 0, 100);
+                                Service.Configuration.LucidMPThreshold = (uint)lucidThreshold;
+                                Service.Configuration.LucidCooldownOffset = (double)lucidOffset;
+                                Service.Configuration.Save();
+                            }
+
+                            ImGui.Spacing();
+                        }
+
                         if (parent != null)
                             ImGui.Unindent();
 

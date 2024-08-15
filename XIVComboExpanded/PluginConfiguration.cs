@@ -67,6 +67,16 @@ namespace XIVComboExpandedestPlugin
         public double MeleeOffset { get; set; } = 0;
 
         /// <summary>
+        /// Gets or sets the offset of the MP threshold for Lucid Dreaming reminders. Default is 8000.
+        /// </summary>
+        public uint LucidMPThreshold { get; set; } = 8000;
+
+        /// <summary>
+        /// Gets or sets the offset from 0 that a cooldown stops becoming Lucid Dreaming. Default is 0.
+        /// </summary>
+        public double LucidCooldownOffset { get; set; } = 0;
+
+        /// <summary>
         /// Save the configuration to disk.
         /// </summary>
         public void Save()
