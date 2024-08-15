@@ -275,7 +275,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DANCER
 
-        // latest enum: 3822
+        // latest enum: 3826
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -292,6 +292,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(DancerSingleTargetMultibutton)]
         [CustomComboInfo("No Cascade Combo Procs", "Don't change Cascade combo into procs.", DNC.JobID)]
         DancerSingleTargetMultibuttonNoProcs = 3814,
+
+        [OrderedEnum]
+        [ParentCombo(DancerSingleTargetMultibutton)]
+        [CustomComboInfo("Cascading Saber Dance", "Change Cascade combo into Saber Dance during Devilment while you have more than 50 Esprit.", DNC.JobID)]
+        DancerSingleTargetMultibuttonSaber = 3823,
 
         [OrderedEnum]
         [CustomComboInfo("Reverse Cascade Combo", "Change Reverse Cascade into Fountainfall if available.", DNC.JobID, DNC.ReverseCascade)]
@@ -318,6 +323,11 @@ namespace XIVComboExpandedestPlugin
         DancerAoeMultibuttonNoProcs = 3816,
 
         [OrderedEnum]
+        [ParentCombo(DancerSingleTargetMultibutton)]
+        [CustomComboInfo("Windmilling Saber Dance", "Change Windmill combo into Saber Dance during Devilment while you have more than 50 Esprit.", DNC.JobID)]
+        DancerAoeMultibuttonSaber = 3824,
+
+        [OrderedEnum]
         [CustomComboInfo("Rising Windmill Combo", "Change Rising Windmill into Bloodshower if available.", DNC.JobID, DNC.RisingWindmill)]
         DancerRisingWindmillCombo = 3817,
 
@@ -327,17 +337,27 @@ namespace XIVComboExpandedestPlugin
         DancerAoeProcs = 3812,
 
         [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Saber Dance Overcap Prevention", "Change Cascade/Windmill combo into Saber Dance if you have 85+ Esprit.", DNC.JobID, DNC.Cascade, DNC.Windmill)]
+        DancerCombosToSaberDanceOvercap = 3826,
+
+        [OrderedEnum]
         [CustomComboInfo("Fan Dance I to II", "Change Fan Dance I to II if you are currently using your AoE combo.", DNC.JobID, DNC.FanDance1)]
         DancerFanDance1to2 = 3820,
 
         [OrderedEnum]
-        [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
+        [CustomComboInfo("Fan Dance I/II to III", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
         DancerFanDanceCombo = 3801,
 
         [OrderedEnum]
         [ParentCombo(DancerFanDanceCombo)]
-        [CustomComboInfo("Fan Dance IV Combo", "Additionally change Fan Dance and Fan Dance 2 into Fan Dance 4 while under Fourfold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
+        [CustomComboInfo("Fan Dance I/II to IV", "Additionally change Fan Dance and Fan Dance 2 into Fan Dance 4 while under Fourfold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
         DancerFanDance4Combo = 3809,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Fan Dance Overcap Prevention", "Change your Cascade/Windmill combos into Fan Dance I/II while the GCD is rolling and you have four feathers.", DNC.JobID, DNC.Cascade, DNC.Windmill)]
+        DancerCombosToFanDance = 3825,
 
         [OrderedEnum]
         [CustomComboInfo("Flourish to Fan Dance IV", "Change Flourish into Fan Dance IV when it is ready.", DNC.JobID, DNC.Flourish)]
@@ -1229,6 +1249,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Phlegma into Toxikon", "Phlegma turns into Toxikon if you have addersting and are either out of range or out of charges.\nThis is prioritized over Dyskrasia if the 'Phlegma into Dyskrasia' feature is enabled.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
         SagePhlegmaToxicBalls = 4003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Phlegma into Psyche", "Phlegma turns into Psyche while the GCD is rolling and it is off cooldown.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
+        SagePhlegmaPsychicBalls = 4010,
 
         [OrderedEnum]
         [CustomComboInfo("Taurochole into Druochole", "Replaces Taurochole with Druochole if the former is on cooldown.\nYou should probably still keep the latter on your bar for certain scenarios.", SGE.JobID, SGE.Taurochole)]

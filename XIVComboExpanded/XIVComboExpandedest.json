@@ -6,7 +6,12 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.59:
+  "Changelog": "1.5.0.60:
+    * Combos to Saber Dance during Devilment feature added.
+    * Some other stuff added to Dancer, too. Maybe.
+    * Phlegma to Psyche added.
+    
+    1.5.0.59:
     * Isle Sprint feature added.
     
     1.5.0.53:
@@ -20,74 +25,5 @@
     * Standard Step into Technical Step added.
     
     1.5.0.41:
-    * Viper features added. Please look forward to it (happening right now).
-    
-    1.5.0.36:
-    * Flare to Flare Star added.
-    * Holy to Glare IV added.
-    * Primal Upheaval (Upheaval/Orogeny to Primal Wrath) added.
-    
-    1.5.0.35:
-    * Furious Steel Fang changed into Snapping Fury, which just replaces Writhing Snap with Uncoiled Fury in general if you have stacks. It should still be enabled if you enabled it before.
-    
-    1.5.0.33:
-    * Removed Stardiver to Nastrond. It doesn't make much sense anymore with the Nastrond changes, it's incompatible with the opener, and Stardiver to Dragonfire Dive just works better (and now follows opener order).
-    
-    1.5.0.27:
-    * Added separate option for combo-ing Gibbet and Gallows together only in the Slice combo.
-    
-    1.5.0.25:
-    * Three PCT additions added, very secretive.
-    * PCT main combo movement feature added.
-    * MNK rework. Stuff removed, stuff added. Probably should check it out yourself and redo your bars. I'd ideally just recommend not playing Monk at all in its currently abysmal state, but if you're levelling everything to 100, you'll have to eventually.
-    
-    1.5.0.23:
-    * BRD Battle Voice/Radiant Finale/Raging Strikes priority changed to conform with new rotation.
-    * Verproc into Jolt Plus Verthunder Option added so that you can always use Verfire. This is because the most optimal opener for Red Mage requires using Verfire during Acceleration.
-    
-    1.5.0.22:
-    * Shroud only option added to Enhanced Gallows and Gibbets.
-    
-    1.5.0.20:
-    * VPR Ouroboros Feature added now that the gauge was updated.
-    
-    1.5.0.19:
-    * RDM's Verproc into Jolt combo now no longer gets replaced by Grand Impact outside of Jolt.
-    * Fixed minor Autocrossbow into Hypercharge visual bug.
-    
-    1.5.0.18:
-    * Swiftcast into Raise should change into Raise if abilities aren't available due to Amnesia.
-    * DNC Standard Step into Last Dance added.
-    * VPR Coiling Dens Swap Option added.
-    * VPR Twin Tails feature added (Twinfang/blood into Serpent's Tail).
-    * VPR Furious Steel Fang option for Writhing Steel Fang feature added.
-    
-    1.5.0.17:
-    * GNB Demon Slaughter combo to Lion Heart combo added.
-    * Optional Jolt opt-out features for Verfire/Verstone each for the Verproc combo added.
-    * DRK Stalwart Soul to Disesteem feature should now work if you have the vanilla Living Shadow to Disesteem function disabled.
-    
-    1.5.0.16:
-    * GNB Burst Strike/Fated Circle to Lion Heart combo (Reign of Beasts) separated from the Bloodfest feature.
-    * Also just cleaned up the GNB section in general.
-
-    1.5.0.11:
-    * Blizzard 1/3 Feature now works properly.
-    * High Fire 2 to Flare feature rewritten now that Enhanced Flare is gone and (High) Fire 2 is no longer used after switching to Astral Fire if you have Flare.
-    * Lance Charge to Dragon Sight removed because Dragon Sight no longer exists.
-    
-    1.5.0.8:
-    * Flare to Despair now works via reverse-AoE action detection, like Xenoglossy to Foul.
-    * High Thunder to High Thunder 2 added.
-    * Disclaimer added to (Between the) Ley Lines.
-    * Despair to Transpose removed.
-    
-    1.5.0.3:
-    * Initial Viper features added. More will be added later when there is further access to Job Gauge variables via Client Structs.
-    
-    1.5.0.1:
-    * Initial Pictomancer features added.
-    
-    1.5.0.0:
-    * Wayyy too much. Please check the commits on the github, I left changelogs for each job there."
+    * Viper features added. Please look forward to it (happening right now)."
 }

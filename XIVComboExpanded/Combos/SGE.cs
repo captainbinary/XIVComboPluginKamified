@@ -40,7 +40,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Haima = 24305,
             Panhaima = 24311,
             Pneuma = 24318,
-            Eukrasia = 24290;
+            Eukrasia = 24290,
+            Psyche = 37033;
 
         public static class Buffs
         {
@@ -158,6 +159,19 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (actionID == SGE.Pneuma && level < SGE.Levels.Pneuma)
                 return SGE.Holos;
+
+            return actionID;
+        }
+    }
+
+    internal class SagePhlegmaPsychicBalls : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SagePhlegmaPsychicBalls;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if ((GCDClipCheck() || ((GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > SGE.PhlegmaCD) || GetTargetDistance() > 6)) && IsActionOffCooldown(SGE.Psyche) && CanUseAction(SGE.Psyche))
+                return SGE.Psyche;
 
             return actionID;
         }

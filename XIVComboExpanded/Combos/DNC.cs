@@ -38,6 +38,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
+                Devilment = 1825,
                 FlourishingSymmetry = 3017,
                 SilkenSymmetry = 2693,
                 FlourishingFlow = 3018,
@@ -121,6 +122,40 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (level >= DNC.Levels.FanDance3 && HasEffect(DNC.Buffs.ThreefoldFanDance))
                     return DNC.FanDance3;
             }
+
+            return actionID;
+        }
+    }
+
+    internal class DancerCombosToFanDance : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerCombosToFanDance;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var fanDance = actionID == DNC.Windmill ? DNC.FanDance2 : DNC.FanDance1;
+
+            if (IsEnabled(CustomComboPreset.DancerFanDance4Combo) && GCDClipCheck() && CanUseAction(DNC.FanDance4))
+                return DNC.FanDance4;
+
+            if (IsEnabled(CustomComboPreset.DancerFanDanceCombo) && GCDClipCheck() && CanUseAction(DNC.FanDance3))
+                return DNC.FanDance3;
+
+            if (GetJobGauge<DNCGauge>().Feathers == 4 && GCDClipCheck())
+                return fanDance;
+
+            return actionID;
+        }
+    }
+
+    internal class DancerCombosToSaberDanceOvercap : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerCombosToSaberDanceOvercap;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (GetJobGauge<DNCGauge>().Esprit >= 85)
+                return OriginalHook(DNC.SaberDance);
 
             return actionID;
         }
@@ -252,6 +287,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.Cascade)
             {
+                if (IsEnabled(CustomComboPreset.DancerSingleTargetMultibuttonSaber) && HasEffect(DNC.Buffs.Devilment) && GetJobGauge<DNCGauge>().Esprit >= 50)
+                    return OriginalHook(DNC.SaberDance);
                 if (!IsEnabled(CustomComboPreset.DancerSingleTargetMultibuttonNoProcs))
                 {
                     // From Fountain
@@ -322,6 +359,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.Windmill)
             {
+                if (IsEnabled(CustomComboPreset.DancerAoeMultibuttonSaber) && HasEffect(DNC.Buffs.Devilment) && GetJobGauge<DNCGauge>().Esprit >= 50)
+                    return OriginalHook(DNC.SaberDance);
                 if (!IsEnabled(CustomComboPreset.DancerAoeMultibuttonNoProcs))
                 {
                     // From Bladeshower
