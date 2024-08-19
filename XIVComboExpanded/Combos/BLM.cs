@@ -397,6 +397,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Fire)
             {
                 var gauge = GetJobGauge<BLMGauge>();
+                if (gauge.IsParadoxActive && gauge.InUmbralIce)
+                    return OriginalHook(BLM.Fire);
                 if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
                     return BLM.Fire3;
                 if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
