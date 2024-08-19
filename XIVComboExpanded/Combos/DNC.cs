@@ -287,6 +287,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.Cascade)
             {
+                if (OriginalHook(actionID) != actionID)
+                    return actionID;
                 if (IsEnabled(CustomComboPreset.DancerSingleTargetMultibuttonSaber) && HasEffect(DNC.Buffs.Devilment) && GetJobGauge<DNCGauge>().Esprit >= 50)
                     return OriginalHook(DNC.SaberDance);
                 if (!IsEnabled(CustomComboPreset.DancerSingleTargetMultibuttonNoProcs))
@@ -318,6 +320,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.ReverseCascade)
             {
+                if (OriginalHook(actionID) != actionID)
+                    return actionID;
                 if ((this.FilteredLastComboMove == DNC.Windmill || this.FilteredLastComboMove == DNC.Bladeshower) && IsEnabled(CustomComboPreset.DancerReverseCascadeComboAoE))
                 {
                     if (level >= DNC.Levels.Bloodshower && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
@@ -339,6 +343,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(actionID) != actionID)
+                return actionID;
             if (actionID == DNC.Cascade)
                 if (level >= DNC.Levels.ReverseCascade && (HasEffect(DNC.Buffs.FlourishingSymmetry) || HasEffect(DNC.Buffs.SilkenSymmetry)))
                     return DNC.ReverseCascade;
@@ -359,6 +365,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.Windmill)
             {
+                if (OriginalHook(actionID) != actionID)
+                    return actionID;
                 if (IsEnabled(CustomComboPreset.DancerAoeMultibuttonSaber) && HasEffect(DNC.Buffs.Devilment) && GetJobGauge<DNCGauge>().Esprit >= 50)
                     return OriginalHook(DNC.SaberDance);
                 if (!IsEnabled(CustomComboPreset.DancerAoeMultibuttonNoProcs))
@@ -391,6 +399,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.RisingWindmill)
             {
+                if (OriginalHook(actionID) != actionID)
+                    return actionID;
                 if (level >= DNC.Levels.Bloodshower && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
                     return DNC.Bloodshower;
             }
@@ -405,6 +415,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (OriginalHook(actionID) != actionID)
+                return actionID;
             if (actionID == DNC.Windmill)
                 if (level >= DNC.Levels.RisingWindmill && (HasEffect(DNC.Buffs.FlourishingSymmetry) || HasEffect(DNC.Buffs.SilkenSymmetry)))
                     return DNC.RisingWindmill;
