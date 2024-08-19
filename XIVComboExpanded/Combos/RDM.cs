@@ -114,7 +114,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var gauge = GetJobGauge<RDMGauge>();
 
-            return ((gauge.BlackMana < 50 || gauge.WhiteMana < 50) && !HasEffect(RDM.Buffs.MagickedSwordplay)) && gauge.ManaStacks == 0 && level >= RDM.Levels.Verflare && OriginalHook(RDM.Verthunder2) != RDM.Verflare && (OriginalHook(RDM.Jolt2) == RDM.Jolt2 || OriginalHook(RDM.Jolt3) == RDM.Jolt3) ? SMN.Physick : actionID;
+            return ((gauge.BlackMana < 50 || gauge.WhiteMana < 50) && !HasEffect(RDM.Buffs.MagickedSwordplay)) && gauge.ManaStacks == 0 && level >= RDM.Levels.Verflare && OriginalHook(RDM.Verthunder2) != RDM.Verflare && (OriginalHook(RDM.Jolt2) != RDM.Scorch && OriginalHook(RDM.Jolt2) != RDM.Redoublement) ? SMN.Physick : actionID;
         }
     }
 
@@ -190,7 +190,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(RDM.Reprise);
                 }
 
-                if (level >= RDM.Levels.Verflare && IsEnabled(CustomComboPreset.RedMageComboReminderFeature) && actionID == RDM.Redoublement && gauge.ManaStacks == 0 && OriginalHook(RDM.Verthunder2) != RDM.Verflare && (OriginalHook(RDM.Jolt2) == RDM.Jolt2 || OriginalHook(RDM.Jolt3) == RDM.Jolt3) && ((gauge.BlackMana < manaCheck || gauge.WhiteMana < manaCheck) && !HasEffect(RDM.Buffs.MagickedSwordplay)))
+                if (level >= RDM.Levels.Verflare && IsEnabled(CustomComboPreset.RedMageComboReminderFeature) && actionID == RDM.Redoublement && gauge.ManaStacks == 0 && OriginalHook(RDM.Verthunder2) != RDM.Verflare && (OriginalHook(RDM.Jolt2) != RDM.Scorch && OriginalHook(RDM.Jolt2) != RDM.Redoublement) && ((gauge.BlackMana < manaCheck || gauge.WhiteMana < manaCheck) && !HasEffect(RDM.Buffs.MagickedSwordplay)))
                 {
                     if (IsEnabled(CustomComboPreset.RedMageComboReminderOption))
                         return IsEnabled(CustomComboPreset.RedMageMeleeComboPlusVerholy) ? WHM.Holy : BLM.Flare;
