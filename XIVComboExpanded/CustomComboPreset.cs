@@ -103,7 +103,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2528
+        // latest enum: 2529
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.\nWill also swap them for Blizzard 1/Fire 1 when one is not available while synced.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -131,6 +131,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Flare to Flare Star", "Change Flare to Flare Star when available.", BLM.JobID, BLM.Flare)]
         BlackFlareStarFeature = 2527,
+
+        [OrderedEnum]
+        [CustomComboInfo("Blizzard 3 & 2 to Flare Star", "Change Blizzard 3 and High Blizzard 2 to Flare Star when available.", BLM.JobID, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2)]
+        BlackBlizzardStarFeature = 2529,
 
         [OrderedEnum]
         [CustomComboInfo("High Thunder to High Thunder 2 Feature", "Change High Thunder to High Thunder 2 when you are using AoE spells and have it available.", BLM.JobID, BLM.Thunder, BLM.Thunder3, BLM.HighThunder)]
@@ -178,13 +182,13 @@ namespace XIVComboExpandedestPlugin
         BlackFireFeature = 2505,
 
         [OrderedEnum]
-        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 after you have unlocked it and are not in Umbral Ice 3.", BLM.JobID, BLM.Blizzard)]
-        BlackBlizzardFeature = 2506,
-
-        [OrderedEnum]
         [ParentCombo(BlackFireFeature)]
         [CustomComboInfo("Fire 1/3 Option", "Fire will stay Fire 3 if you're not at max AF with this option.", BLM.JobID, BLM.Fire)]
         BlackFireOption = 2515,
+
+        [OrderedEnum]
+        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 after you have unlocked it and are not in Umbral Ice 3.", BLM.JobID, BLM.Blizzard)]
+        BlackBlizzardFeature = 2506,
 
         [OrderedEnum]
         [CustomComboInfo("Scathe/Xenoglossy Feature", "Scathe becomes Xenoglossy when available.", BLM.JobID, BLM.Scathe)]

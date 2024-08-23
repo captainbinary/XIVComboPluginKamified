@@ -161,6 +161,21 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class BlackBlizzardStarFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackBlizzardStarFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID != BLM.Blizzard || IsEnabled(CustomComboPreset.BlackBlizzardFeature))
+            {
+                if (GetJobGauge<BLMGauge>().AstralSoulStacks >= 6) return BLM.FlareStar;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class BlackEnochianFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackEnochianFeature;
@@ -236,7 +251,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<BLMGauge>();
-            return gauge.AstralSoulStacks == 6 ? BLM.FlareStar : actionID;
+            return gauge.AstralSoulStacks >= 6 ? BLM.FlareStar : actionID;
         }
     }
 
@@ -474,7 +489,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<BLMGauge>();
-            return actionID == BLM.FlareStar && gauge.AstralSoulStacks == 6 ? BLM.FlareStar : BLM.Manafont;
+            return actionID == BLM.FlareStar && gauge.AstralSoulStacks >= 6 ? BLM.FlareStar : BLM.Manafont;
         }
     }
 }

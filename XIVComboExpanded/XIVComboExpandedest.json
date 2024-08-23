@@ -6,7 +6,10 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.61:
+  "Changelog": "1.5.0.67:
+    * Blizzard 3 & 2 to Flare Star feature added.
+    
+    1.5.0.61:
     * Lucid Dreaming Reminders now have a configurable MP threshold, as well as a configurable cooldown remaining offset where they stop replacing the cooldown.
     
     1.5.0.60:
