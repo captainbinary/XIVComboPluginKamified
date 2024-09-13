@@ -61,6 +61,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Levels
         {
             public const byte
+                WideVolley = 25,
                 Windbite = 30,
                 RainOfDeath = 45,
                 BattleVoice = 50,
@@ -184,7 +185,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BRD.QuickNock || actionID == BRD.Ladonsbite)
             {
-                if (HasEffect(BRD.Buffs.HawksEye) || HasEffect(BRD.Buffs.Barrage))
+                if ((HasEffect(BRD.Buffs.HawksEye) || HasEffect(BRD.Buffs.Barrage)) && level >= BRD.Levels.WideVolley)
                     return OriginalHook(BRD.Shadowbite);
             }
 
