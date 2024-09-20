@@ -103,7 +103,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2529
+        // latest enum: 2530
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.\nWill also swap them for Blizzard 1/Fire 1 when one is not available while synced.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -131,6 +131,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Flare to Flare Star", "Change Flare to Flare Star when available.", BLM.JobID, BLM.Flare)]
         BlackFlareStarFeature = 2527,
+
+        [OrderedEnum]
+        [CustomComboInfo("Despair to Flare Star", "Change Despair to Flare Star when at 0 MP or >= 2400 MP.", BLM.JobID, BLM.Despair)]
+        BlackDespairStarFeature = 2530,
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 3 & 2 to Flare Star", "Change Blizzard 3 and High Blizzard 2 to Flare Star when available.", BLM.JobID, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2)]

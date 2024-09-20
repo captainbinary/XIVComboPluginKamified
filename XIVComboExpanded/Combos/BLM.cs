@@ -197,6 +197,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
                 {
+                    if (IsEnabled(CustomComboPreset.BlackDespairStarFeature) && gauge.AstralSoulStacks >= 6 && (LocalPlayer?.CurrentMp == 0 || LocalPlayer?.CurrentMp >= 2400))
+                        return BLM.FlareStar;
                     if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp < 2400)
                         return BLM.Despair;
                 }
@@ -252,6 +254,17 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var gauge = GetJobGauge<BLMGauge>();
             return gauge.AstralSoulStacks >= 6 ? BLM.FlareStar : actionID;
+        }
+    }
+
+    internal class BlackDespairStarFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackDespairStarFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<BLMGauge>();
+            return gauge.AstralSoulStacks >= 6 && (LocalPlayer?.CurrentMp == 0 || LocalPlayer?.CurrentMp >= 2400) ? BLM.FlareStar : actionID;
         }
     }
 
