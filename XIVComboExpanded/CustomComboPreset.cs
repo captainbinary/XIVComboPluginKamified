@@ -960,7 +960,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region PICTOMANCER
 
-        // last used enum: 4209
+        // last used enum: 4210
 
         [OrderedEnum]
         [CustomComboInfo("Subtracting Your Combos", "Replace your normal combos with subtractive combos while you have Subtractive Palette active.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
@@ -988,6 +988,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Steel Your Hammers", "Replace Steel Muse with Hammer Stamp when available.", PCT.JobID, PCT.SteelMuse)]
         PictHammerFeature = 4205,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Subtract Your Comets Before It's Too Late!", "Replace Subtractive Palette with Comet in Black if available to prevent overwriting.", PCT.JobID, PCT.SubtractivePalette)]
+        PictSubCometFeature = 4210,
 
         [OrderedEnum]
         [CustomComboInfo("Prisms in your Starscape", "Replace Scenic Muse with Star Prism when available.", PCT.JobID, PCT.ScenicMuse)]

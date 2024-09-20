@@ -82,7 +82,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 var maxPalette = 100;
 
                 if (IsEnabled(CustomComboPreset.PictSubOvercapOption) && HasEffect(PCT.Buffs.AetherhuesII) && !HasEffect(PCT.Buffs.SubtractivePalette) && gauge.PalleteGauge == maxPalette)
+                {
+                    if (HasEffect(PCT.Buffs.MonochromeTones))
+                        return PCT.CometInBlack;
                     return PCT.SubtractivePalette;
+                }
             }
 
             if (HasEffect(PCT.Buffs.SubtractivePalette))
@@ -144,6 +148,20 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (HasEffect(PCT.Buffs.HammerTime))
                 return OriginalHook(PCT.HammerStamp);
+
+            return actionID;
+        }
+    }
+
+    internal class PictSubCometFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PictSubCometFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == PCT.SubtractivePalette)
+                if (HasEffect(PCT.Buffs.MonochromeTones))
+                    return PCT.CometInBlack;
 
             return actionID;
         }
