@@ -969,12 +969,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(PictSubFeature)]
-        [CustomComboInfo("Holding Your Holy", "Replace your combos with Holy in White if your next action will overcap White Paint.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
-        PictSubHolyOption = 4203,
-
-        [OrderedEnum]
-        [SecretCustomCombo]
-        [ParentCombo(PictSubFeature)]
         [CustomComboInfo("Cleansing Your Palette", "Replace your combos with Subtractive Palette if your next action will overcap gauge.", PCT.JobID, PCT.FireInRed, PCT.Fire2InRed)]
         PictSubOvercapOption = 4207,
 
@@ -998,11 +992,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Prisms in your Starscape", "Replace Scenic Muse with Star Prism when available.", PCT.JobID, PCT.ScenicMuse)]
         PictStarFeature = 4206,
-
-        [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("The Holiest of Drip", "Replace Rainbow Drip with Holy in White if it would overcap White Paint and you are in combat.", PCT.JobID, PCT.RainbowDrip)]
-        PictDripFeature = 4209,
 
         #endregion
         // ====================================================================================
