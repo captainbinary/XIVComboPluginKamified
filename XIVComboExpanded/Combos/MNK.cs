@@ -138,6 +138,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MonkChakraKick : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkChakraKickFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return CanUseAction(OriginalHook(MNK.ForbiddenChakra)) && GCDClipCheck() ? OriginalHook(MNK.ForbiddenChakra) : actionID;
+        }
+    }
+
     internal class MonkOpoCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MonkOpoCombo;

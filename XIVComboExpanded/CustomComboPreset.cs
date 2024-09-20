@@ -671,7 +671,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MONK
 
-        // latest enum: 2033
+        // latest enum: 2034
 
         [OrderedEnum]
         [CustomComboInfo("Leaping Opo Combo", "Replace Leaping Opo/Bootshine with Monk's Leaping Opo/Rising Raptor/Pouncing Coeurl combo.", MNK.JobID, MNK.LeapingOpo, MNK.Bootshine)]
@@ -744,6 +744,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Leaping Dragon Clap Feature", "Replaces Dragon Kick and Leaping Opo with Thunderclap if you are out of melee range, or have a player targeted.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
         MonkDragonClapFeature = 2022,
+
+        [OrderedEnum]
+        [CustomComboInfo("Dragon Kick to Forbidden Chakra", "Replaces Dragon Kick and Leaping Opo with Forbidden Chakra while available, during global cooldown.", MNK.JobID, MNK.DragonKick, MNK.Bootshine, MNK.LeapingOpo)]
+        MonkChakraKickFeature = 2034,
 
         [OrderedEnum]
         [CustomComboInfo("Forbidden Chakra to Enlightment Feature", "Replaces Forbidden Chakra with Enlightenment if your last-used GCD action was Arm/Shadow of the Destroyer, Four-Point Fury, or Rockbreaker.", MNK.JobID, MNK.Meditation, MNK.SteeledMeditation)]
