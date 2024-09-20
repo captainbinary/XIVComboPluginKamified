@@ -198,31 +198,11 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == DNC.StandardStep)
-            {
-                var gauge = GetJobGauge<DNCGauge>();
-                if (gauge.IsDancing && level >= DNC.Levels.StandardStep && HasEffect(DNC.Buffs.StandardStep))
-                {
-                    if (gauge.CompletedSteps < 2)
-                        return gauge.NextStep;
-
-                    return OriginalHook(DNC.StandardStep);
-                }
-
-                return DNC.StandardStep;
-            }
-
-            if (actionID == DNC.TechnicalStep)
-            {
-                var gauge = GetJobGauge<DNCGauge>();
-                if (gauge.IsDancing && level >= DNC.Levels.TechnicalStep && HasEffect(DNC.Buffs.TechnicalStep))
-                {
-                    if (gauge.CompletedSteps < 4)
-                        return gauge.NextStep;
-                }
-
-                return OriginalHook(DNC.TechnicalStep);
-            }
+            var gauge = GetJobGauge<DNCGauge>();
+            if (HasEffect(DNC.Buffs.StandardStep) && gauge.CompletedSteps < 2)
+                return gauge.NextStep;
+            if (HasEffect(DNC.Buffs.TechnicalStep) && gauge.CompletedSteps < 4)
+                return gauge.NextStep;
 
             return actionID;
         }
