@@ -33,6 +33,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Communio = 24398,
             ArcaneCircle = 24405,
             PlentifulHarvest = 24385,
+            Sacrificium = 36969,
             // Misc
             Soulsow = 24387,
             HarvestMoon = 24388,
@@ -156,6 +157,21 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class ReaperSacrificiumFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperSacrificiumFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == RPR.Gibbet || actionID == RPR.Gallows || actionID == RPR.Guillotine)
+            {
+                if (CanUseAction(RPR.Sacrificium) && GCDClipCheck()) return RPR.Sacrificium;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class ReaperGibbetGallowsOption : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.ReaperGibbetGallowsOption;
@@ -195,6 +211,8 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<RPRGauge>();
+
+            if (IsEnabled(CustomComboPreset.ReaperSacrificiumFeature) && CanUseAction(RPR.Sacrificium) && GCDClipCheck()) return RPR.Sacrificium;
 
             if (gauge.VoidShroud >= 2)
                 return IsEnabled(CustomComboPreset.ReaperBloodStalkToGrimSwatheFeature) && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe) ? OriginalHook(RPR.GrimSwathe) : OriginalHook(actionID);
@@ -264,6 +282,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Executioner) || HasEffect(RPR.Buffs.Enshrouded)))
                 {
+                    if (IsEnabled(CustomComboPreset.ReaperSacrificiumFeature) && CanUseAction(RPR.Sacrificium) && GCDClipCheck()) return RPR.Sacrificium;
+
                     if (gauge.EnshroudedTimeRemaining > 0 && IsEnabled(CustomComboPreset.ReaperGibbetGallowsShroudOption) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsSoulSliceOption))
                         return IsEnabled(CustomComboPreset.ReaperGibbetGallowsSwap) ? OriginalHook(RPR.Gallows) : OriginalHook(RPR.Gibbet);
 
@@ -319,7 +339,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 }
 
                 if (IsEnabled(CustomComboPreset.ReaperGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Executioner) || HasEffect(RPR.Buffs.Enshrouded)))
+                {
+                    if (IsEnabled(CustomComboPreset.ReaperSacrificiumFeature) && CanUseAction(RPR.Sacrificium) && GCDClipCheck()) return RPR.Sacrificium;
+
                     return OriginalHook(RPR.Guillotine);
+                }
 
                 if (comboTime > 0)
                 {
@@ -374,6 +398,8 @@ namespace XIVComboExpandedestPlugin.Combos
                             return OriginalHook(RPR.BloodStalk);
                         }
                     }
+
+                    if (IsEnabled(CustomComboPreset.ReaperSacrificiumFeature) && CanUseAction(RPR.Sacrificium) && GCDClipCheck()) return RPR.Sacrificium;
 
                     if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
                     {
@@ -445,6 +471,8 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(RPR.GrimSwathe);
                     }
                 }
+
+                if (IsEnabled(CustomComboPreset.ReaperSacrificiumFeature) && CanUseAction(RPR.Sacrificium) && GCDClipCheck()) return RPR.Sacrificium;
 
                 if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
                 {

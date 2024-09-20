@@ -279,7 +279,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DANCER
 
-        // latest enum: 3826
+        // latest enum: 3827
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -398,6 +398,10 @@ namespace XIVComboExpandedestPlugin
             "\nYou can get Action IDs with Garland Tools by searching for the action and clicking the cog.",
             DNC.JobID)]
         DancerDanceComboCompatibility = 3807,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fan Dance II to Jete", "Fan Dance II becomes Jete while dancing because hotbar shenanigans.", DNC.JobID, DNC.FanDance2)]
+        DancerJeteShenanigans = 3827,
 
         #endregion
         // ====================================================================================
@@ -996,7 +1000,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region REAPER
 
-        // latest enum: 3925
+        // latest enum: 3926
 
         [OrderedEnum]
         [CustomComboInfo("Slice Combo", "Replace Slice with its combo chain.", RPR.JobID, RPR.Slice, RPR.InfernalSlice)]
@@ -1074,6 +1078,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Lemure Feature", "When you have two or more stacks of Void Shroud, Lemure Slice/Scythe replaces Gibbet/Gallows and Guillotine respectively.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.Gibbet, RPR.Gallows, RPR.Guillotine, RPR.SpinningScythe, RPR.NightmareScythe)]
         ReaperLemureFeature = 3912,
+
+        [OrderedEnum]
+        [CustomComboInfo("Sacrificium Feature", "While under Void Shroud and Sacrificium is available, replace Gibbet/Gallows/Guillotine with Sacrificium during global cooldown.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.Gibbet, RPR.Gallows, RPR.Guillotine, RPR.SpinningScythe, RPR.NightmareScythe)]
+        ReaperSacrificiumFeature = 3926,
 
         [OrderedEnum]
         [CustomComboInfo("Arcane Circle Harvest Feature", "Replace Arcane Circle with Plentiful Harvest when you have stacks of Immortal Sacrifice.", RPR.JobID, RPR.ArcaneCircle)]

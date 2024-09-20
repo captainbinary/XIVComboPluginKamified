@@ -28,6 +28,7 @@ namespace XIVComboExpandedestPlugin.Combos
             FanDance3 = 16009,
             FanDance4 = 25791,
             // Other
+            Jete = 16001,
             SaberDance = 16005,
             EnAvant = 16010,
             Devilment = 16011,
@@ -103,6 +104,18 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (actionID == actionIDs[3] || (actionIDs[3] == 0 && actionID == DNC.FanDance2))
                     return OriginalHook(DNC.Fountainfall);
             }
+
+            return actionID;
+        }
+    }
+
+    internal class DancerJeteShenanigans : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerJeteShenanigans;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (CanUseAction(DNC.Jete)) return DNC.Jete;
 
             return actionID;
         }
