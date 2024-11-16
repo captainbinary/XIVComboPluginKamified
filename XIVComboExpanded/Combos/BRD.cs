@@ -215,7 +215,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BRD.Sidewinder)
             {
                 var gauge = GetJobGauge<BRDGauge>();
-                if (gauge.Song == Song.WANDERER && (gauge.Repertoire == 3 || (!IsActionOffCooldown(BRD.Sidewinder) && gauge.Repertoire > 0)))
+                if (gauge.Song == Song.WANDERER && (gauge.Repertoire == 3 || (!IsActionOffCooldown(BRD.Sidewinder) && gauge.Repertoire > 0 && !IsEnabled(CustomComboPreset.BardPerfectSidesOnlyFullOption))))
                     return BRD.PitchPerfect;
             }
 

@@ -422,24 +422,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class DancerDevilmentFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.DancerDevilmentFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == DNC.Devilment)
-            {
-                if (level >= DNC.Levels.StarfallDance && HasEffect(DNC.Buffs.FlourishingStarfall))
-                    return DNC.StarfallDance;
-
-                return DNC.Devilment;
-            }
-
-            return actionID;
-        }
-    }
-
     internal class DancerTechnicalLockoutFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DancerTechnicalLockoutFeature;

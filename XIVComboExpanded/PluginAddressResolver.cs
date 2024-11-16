@@ -23,11 +23,6 @@ namespace XIVComboExpandedestPlugin
         public IntPtr LastComboMove => this.ComboTimer + 0x4;
 
         /// <summary>
-        /// Gets the address of fpGetAdjustedActionId.
-        /// </summary>
-        public IntPtr GetAdjustedActionId { get; private set; }
-
-        /// <summary>
         /// Gets the address of fpIsIconReplacable.
         /// </summary>
         public IntPtr IsActionIdReplaceable { get; private set; }
@@ -36,7 +31,7 @@ namespace XIVComboExpandedestPlugin
         /// Gets the address of fpGetActionCooldown.
         /// </summary>
         public IntPtr GetActionCooldown { get; private set; }
-        
+
         /// <summary>
         /// Set up memory signatures.
         /// </summary>
@@ -45,12 +40,9 @@ namespace XIVComboExpandedestPlugin
         {
             this.ComboTimer = new IntPtr(&ActionManager.Instance()->Combo.Timer);
 
-            this.GetAdjustedActionId = scanner.ScanText("E8 ?? ?? ?? ?? 89 03 8B 03");  // Client::Game::ActionManager.GetAdjustedActionId
-
-            this.IsActionIdReplaceable = scanner.ScanText("40 53 48 83 EC 20 8B D9 48 8B 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 85 C0 74 1F");
+            this.IsActionIdReplaceable = scanner.ScanText("40 53 48 83 EC 20 8B D9 48 8B 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 85 C0 74 1B");
 
             Service.PluginLog.Verbose("===== X I V C O M B O =====");
-            Service.PluginLog.Verbose($"GetAdjustedActionId   0x{this.GetAdjustedActionId:X}");
             Service.PluginLog.Verbose($"IsActionIdReplaceable 0x{this.IsActionIdReplaceable:X}");
             Service.PluginLog.Verbose($"ComboTimer            0x{this.ComboTimer:X}");
             Service.PluginLog.Verbose($"LastComboMove         0x{this.LastComboMove:X}");

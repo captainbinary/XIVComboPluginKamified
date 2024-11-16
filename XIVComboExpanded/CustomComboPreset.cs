@@ -218,7 +218,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BARD
 
-        // latest enum: 2315
+        // latest enum: 2316
 
         [OrderedEnum]
         [CustomComboInfo("Burst Shot into Refulgent Arrow", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
@@ -249,6 +249,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Sidewinder to Pitch Perfect", "Replaces Sidewinder with Pitch Perfect during Wanderer's Minuet if Repertoire is maxed out or Sidewinder is on cooldown.", BRD.JobID, BRD.Sidewinder)]
         BardPerfectSidesFeature = 2314,
+
+        [OrderedEnum]
+        [ParentCombo(BardPerfectSidesFeature)]
+        [CustomComboInfo("Only When Full", "Replaces Sidewinder with Pitch Perfect only when you are full on Repertoire, no matter what.\nRemember that you will still need to use Pitch Perfect when Repertoire isn't full, this is only for convenience.", BRD.JobID, BRD.Sidewinder)]
+        BardPerfectSidesOnlyFullOption = 2316,
 
         [OrderedEnum]
         [CustomComboInfo("Radiant Voice", "Replaces Radiant Finale with Battle Voice if Battle Voice is off-cooldown.", BRD.JobID, BRD.RadiantFinale)]
@@ -376,10 +381,6 @@ namespace XIVComboExpandedestPlugin
         DancerFlourishFanDance3Feature = 3810,
 
         [OrderedEnum]
-        [CustomComboInfo("Devilment Feature", "Change Devilment into Starfall Dance after use.", DNC.JobID, DNC.Devilment)]
-        DancerDevilmentFeature = 3806,
-
-        [OrderedEnum]
         [CustomComboInfo("Standard Step into Last Dance", "Change Standard Step into Last Dance when available.", DNC.JobID, DNC.StandardStep)]
         DancerLastDanceFeature = 3821,
 
@@ -456,10 +457,6 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(DragoonCoerthanTormentCombo)]
         [CustomComboInfo("Coerthan Torment Combo to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
         DragoonWyrmwindFeature = 2207,
-
-        [OrderedEnum]
-        [CustomComboInfo("Jump to Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID, DRG.Jump, DRG.HighJump)]
-        DragoonJumpFeature = 2201,
 
         [OrderedEnum]
         [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown, or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]

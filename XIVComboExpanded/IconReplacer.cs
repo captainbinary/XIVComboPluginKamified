@@ -203,7 +203,7 @@ namespace XIVComboExpandedestPlugin
             if (this.cooldownGroupCache.TryGetValue(actionID, out var cooldownGroup))
                 return cooldownGroup;
 
-            var sheet = Service.DataManager.GetExcelSheet<Lumina.Excel.GeneratedSheets.Action>()!;
+            var sheet = Service.DataManager.GetExcelSheet<Lumina.Excel.Sheets.Action>()!;
             var row = sheet.GetRow(actionID);
 
             return this.cooldownGroupCache[actionID] = row!.CooldownGroup;

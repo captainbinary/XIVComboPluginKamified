@@ -6,7 +6,13 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.70:
+  "Changelog": "1.5.0.71:
+    * Updated for 7.1 compatibility.
+    * Devilment to Starfall Dance feature removed as it is now vanilla.
+    * Removed Jump to Mirage Dive due to it being vanilla, as I completely forgot to earlier.
+    * Added an 'Only When Full' option to Sidewinder to Pitch Perfect.
+
+    1.5.0.70:
     * Added Comet Overwrite Prevention feature. Or did I?
     * Removed Holy overcap features (it made no sense when you gain, not lose, DPS by letting it overcap).
     

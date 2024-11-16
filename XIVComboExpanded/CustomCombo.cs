@@ -133,7 +133,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (!IsEnabled(this.Preset))
                 return false;
 
-            var classJobID = LocalPlayer?.ClassJob.Id;
+            var classJobID = LocalPlayer?.ClassJob.RowId;
             if ((this.JobID != classJobID && this.ClassID != classJobID) && this.JobID != 0)
                 return false;
 
