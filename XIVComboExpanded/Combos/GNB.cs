@@ -192,7 +192,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == GNB.BurstStrike || actionID == GNB.FatedCircle)
             {
                 var gauge = GetJobGauge<GNBGauge>();
-                if (level >= GNB.Levels.DoubleDown && gauge.Ammo >= 2)
+                if (level >= GNB.Levels.DoubleDown && gauge.Ammo >= 1)
                 {
                     if (IsActionOffCooldown(GNB.DoubleDown))
                         return GNB.DoubleDown;
@@ -300,7 +300,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<GNBGauge>();
-            if (gauge.Ammo >= 2 && HasEffect(GNB.Buffs.NoMercy))
+            if (gauge.Ammo >= 1 && HasEffect(GNB.Buffs.NoMercy))
             {
                 if (GetCooldown(GNB.SolidBarrel).CooldownRemaining >= 0.5 && IsActionOffCooldown(GNB.BowShock) && IsEnabled(CustomComboPreset.GunbreakerNoMercyFeature))
                     return GNB.BowShock;

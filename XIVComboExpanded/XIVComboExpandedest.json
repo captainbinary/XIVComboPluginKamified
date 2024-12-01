@@ -6,7 +6,12 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.71:
+  "Changelog": "1.5.0.72:
+    * Double Down features now account for its new cost.
+    * New option for Royal Authority to Atonement where it will only activate if you are about to overwrite Sword Oath in your combo.
+    * Empyreal Arrow will no longer turn into Pitch Perfect under any circumstances.
+    
+    1.5.0.71:
     * Updated for 7.1 compatibility.
     * Devilment to Starfall Dance feature removed as it is now vanilla.
     * Removed Jump to Mirage Dive due to it being vanilla, as I completely forgot to earlier.

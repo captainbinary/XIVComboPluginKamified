@@ -200,8 +200,6 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<BRDGauge>();
-            if (IsEnabled(CustomComboPreset.BardPerfectSidesFeature) && gauge.Song == Song.WANDERER && (gauge.Repertoire == 3 || (!IsActionOffCooldown(BRD.Sidewinder) && !IsActionOffCooldown(BRD.EmpyrealArrow) && gauge.Repertoire > 0)))
-                return BRD.PitchPerfect;
             return (IsActionOffCooldown(BRD.Sidewinder) && !IsActionOffCooldown(BRD.EmpyrealArrow) && CanUseAction(BRD.Sidewinder)) ? BRD.Sidewinder : BRD.EmpyrealArrow;
         }
     }

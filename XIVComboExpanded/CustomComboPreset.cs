@@ -868,7 +868,7 @@ namespace XIVComboExpandedestPlugin
         #region PALADIN
 
         // used enums: 1913, 1901, 1909, 1910, 1906
-        // latest enum: 1922
+        // latest enum: 1923
 
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
@@ -886,6 +886,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
         PaladinRoyalAuthorityAtonementFeature = 1903,
+
+        [OrderedEnum]
+        [ParentCombo(CustomComboPreset.PaladinRoyalAuthorityAtonementFeature)]
+        [CustomComboInfo("'Only if Overwrite' Option", "Replace Royal Authority with Atonement only when you are about to overwrite Sword Oath.\nThis will take priority over Holy Spirit if it's also enabled.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
+        PaladinRoyalAuthorityAtonementOption = 1923,
 
         [OrderedEnum]
         [CustomComboInfo("Shield Lob to Holy Spirit", "Replace Shield Lob with Holy Spirit while Divine Might is active.", PLD.JobID, PLD.ShieldLob)]
