@@ -377,6 +377,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 return MNK.DragonKick;
             }
 
+            if (level < MNK.Levels.DragonKick) return MNK.Bootshine;
+
             return actionID;
         }
     }

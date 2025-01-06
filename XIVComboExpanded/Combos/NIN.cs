@@ -268,6 +268,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class NinjaDWaDMeisuiFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaDWaDMeisuiFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return HasEffect(NIN.Buffs.ShadowWalker) || !CanUseAction(OriginalHook(NIN.DreamWithinADream)) ? NIN.Meisui : actionID;
+        }
+    }
+
     internal class NinjaHideMugFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaHideMugFeature;
@@ -348,9 +358,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.TenChiJin)
             {
-                if (OriginalHook(NIN.TenChiJin) != NIN.TenChiJin)
-                    return OriginalHook(NIN.TenChiJin);
-
                 if (HasEffect(NIN.Buffs.ShadowWalker))
                     return NIN.Meisui;
 

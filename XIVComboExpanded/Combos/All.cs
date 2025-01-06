@@ -3,6 +3,7 @@
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
+using Lumina.Excel.Sheets;
 using Microsoft.VisualBasic;
 
 namespace XIVComboExpandedestPlugin.Combos
@@ -52,6 +53,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
+                Raise = 148,
                 Swiftcast = 167,
                 EurekaMoment = 2765,
                 Troubadour = 1934,
@@ -99,6 +101,22 @@ namespace XIVComboExpandedestPlugin.Combos
                     || (level <= All.Levels.Raise && actionID != All.AngelWhisper)
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class AllRaiseHardLockoutFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AllRaiseHardLockoutFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro || actionID == All.AngelWhisper)
+            {
+                if (TargetHasEffectAny(All.Buffs.Raise))
+                    return LocalPlayer?.ClassJob.RowId == SMN.JobID ? SCH.Physick : SMN.Physick;
             }
 
             return actionID;

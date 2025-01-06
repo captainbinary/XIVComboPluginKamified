@@ -11,14 +11,18 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MULTIPLE CLASSES/DOL
 
-        // Latest enum: 9014
+        // Latest enum: 9015
 
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE/BLU with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro, All.AngelWhisper)]
         AllSwiftcastFeature = 9001,
 
         [OrderedEnum]
-        [CustomComboInfo("Isle Sprint", "Replaces Sprint with Isle Sprint while you're in your Island Sanctuary.\nBecause apparently this hasn't been updated in SimpleTweaks after two months.", All.JobID, All.Sprint)]
+        [CustomComboInfo("Raise Hard Target Lockout", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE/BLU with a useless action when hard targeting a corpse that already has a raise effect on it.", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro, All.AngelWhisper)]
+        AllRaiseHardLockoutFeature = 9015,
+
+        [OrderedEnum]
+        [CustomComboInfo("Isle Sprint", "Replaces Sprint with Isle Sprint while you're in your Island Sanctuary.\nBecause sometimes SimpleTweaks doesn't have this.", All.JobID, All.Sprint)]
         AllIsleSprintFeature = 9014,
 
         [OrderedEnum]
@@ -775,7 +779,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region NINJA
 
-        // last used: 3024
+        // last used: 3025
 
         [OrderedEnum]
         [CustomComboInfo("Aeolian Edge Combo", "Replace Aeolian Edge with its combo chain.", NIN.JobID, NIN.AeolianEdge)]
@@ -814,8 +818,14 @@ namespace XIVComboExpandedestPlugin
         NinjaKassatsuDWaDFeature = 3015,
 
         [OrderedEnum]
+        [ConflictingCombos(NinjaDWaDMeisuiFeature)]
         [CustomComboInfo("Dream Within a Dream to Kunai's Bane", "Replaces Dream Within a Dream with Kunai's Bane/Trick Attack while Suiton or Hidden is active.", NIN.JobID, NIN.DreamWithinADream)]
         NinjaDWaDTrickFeature = 3019,
+
+        [OrderedEnum]
+        [ConflictingCombos(NinjaDWaDTrickFeature)]
+        [CustomComboInfo("Dream Within a Dream to Meisui", "Replaces Dream Within a Dream with Meisui while Suiton is active.", NIN.JobID, NIN.DreamWithinADream)]
+        NinjaDWaDMeisuiFeature = 3025,
 
         [OrderedEnum]
         [CustomComboInfo("Ten Chi Jin to Meisui", "Replaces Ten Chi Jin (the move) with Meisui while Suiton is up.", NIN.JobID, NIN.TenChiJin)]

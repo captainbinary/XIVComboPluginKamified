@@ -6,7 +6,12 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.5.0.72:
+  "Changelog": "1.5.0.73:
+    * Meisui/Tenri priority fixed and DWaD to Meisui added.
+    * Monk's Draconic Leap feature now properly syncs below level 50 when you don't have a form.
+    * Raise Hard Target Lockout Feature added.
+    
+    1.5.0.72:
     * Double Down features now account for its new cost.
     * New option for Royal Authority to Atonement where it will only activate if you are about to overwrite Sword Oath in your combo.
     * Empyreal Arrow will no longer turn into Pitch Perfect under any circumstances.
